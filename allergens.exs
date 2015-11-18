@@ -25,7 +25,7 @@
 defmodule Allergies do
   use Bitwise, only_operators: true
 
-  @allergens String.split "eggs peanuts shellfish strawberries tomatoes chocolate pollen cats"
+  @allergens ~w(eggs peanuts shellfish strawberries tomatoes chocolate pollen cats)
 
   def allergic?(code, allergen) do
     index = Enum.find_index @allergens, fn x -> x == allergen end

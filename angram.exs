@@ -12,4 +12,4 @@ defmodule Angram do
   end
 end
 
-IO.inspect Angram.angrams("listen", String.split "enlists google inlets")
+IO.inspect Angram.angrams("listen", ~w(enlists google inlets))
