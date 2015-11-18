@@ -16,8 +16,26 @@
 # - Decoding "gvhg" gives "test"
 
 defmodule Atbash do
+  @alphabet "abcdefghijklmnopqrstuvwxyz"
+  @chars String.split(@alphabet, "")
+  @reverse_chars String.split(String.reverse(@alphabet), "")
+
   def encode(word) do
+    Enum.join word
+      |> String.codepoints
+      |> Enum.map fn c -> encode_char(c, @chars, @reverse_chars) end
   end
+
   def decode(word) do
+    Enum.join word
+      |> String.codepoints
+      |> Enum.map fn c -> encode_char(c, @chars, @reverse_chars) end
+  end
+
+  defp encode_char(c, from, to) do
+    Enum.at to, Enum.find_index(from, fn x -> x == c end)
   end
 end
+
+IO.inspect Atbash.encode("test") # gvhg
+IO.inspect Atbash.decode("gvhg") # test
