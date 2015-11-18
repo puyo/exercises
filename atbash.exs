@@ -16,24 +16,26 @@
 # - Decoding "gvhg" gives "test"
 
 defmodule Atbash do
-  @alphabet "abcdefghijklmnopqrstuvwxyz"
-  @chars String.split(@alphabet, "")
-  @reverse_chars String.split(String.reverse(@alphabet), "")
+  @atoz Enum.zip ?a..?z, ?z..?a
+  @forward Enum.reduce @atoz, %{}, fn {c0, c1}, acc ->
+    Map.put(acc, c0, c1)
+  end
+  @backward Enum.reduce @atoz, %{}, fn {c0, c1}, acc ->
+    Map.put(acc, c1, c0)
+  end
 
   def encode(word) do
-    Enum.join word
-      |> String.codepoints
-      |> Enum.map fn c -> encode_char(c, @chars, @reverse_chars) end
+    tr word, @forward
   end
 
   def decode(word) do
-    Enum.join word
-      |> String.codepoints
-      |> Enum.map fn c -> encode_char(c, @chars, @reverse_chars) end
+    tr word, @backward
   end
 
-  defp encode_char(c, from, to) do
-    Enum.at to, Enum.find_index(from, fn x -> x == c end)
+  defp tr(word, map) do
+    to_string word
+      |> String.to_char_list
+      |> Enum.map &Dict.get(map, &1)
   end
 end
 
