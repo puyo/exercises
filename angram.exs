@@ -8,7 +8,7 @@ defmodule Angram do
   end
 
   defp sorted(word) do
-    word |> String.codepoints |> Enum.sort
+    word |> String.to_char_list |> Enum.sort
   end
 end
 
