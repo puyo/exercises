@@ -1,0 +1,47 @@
+// vim: filetype=sass
+// story: {beginning} {middle} {end}
+// beginning: {intro}
+// middle: {crisis}
+// end: {conclusion}
+// intro: {protagonist-arrested}
+
+// ----------------------------------------------------------------------
+// Rules
+
+- story = {sentence} {sentence}
+
+- sentence [p.class 'character']
+  = {p.name} went to bed because {p.he} was tired.
+  = {p.name} went to the shop to get {p.his} shopping.
+
+- .name [.class 'character', .sex 'female'] = Tracy
+
+- [.class 'character']
+  .sex 'male', .he 'he', .his 'his', .him 'him'
+
+- [.class 'character']
+  .sex 'female', .he 'she', .his 'hers', .him 'her'
+
+
+// ----------------------------------------------------------------------
+// Example of knowledge building up
+
+//   -
+//   -
+//     story: '{sentence} {sentence}'
+//   -
+//     story: '{p.name} went to bed because {p.he} was tired. {sentence}'
+//   -
+//     story: 'Tracy went to bed because {p.he} was tired. {sentence}'
+//     p:
+//       name: 'Tracy'
+//       class: 'character'
+//   -
+//     story: 'Tracy went to bed because she was tired. {sentence}'
+//     p:
+//       name: 'Tracy'
+//       class: 'character'
+//       he: 'she'
+//       sex: 'female'
+//       his: 'hers'
+//       him: 'her'
