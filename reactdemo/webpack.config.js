@@ -8,8 +8,8 @@ module.exports = {
 
   //entry points on modules that are loaded on the start, they all bundle together in 1 file
   entry: [
-     'webpack-dev-server/client?http://0.0.0.0:8080',    //path to js files (client)
-     'webpack/hot/only-dev-server',                        //path to js files (server) with our plugin it ll send pieces of changed code
+    'webpack-dev-server/client?http://0.0.0.0:8080',    //path to js files (client)
+    'webpack/hot/only-dev-server',                        //path to js files (server) with our plugin it ll send pieces of changed code
     './scripts/main.js'
   ],
 
