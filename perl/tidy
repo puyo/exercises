@@ -1,0 +1,151 @@
+#! /usr/bin/perl -w
+#
+# MP3 Tidy
+#   Greg McIntyre, 2001
+#
+# This script corrects capitalisation and spacing in all mp3 files in
+# the current directory, and all of its subdirectories. It only ever
+# affects the first letter of each word in the filename, so that
+# acronyms are not affected.
+#
+# Following are words which should be lowercase. All other words will
+# have the first letter capitalised.
+
+$lowercase{'a'} = 1;
+$lowercase{'an'} = 1;
+$lowercase{'and'} = 1;
+$lowercase{'are'} = 1;
+$lowercase{'at'} = 1;
+$lowercase{'be'} = 1;
+$lowercase{'by'} = 1;
+$lowercase{'in'} = 1;
+$lowercase{'is'} = 1;
+$lowercase{'it'} = 1;
+$lowercase{'of'} = 1;
+$lowercase{'on'} = 1;
+$lowercase{'the'} = 1;
+$lowercase{'to'} = 1;
+$lowercase{'with'} = 1;
+
+#
+#
+# Do not edit below this line!
+#
+#
+
+# Recurse through all files.
+sub tidyDir {
+
+    opendir(D, '.');
+    rewinddir(D);
+    my @contents = readdir(D);
+    closedir(D);
+
+    # Throw away . and ..
+    shift(@contents);
+    shift(@contents);
+
+    # print("Contents = '@contents'\n\n");
+
+    foreach $file (@contents) {
+        if (-d $file) {
+            #			print("Tidying directory '$file'...\n\n");
+            if (-x $file) {
+                chdir($file);
+                tidyDir('.');
+                chdir('..');
+            }
+            chmod(0777, $file);
+        } elsif (-f $file) {
+            $_ = $file;
+            if (/.*(\.mp3|\.ogg)$/i) {
+                chmod(0666, $file);
+                tidyFile($file);
+            } else {
+                #				print("FILE '$file'\n");
+            }
+        } else {
+            #			print("UNKNOWN '$file'\n");
+        }
+    }
+
+}
+
+
+sub tidyFile {
+    $original = $_ = shift;
+    $original =~ s/\`/\\`/;
+    s/_/ /g;
+
+    #	print("File '$file'\n");
+
+    my $name;
+    my $ext;
+
+    ($name, $ext) = /(.*)(\.mp3|\.ogg)/;
+    $name =~ s/\`/\'/;
+    $ext  =~ s/\`/\'/;
+
+    my @parts = split(/\-/, $name);
+
+    # Trim and tidy parts.
+    foreach $part (@parts) {
+        $part = trim($part);
+        $part = tidyPart($part);
+    }
+
+    # Reconstruct name.
+    my $result = '';
+    foreach $p (@parts) {
+        $result .= $p . ' - ';
+    }
+    $result =~ s/ \- $//;
+    $result .= $ext;
+
+    if ($original ne $result) {
+        print(">'$original'\n");
+        print("<'$result'\n");
+        print("\n");
+        system("mv \"$original\" \"$result\"");
+    }
+}
+
+
+sub trim {
+    $_ = shift;
+    s/^\s+//;
+    s/\s+$//;
+    return $_;
+}
+
+sub tidyPart {
+    @words = split(/ /);
+    foreach $word (@words) {
+        $w = lc($word);
+        if ($lowercase{$w}) {
+            $word = $w;
+        } else {
+            $word = ucfirst($word);
+        }
+    }
+
+    # UC last word (seems to look better).
+    $words[$#words] = ucfirst($words[$#words]);
+
+    my $result = '';
+    foreach $word (@words) {
+        $result .= $word . ' ';
+    }
+    $result =~ s/ $//;
+
+    # UC first word (seems to look better).
+    $result = ucfirst($result);
+
+    return $result;
+}
+
+print("Tidying current directory...\n");
+tidyDir('.');
+
+# print("Refreshing playlist...\n");
+# system('./refresh-playlist');
