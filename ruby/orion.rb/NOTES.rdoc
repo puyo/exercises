@@ -1,0 +1,170 @@
+
+* Setup galaxy
+* Turn, turn, turn
+* Populations grow
+
+A building, leader, race or tech could have any effect and some share the same
+effects. e.g. Leader with Industry* 50% could have the same effect as a racial
+pick that increases worker production by 50%.
+
+--
+
+    Game.technologies
+    Game.racial_picks
+    Game.colony_leader_abilities
+    Game.fleet_leader_abilities
+    Game.define_technology
+    Game.define_racial_pick
+    Game.define_colony_leader_ability
+    Game.define_fleet_leader_ability
+
+    game.advance_turn()
+    game.galaxy
+    game.options.galaxy_size
+    game.options.galaxy_age
+    game.options.start_tech_level
+    game.options.ai_difficulty
+    game.options.num_players
+
+    galaxy.stars
+    galaxy.races
+
+    star.name
+    star.planets
+    star.position
+    star.owners => {race1: 20, race2: 80}
+
+    race.name
+    race.colour
+    race.leader_name
+    race.picks
+    race.government
+    race.technologies
+    race.effects
+
+    planet.number
+    planet.base_size
+    planet.colony
+    planet.climate_type
+    planet.mineral_type
+
+    colony.owner_race
+    colony.max_size
+    colony.buildings
+    colony.build_queue
+    colony.population
+    colony.population_growth()
+    colony.num_workers()
+    colony.farmers
+    colony.scientists
+    colony.builders
+    colony.leader
+    colony.surplus_food()
+    colony.add_worker()
+    colony.command_points()
+    colony.effects
+
+    technology_tree.categories
+    tech_category.name
+    tech_category.levels
+    tech_category_level.name
+    tech_category_level.cost
+    tech_category_level.technologies
+    technology.name
+    technology.description
+
+    building.name
+
+    fleet.ships
+    fleet.leader
+    fleet.effects
+
+    effect.antaran_attack_percent_modifier
+    effect.bad_galactic_event_percent_modifier
+    effect.bonus_credits_per_surplus_food
+    effect.colonist_consume_production_percent
+    effect.colonist_food_modifier
+    effect.colonist_production_modifier
+    effect.colonist_research_modifier
+    effect.colony_command_point_modifier
+    effect.colony_gravity_modifier
+    effect.colony_high_gravity_penalty
+    effect.colony_low_gravity_penalty
+    effect.colony_max_population_as_terran?
+    effect.colony_max_population_bonus
+    effect.colony_max_population_percent_modifier
+    effect.colony_max_population_percent_modifier
+    effect.colony_morale_ignore?
+    effect.colony_morale_ignore_no_troop_penalty?
+    effect.colony_morale_percent_modifier
+    effect.colony_ocean_is_gaia?
+    effect.colony_polution_percent_modifier
+    effect.colony_population_growth_modifier
+    effect.colony_population_growth_percent_modifier
+    effect.colony_prohibit_annihilation?
+    effect.colony_trade_goods_percent_modifier
+    effect.colony_trade_goods_percent_modifier
+    effect.colony_troop_max_percent_modifier
+    effect.colony_troop_production_percent_modifier
+    effect.colony_tundra_is_terran?
+    effect.colony_turns_to_assimilate_others
+    effect.colony_turns_to_be_assimilated
+    effect.diplomacy_deal_percent_modifier
+    effect.diplomacy_prohibit_research_treaties?
+    effect.diplomacy_prohibit_trade_treaties?
+    effect.good_galactic_event_percent_modifier
+    effect.leader_cost_modifier
+    effect.leader_offer_chance_percent_modifier
+    effect.leader_offer_frequency_percent_modifier
+    effect.marine_attacking_ship_hit_modifier
+    effect.marine_defending_ship_hit_modifier
+    effect.mind_control_invasion_available?
+    effect.race_explored_all_planets_at_start
+    effect.race_hide_own_fleets
+    effect.race_show_enemy_fleets
+    effect.ship_combat_speed_modifier
+    effect.ship_cost_percent_modifier
+    effect.ship_evade_modifier
+    effect.ship_hit_modifier
+    effect.ship_interstellar_speed_modifier
+    effect.ship_level_bonus
+    effect.ship_repair_after_combat?
+    effect.ship_repair_armor_in_combat_percent_bonus
+    effect.ship_repair_systems_in_combat_percent_bonus
+    effect.spy_attack_percent_modifier
+    effect.spy_defense_percent_modifier
+    effect.tech_grants_all_from_tech_level?
+    effect.tech_grants_random_from_tech_level?
+    effect.trade_treaty_profit_percent_modifier
+    effect.troop_attacking_colony_hit_modifier
+    effect.troop_defending_colony_hit_modifier
+    effect.troop_hp_bonus
+
+# | Size   | Climate  | Max | Max Calc  | 
+# | Tiny   | Radiated | 1   | 1 * 1     | 
+# | Tiny   | Barren   | 1   | 1 * 1     | 
+# | Tiny   | Desert   | 1   | 1 * 1     | 
+# | Small  | Toxic    | 3   | 3.25 * 1     | 
+# | Small  | Desert   | 3   | 3.25 * 1     | 
+# | Small  | Barren   | 3   | 3.25 * 1     | 
+# | Small  | Tundra   | 3   | 3.25 * 1     | 
+# | Small  | Arid     | 6   | 3.25 * 2  | 
+# | Medium | Toxic    | 4   | 4 * 1     | 
+# | Medium | Radiated | 4   | 4 * 1     | 
+# | Medium | Barren   | 4   | 4 * 1     | 
+# | Medium | Desert   | 4   | 4 * 1     | 
+# | Medium | Tundra   | 4   | 4 * 1     | 
+# | Medium | Ocean    | 4   | 4 * 1     | 
+# | Medium | Swamp    | 6   | 4 * 1.5   | 
+# | Medium | Arid     | 9   | 4 * 2.25  | 9/4 = 2.3-2.4
+# | Medium | Terran   | 12  | 4 * 3.2   | 12/4 = 3-3.2
+# | Large  | Toxic    | 5   | 5 * 1     | 
+# | Large  | Barren   | 5   | 5 * 1     | 
+# | Large  | Desert   | 5   | 5 * 1     | 
+# | Large  | Ocean    | 5   | 5 * 1     | 
+# | Large  | Terran   | 16  | 5 * 3.2   | 
+# | Huge   | Barren   | 6   | 6.25 * 1   | 
+# | Huge   | Ocean    | 6   | 6.25 * 1   | 6 /6 = 1
+# | Huge   | Terran   | 20  | 6.25 * 3.2 | 20/6 = 3.4
+# | Huge   | Gaia     | 25  | 6.25 * 4   | 25/6 = 4.2-4.3
+

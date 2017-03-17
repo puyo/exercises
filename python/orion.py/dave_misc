@@ -1,0 +1,61 @@
+Game:
+  players: [player, ...]
+  stars: [star, ...]
+
+Star:
+  colour: (r, g, b, a)
+  planets: [planet, ...]
+
+Planet:
+  queue: [building, ship, ...]
+  modifiers: [modifier, ...]
+
+Player:
+  name
+  race
+  allowed_buildings: [building, ...]
+  ship_designs: [ship, ...]
+
+Queue:
+  planet
+  automated: true | false
+  push(building | ship | repeat)
+  pop()
+  remove(position)
+  eta(position=-1)
+  toggle_auto()
+
+Building:
+  name
+  planet
+  enables: [building, ship, modifier, ...]
+
+Modifiers:
+  name
+  effect: e.g. +100 energy
+
+Planet:
+  player
+  size: small | medium | large
+  klass: radioactive | barren | mediocre | rich | abundant
+  production: size * klass * player.modifiers * player.race.modifiers * modifiers
+  modifiers: [modifier, ...]
+
+Race:
+  modifiers: [modifier, ...]
+
+Ship:
+  name
+  template: ship
+  slots: [slot, ...]
+
+  Slot:
+    type
+    item
+
+  Item:
+    name
+    type
+    capability
+
+  capabilities: [capability, ...]

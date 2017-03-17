@@ -1,0 +1,54 @@
+dodnl Process this file with autoconf to produce a configure script.
+
+dnl Simple Automake init
+AC_INIT([aero], [1.0.1])
+AC_CONFIG_SRCDIR([aero.cpp])
+AM_INIT_AUTOMAKE
+
+dnl Checks for libraries.
+dnl Replace `main' with a function in -lGL:
+LIBS='-L/usr/X11R6/lib -L/usr/lib/glut'
+
+dnl Check for various tools
+AC_PROG_CXX
+CXX="g++"
+
+dnl Check for SDL 1.2.0+
+SDL_VERSION=1.2.0
+AM_PATH_SDL($SDL_VERSION,:,AC_MSG_ERROR([*** SDL >= $SDL_VERSION not found!]))
+
+AC_CHECK_LIB(m, main,, AC_MSG_ERROR(libm is needed))
+AC_CHECK_LIB(X11, main,, AC_MSG_ERROR(X11 is needed, course))
+AC_CHECK_LIB(GL, main,, AC_MSG_ERROR(OpenGL is needed))
+AC_CHECK_LIB(GLU, main,, AC_MSG_ERROR(GLU should come with OpenGL))
+AC_CHECK_LIB(pthread, main,, AC_MSG_ERROR(SDL needs pthread to run properly))
+
+dnl AC_CHECK_HEADERS(GL/gl.h,,
+ dnl AC_CHECK_HEADERS(/usr/X11R6/include/GL/gl.h,
+        dnl includes_in_x=1,
+ dnl AC_CHECK_HEADERS(/usr/local/include/GL/gl.h,
+        dnl includes_in_local=1,
+ dnl AC_CHECK_HEADERS(/usr/include/GL/gl.h,
+        dnl includes_in_usr=1,
+dnl AC_MSG_ERROR(cant find GL headers))))
+dnl )
+
+if test "$includes_in_x" = 1 ; then
+        INCS="$INCS -I/usr/X11R6/include"
+fi
+if test "$includes_in_local" = 1; then
+        INCS="$INCS -I/usr/local/include"
+fi
+if test "$includes_in_usr" = 1; then
+        INCS="$INCS -I/usr/include"
+fi
+
+INCS="$INCS -I/opt/local/include"
+LIBS="$LIBS -L/opt/local/lib"
+
+dnl Get compile and linking flags
+CXXFLAGS="$CFLAGS $INCS $SDL_CFLAGS"
+LIBS="$LIBS $SDL_LIBS -lglut -lXmu -lXt -lXext -lX11 -lXi"
+
+dnl Generate Makefile
+AC_OUTPUT(Makefile)
