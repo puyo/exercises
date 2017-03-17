@@ -1,0 +1,10 @@
+task :default => :report
+
+task :test do
+  sh 'rspec spec'
+end
+
+task :report => :test do
+  require 'cover_me'
+  CoverMe.complete!
+end

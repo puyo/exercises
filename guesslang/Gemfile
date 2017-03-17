@@ -1,0 +1,4 @@
+source :gemcutter
+
+gem 'rspec'
+gem 'cover_me'
