@@ -1,0 +1,8 @@
+#!/usr/bin/env wish
+
+canvas .canvas
+.canvas create rectangle 1c 2c 3c 3c \
+-outline black -fill blue -tags rect
+pack .canvas
+bind .canvas <Enter> {.canvas itemconfigure rect -fill red}
+bind .canvas <Leave> {.canvas itemconfigure rect -fill green}
