@@ -1,0 +1,206 @@
+
+
+  Image
+  Contentse simulation game by Lucy Ding and Greg McIntyre
+
+
+
+    Introduction
+   *
+     * Influences
+
+   *Character Creation
+     * Primary Attributes
+
+     * Horoscope
+
+   *Playing the Game
+     * Goal
+
+     * Basic Gameplay
+       The Game Screen
+     *
+     * End Conditions
+
+        *Winning Conditions
+        *Losing Conditions
+
+     * Time
+
+     * Schedule
+   *Activities
+
+   *People
+       Person
+     *
+        *Students
+
+        *Adults
+          *Teacher
+
+          *Parents
+
+   *Items
+     * Fixtures
+
+     * Books
+         Magazines
+        *
+        *Textbooks
+  Introduction
+   *Locations
+   *Stereotypes
+
+     * Adjectives
+  Character Creation
+     * Stereotype Listing
+   *Random Events
+
+   *Class Implementation
+   Influences
+     *
+        *Student
+
+          *You
+          *Friend
+
+        *Adult
+
+  Playing the Gamep
+   Primary Attributesonship
+
+     * Item
+   Horoscopeion
+     *
+     * Activity
+
+
+
+
+   Goalve simulation game...
+
+
+   Basic Gameplay
+    Among its influences, this game has the following games and anime: Rockstar, Princess Maker, Megatokyo, Himechan no Ribon, Kareshi Kanajo no Jijou.
+
+
+
+
+   1. Select sex. 
+
+   The Game Screen
+   3. Select birthday. Your Horoscope will be given to you based on your birthday. 
+
+   4. Spend points on Primary Attributes. These will be fixed for the duration of the game. 
+
+
+
+    Metabolism, Beauty and Intelligence.
+
+
+
+
+    One of Aries, Aquarius, Cancer, Capricorn, Gemini, Leo, Libra, Pisces, Sagitarius, Scorpio, Taurus, Virgo.
+
+    The fortune telling machine at the arcade can give you good or bad readings for you and a friend based on your horoscope.
+
+
+
+
+
+
+    The goal of the game is to aquire a boyfriend or girlfriend.
+
+
+
+    There are two stages to each day, morning and afternoon. Each stage is 6 hours long. For each, you first select one of a set of possible Locations where it will take place (travel time is negligible) and then select Activities from a menu until
+    the stage's time is up.
+
+    If an activity takes longer than can be fitted in the morning, a warning will be shown, and if you wish, the extra time will be deducted from the afternoon.
+
+    When morning time is used up, afternoon arrives. In the afternoon the process is repeated. If you do something which takes too much time in the afternoon, a warning will be shown, and if you wish, you'll stay up late. The number of hours you stay
+    up late are deducted from your Health.
+
+
+
+
+    TODO: INCLUDE DIAGRAM.
+
+    Each event in the game is logged and displayed in a scrolling list to the player. The most recent logged messages are kept between saved games.
+
+
+
+
+
+      Aquire a boyfriend or girlfriend!
+
+
+
+
+      The Same-Sex School
+      The Boarding School
+      The Fat Farm
+
+
+
+    Store: Year, Month, Day, Stage (Morning/Afternoon).
+
+    'Hours left' (in the current stage) is also stored somewhere.
+
+
+
+    To keep organised, you have a schedule feature in the game which simply keeps track of what invitations you've extended to whom and for when. When you Invite somebody, it fixes your activity for this time. When the time comes, you will simply
+    receive a prompt asking if you'd like to proceed with the promise. If you wish, you can break your promise and do something else, but it costs a lot of friendship.
+
+
+    Sometimes other people will arrange parties or other events, and invite you. If you accept, the scheule works in the same way.
+
+    Store: Hash[Time => Array[(Friend, Location)]].
+
+
+
+   Activities are associated with People (e.g. Talk) and Items (e.g. Read). Each stage, the activity menu is built from all the activities provided by these things. When you select an activity from the menu, all the things which provide that activity
+   are listed (e.g. if you select Chat, you can choose from all the people you can Chat to). 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Name                Selections               Description                                                                                                                       Effects
+
+    Chat                Friend                   Just chat about stuff, y'know?                                                                                                    Relationship+1, Relationship.Attention+1, Gossip+1 
+    Compliment          Friend                   Pay somebody a nice compliment.                                                                                                   Relationship.Attention+1, Relationship+1, Relationship.Romance+1,
+                                                                                                                                                                                   Extroversion+1 
+
+    Excercise           Type?, Duration          Work out.                                                                                                                         Health+1/hour 
+    Exchange phone      Friend                   Allows you to telephone this friend and vice versa, but can backfire if your Relationship isn't strong. Once you have a Friend's  Relationship.Attention+1, Relationship+10, Extroversion+1 
+    numbers                                      phone number, you cannot do this again. 
+    Find job            Duration                 After a time, presents you with a set of jobs to choose from. This could schedule a lot of your time.                             Gives you a job! 
+
+    Give                Person, Item             Give an item of your choice to somebody as a gift. You should give something to your friends' parents if you go to their house.   Relationship.Attention+1, Relationship+(10*Friend.Materialism/100),
+           *Suck Up
+
+      Parents
+
+       Menu
+           *Spend Quality Time

@@ -1,0 +1,140 @@
+
+/* General */
+
+body {
+	background-image: url(images/heart-light.gif);
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+body, p, td, h1, h2, h3, h4, div, li {
+	font-family: 'verdana', 'helvetica', 'sans-serif';
+	font-size: 12pt;
+}
+
+p, ol, ul, dl {
+	margin-top: 0px;
+}
+
+.section {
+	margin-top: 1em;
+}
+
+
+/* Headings */
+
+font.heading, h1 {
+	font-size: 18pt;
+}
+.section font.heading, h2 {
+	font-size: 16pt;
+}
+.section .section font.heading, h3 {
+	font-size: 14pt;
+}
+.section .section .section font.heading, h4 {
+	font-size: 12pt;
+}
+.section .section .section .section font.heading, h5 {
+	font-size: 10pt;
+}
+
+.heading {
+	font-weight: bold;
+}
+
+/* Sections */
+
+
+.section {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+/* Tables */
+
+td {
+	vertical-align: top;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+table.data {
+	margin-top: 1em;
+	margin-bottom: 1em;
+	border-width: thin;
+	border-style: solid;
+	border-color: maroon;
+	background-color: #FFAAAA;
+}
+
+table.data * {
+	font-size: 10pt;
+}
+
+table.data td {
+	background-color: #FFEEEE;
+	border-width: thin;
+	border-style: solid;
+	border-color: maroon;
+}
+
+td.heading, tr.headings td {
+	font-weight: bold;
+}
+
+/* Links */
+
+a {
+	color: #A00000;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: red;
+}
+
+a:active {
+	color: white;
+	background-color: #C00000;
+}
+
+/* Images */
+
+div.figure {
+	text-align: center;
+	font-weight: bold;
+}
+
+div.figure img {
+	border-width: medium;
+	border-style: solid;
+	border-color: black;
+}
+
+td.image {
+	vertical-align: middle;
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.title {
+	margin-bottom: 1em;
+}
+
+dt {
+	font-weight: bold;
+}
+
+img.scenery {
+	margin: 5px;
+	margin-right: 10px;
+	border-width: thin;
+	border-style: solid;
+	border-color: black;
+}
+
+div.location {
+	clear: both;
+	margin-top: 1em;
+}

@@ -1,0 +1,192 @@
+Heart Attack!!!
+
+Messages sent to player
+
+	Pay Attention to (friend)
+		Things you notice about (friend) if you choose the "pay
+		attention to" option at school. The attribute you notice is
+		random and how accurately you gauge them depends on chance and
+		your gossip ability.
+		
+		Horoscope (1-12)
+		Sexuality (M/F/B)
+
+		Metabolism (0 - 10)
+			0	Urk!!(friend) is the fattest, most disgusting blob you have ever seen. 
+			1	(friend) needs to get (her/his) arse on a stairmaster quicksmart! (s/he) is fat!
+			2	(friend) is a heavy unit. There's no denying it. (s/he) could work out more.
+			3	(friend) is what some would call Rubinesque in (her/his) physique.
+			4	You notice (friend) is a little chubby.
+			5	(friend) has a kinda average build. (s/he)'s not exaclty buff, but (s/he)'s not a slob either.
+			6	(friend) has a nice build. 
+			7	(friend) has a fresh health appearance. (s/he) probably gets plenty of exercise.
+			8	(friend)'s clothes show off (her/his) toned body to good effect.
+			9	(friend) has the most fantastic body! You look away before you get caught staring.
+			10	Wow! (friend) has the kind of body you would die for. (s/he) is trim, toned and dead sexy!
+
+		Beauty (0 - 10)
+			0	(friend) is a hideous troll beast. You wish you hadn't looked (her/his) way.
+			1	(friend) must've fallen out of the ugly tree and hit every branch on the way down.
+			2	(friend) is dark and handsome. Well, when it's dark (s/he) might be handsome.
+			3	
+			4	
+			5	Hmmm, (friend) has just your common or garden variety looks. Nothing special.
+			6	
+			7	
+			8	
+			9	
+			10	(friend) is absolutely babelicious! You cannot imagine someone more gorgeous.
+
+
+		Intelligence (0 - 10)
+			0	(friend) is so dense, the light bends around (her/him).
+			1	You've talked to (friend) before and it's like having a conversation with a letter box.
+			2	If you believe that brains aren't everything, (friend) might be your kind of person.
+			3	Unsurprisingly, (friend) is staring vacantly out the window. (s/he)'s generally pretty vacant.
+			4	(friend) isn't exactly brainy, but (s/he)'s okay to talk to.
+			5	(friend)
+			6	
+			7	
+			8	
+			9	
+Genius		10	
+			
+		Extroversion (0 - 100)
+			0-10	
+			11-20	
+			21-30	
+			31-40	
+			41-50	
+			51-60	
+			61-70	
+			71-80	
+			81-90	
+			91-100		
+
+?		Popularity (0 - 100) Do we need popularity as a friend's attribute?
+
+		Gossiping (0 - 100)
+			0-10	
+			11-20	
+			21-30	
+			31-40	
+			41-50	
+			51-60	
+			61-70	
+			71-80	
+			81-90	
+			91-100	
+			
+		Loyalty (0 - 100)
+			0-10	
+			11-20	
+			21-30	
+			31-40	
+			41-50	
+			51-60	
+			61-70	
+			71-80	
+			81-90	
+			91-100	
+
+		Friendship (0 - 100)
+			0-10	
+			11-20	
+			21-30	
+			31-40	
+			41-50	
+			51-60	
+			61-70	
+			71-80	
+			81-90	
+			91-100	
+			
+		Romantic Interest (0 - 100)
+			0-10	
+			11-20	
+			21-30	(friend) looks away when you turn to face them. Was (s/he) just looking at you? You can't be sure.
+			31-40	
+			41-50	
+			51-60	
+			61-70	
+			71-80	
+			81-90	
+			91-100			
+
+		Like extroverted/introverted people (Introverted/Extroverted)
+			Ext:
+			
+			Int:
+			
+		Money (0 - ?)
+			0-10	
+			11-20	
+			21-30	
+			31-40	
+			41-50	
+			51-60	
+			61-70	
+			71-80	
+			81-90	
+			91-100	
+			
+
+Presents
+	
+	Flowers
+		Daisies
+		Roses
+		Irises
+		Orchids
+		Daffodils
+		Camellias
+		Pansies
+		Forget-me-nots
+	
+	Sweets
+		Box of chocolates
+		Box of candy
+		Chocolate bar
+		Lollypop
+		Packet of lollies
+	
+	Bad Presents
+		Thoughtless
+			Pen
+			Gift voucher for local takeaway shop
+			Socks
+			Coffee mug
+		Insulting
+			Lady shave (leg razor)
+			Book (Forget about influencing people, How to win friends!)
+			Book (natural cures for acne)
+		Too Sexual		
+			Lingerie
+			Hotel reservation
+			Book (the joy of sex)
+			Whip
+		Stupid
+			Season ticket to WWF matches
+			Brain in formalin
+			Hind quarter of beef
+			
+
+	Intelligence
+	
+	A half-wit gave you a piece of his mind, and you held on to it.
+	
+	
+	Beauty
+	
+	
+	Misc
+	
+	After meeting you, I've decided I am in favor of abortion in cases of incest
+
+
+Bands
+
+	Spiceboys
+	Backstreet Girls
+	4our
+		

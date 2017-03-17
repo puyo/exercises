@@ -1,0 +1,1387 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<title>Heart Attack</title>
+<meta name="author" content="">
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="title"><dl>
+<dt><img src="images/title.gif"></dt>
+<dd>A love simulation game by Lucy Ding and Greg McIntyre</dd>
+</dl></div>
+<font class="heading">Contents</font><p class="nav"><ul>
+<li>
+<a href="#section:Introduction">Introduction</a><ul><li>
+<a href="#section:Influences">Influences</a><ul></ul>
+</li></ul>
+</li>
+<li>
+<a href="#section:Character Creation">Character Creation</a><ul>
+<li>
+<a href="#section:Primary Attributes">Primary Attributes</a><ul></ul>
+</li>
+<li>
+<a href="#section:Horoscope">Horoscope</a><ul></ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#section:Playing the Game">Playing the Game</a><ul>
+<li>
+<a href="#section:Goal">Goal</a><ul></ul>
+</li>
+<li>
+<a href="#section:Basic Gameplay">Basic Gameplay</a><ul></ul>
+</li>
+<li>
+<a href="#section:The Game Screen">The Game Screen</a><ul></ul>
+</li>
+<li>
+<a href="#section:End Conditions">End Conditions</a><ul>
+<li>
+<a href="#section:Winning Conditions">Winning Conditions</a><ul></ul>
+</li>
+<li>
+<a href="#section:Losing Conditions">Losing Conditions</a><ul></ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#section:Time">Time</a><ul></ul>
+</li>
+<li>
+<a href="#section:Schedule">Schedule</a><ul></ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#section:Activities">Activities</a><ul></ul>
+</li>
+<li>
+<a href="#section:People">People</a><ul><li>
+<a href="#section:Person">Person</a><ul>
+<li>
+<a href="#section:Students">Students</a><ul></ul>
+</li>
+<li>
+<a href="#section:Adults">Adults</a><ul>
+<li>
+<a href="#section:Teacher">Teacher</a><ul></ul>
+</li>
+<li>
+<a href="#section:Parents">Parents</a><ul></ul>
+</li>
+</ul>
+</li>
+</ul>
+</li></ul>
+</li>
+<li>
+<a href="#section:Items">Items</a><ul>
+<li>
+<a href="#section:Fixtures">Fixtures</a><ul></ul>
+</li>
+<li>
+<a href="#section:Books">Books</a><ul>
+<li>
+<a href="#section:Magazines">Magazines</a><ul></ul>
+</li>
+<li>
+<a href="#section:Textbooks">Textbooks</a><ul></ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#section:Locations">Locations</a><ul></ul>
+</li>
+<li>
+<a href="#section:Stereotypes">Stereotypes</a><ul>
+<li>
+<a href="#section:Adjectives">Adjectives</a><ul></ul>
+</li>
+<li>
+<a href="#section:Stereotype Listing">Stereotype Listing</a><ul></ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#section:Random Events">Random Events</a><ul></ul>
+</li>
+<li>
+<a href="#section:Class Implementation">Class Implementation</a><ul>
+<li>
+<a href="#section:Person">Person</a><ul>
+<li>
+<a href="#section:Student">Student</a><ul>
+<li>
+<a href="#section:You">You</a><ul></ul>
+</li>
+<li>
+<a href="#section:Friend">Friend</a><ul></ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#section:Adult">Adult</a><ul></ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#section:Relationship">Relationship</a><ul><li>
+<a href="#section:FriendRelationship">FriendRelationship</a><ul></ul>
+</li></ul>
+</li>
+<li>
+<a href="#section:Item">Item</a><ul></ul>
+</li>
+<li>
+<a href="#section:Location">Location</a><ul></ul>
+</li>
+<li>
+<a href="#section:Activity">Activity</a><ul></ul>
+</li>
+</ul>
+</li>
+</ul></p>
+	<a name="section:Introduction"></a><font class="heading">Introduction</font><div class="section">
+		<p>A love simulation game...</p>
+		<a name="section:Influences"></a><font class="heading">Influences</font><div class="section">
+			<p>Among its influences, this game has the following games and
+			anime: Rockstar, Princess Maker, Megatokyo, Himechan no Ribon,
+			Kareshi Kanajo no Jijou.</p>
+		</div>
+	</div>
+	<a name="section:Character Creation"></a><font class="heading">Character Creation</font><div class="section">
+		<ol>
+			<li>
+				Select sex.
+			</li>
+			<li>
+				Enter name.
+			</li>
+			<li>
+				Select birthday. Your <a href="#section:Horoscope">Horoscope</a> will be given to you
+				based on your birthday.
+			</li>
+			<li>
+				Spend points on <a href="#section:Primary Attributes">Primary Attributes</a>. These
+				will be fixed for the duration of the game.
+			</li>
+		</ol>
+		<a name="section:Primary Attributes"></a><font class="heading">Primary Attributes</font><div class="section">
+			<p>Metabolism, Beauty and Intelligence.</p>
+		</div>
+		<a name="section:Horoscope"></a><font class="heading">Horoscope</font><div class="section">
+			<p>One of Aries, Aquarius, Cancer, Capricorn, Gemini, Leo,
+			Libra, Pisces, Sagitarius, Scorpio, Taurus, Virgo.</p>
+
+			<p>The fortune telling machine at the arcade can give you good
+			or bad readings for you and a friend based on your
+			horoscope.</p>
+		</div>
+	</div>
+	<a name="section:Playing the Game"></a><font class="heading">Playing the Game</font><div class="section">
+		<a name="section:Goal"></a><font class="heading">Goal</font><div class="section">
+			<p>The goal of the game is to aquire a boyfriend or
+			girlfriend.</p>
+		</div>
+		<a name="section:Basic Gameplay"></a><font class="heading">Basic Gameplay</font><div class="section">
+			<p>There are two stages to each day, morning and
+			afternoon. Each stage is 6 hours long. For each, you first
+			select one of a set of possible <a href="#section:Locations">Locations</a> where
+			it will take place (travel time is negligible) and then
+			select <a href="#section:Activities">Activities</a> from a menu until the stage's
+			time is up.</p>
+
+			<p>If an activity takes longer than can be fitted in the
+			morning, a warning will be shown, and if you wish, the
+			extra time will be deducted from the afternoon.</p>
+
+			<p>When morning time is used up, afternoon arrives. In the
+			afternoon the process is repeated. If you do something
+			which takes too much time in the afternoon, a warning will
+			be shown, and if you wish, you'll stay up late. The number
+			of hours you stay up late are deducted from your
+			Health.</p>
+		</div>
+		<a name="section:The Game Screen"></a><font class="heading">The Game Screen</font><div class="section">
+			<p>TODO: INCLUDE DIAGRAM.</p>
+	
+			<p>Each event in the game is logged and displayed in a
+			scrolling list to the player. The most recent logged
+			messages are kept between saved games.</p>
+		</div>
+		<a name="section:End Conditions"></a><font class="heading">End Conditions</font><div class="section">
+			<a name="section:Winning Conditions"></a><font class="heading">Winning Conditions</font><div class="section">
+				<p>Aquire a boyfriend or girlfriend!</p>
+			</div>
+			<a name="section:Losing Conditions"></a><font class="heading">Losing Conditions</font><div class="section">
+				<dl>
+					<dt>The Same-Sex School</dt>
+					<dt>The Boarding School</dt>
+					<dt>The Fat Farm</dt>
+				</dl>
+			</div>
+		</div>
+		<a name="section:Time"></a><font class="heading">Time</font><div class="section">
+			<p>Store: Year, Month, Day, Stage (Morning/Afternoon).</p>
+			<p>'Hours left' (in the current stage) is also stored somewhere.</p>
+		</div>
+		<a name="section:Schedule"></a><font class="heading">Schedule</font><div class="section">
+			<p>To keep organised, you have a schedule feature in the
+			game which simply keeps track of what invitations you've
+			extended to whom and for when. When you Invite somebody,
+			it fixes your activity for this time. When the time comes,
+			you will simply receive a prompt asking if you'd like to
+			proceed with the promise. If you wish, you can break your
+			promise and do something else, but it costs a lot of
+			friendship.</p>
+	
+			<p>Sometimes other people will arrange parties or other
+			events, and invite you. If you accept, the scheule works
+			in the same way.</p>
+
+			<p>Store: Hash[Time =&gt; Array[(Friend, Location)]].</p>
+		</div>
+	</div>
+	<a name="section:Activities"></a><font class="heading">Activities</font><div class="section">
+		<p>
+			Activities are associated with <a href="#section:People">People</a> (e.g. 
+			Talk) and <a href="#section:Items">Items</a> (e.g. Read). Each stage, the
+			activity menu is built from all the activities provided by
+			these things. When you select an activity from the menu,
+			all the things which provide that activity are listed
+			(e.g. if you select Chat, you can choose from all the
+			people you can Chat to).
+		</p>
+		<table class="data">
+<tr class="headings">
+<td>Name</td>
+<td>Selections</td>
+<td>Description</td>
+<td>Effects</td>
+</tr>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		<tr>
+<td>
+<a name="act:Chat"></a>Chat</td>
+<td>Friend</td>
+<td>
+				Just chat about stuff, y'know?
+				
+			</td>
+<td><effects>
+					Relationship+1,
+					Relationship.Attention+1,
+					Gossip+1
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Compliment"></a>Compliment</td>
+<td>Friend</td>
+<td>
+				Pay somebody a nice compliment.
+				
+			</td>
+<td><effects>
+					Relationship.Attention+1,
+					Relationship+1,
+					Relationship.Romance+1,
+					Extroversion+1
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Excercise"></a>Excercise</td>
+<td>Type?, Duration</td>
+<td>
+				Work out.
+				
+			</td>
+<td><effects>
+					Health+1/hour
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Exchange phone numbers"></a>Exchange phone numbers</td>
+<td>Friend</td>
+<td>
+				Allows you to telephone this friend and vice versa,
+				but can backfire if your Relationship isn't strong. 
+				Once you have a Friend's phone number, you cannot do
+				this again.
+				
+			</td>
+<td><effects>
+					Relationship.Attention+1,
+					Relationship+10,
+					Extroversion+1
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Find job"></a>Find job</td>
+<td>Duration</td>
+<td>
+				After a time, presents you with a set of jobs to
+				choose from. This could schedule a lot of your time.
+				
+			</td>
+<td><effects>
+					Gives you a job!
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Give"></a>Give</td>
+<td>Person, Item</td>
+<td>
+				Give an item of your choice to somebody as a gift. You
+				should give something to your friends' parents if you
+				go to their house.
+				
+			</td>
+<td><effects>
+					Relationship.Attention+1,
+					Relationship+(10*Friend.Materialism/100),
+					Relationship.Romance+1,
+					Gossip+1,
+					Extroversion+1
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Go to work"></a>Go to work</td>
+<td>N/A</td>
+<td>
+				Not an option as such, but something that gets
+				scheduled if you have a job. Not going to work
+				drastically reduces your BossApproval.
+				
+			</td>
+<td><effects>
+					BossApproval+10(?),
+					Money+Salary
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Gossip"></a>Gossip</td>
+<td>Friend, Target Friend, Type (Nice/Nasty)</td>
+<td>
+				Exchange titbits of gossip about somebody. Can
+				exchange nice or nasty gossip. Nasty gossip gets you
+				more attention but can get you labelled as a bitch. 
+				There's a small chance that nasty gossip will get back
+				to the person whom it's about, and they won't be
+				happy.
+				
+			</td>
+<td><effects>
+					Chance that in 2-20 days, nasty gossip will get
+					back to its subject.
+					TODO
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Insult"></a>Insult</td>
+<td>Friend</td>
+<td>
+				Insult somebody to appear cool in front of your other
+				friends. Can easily get you labelled as a Bitch.
+				
+			</td>
+<td><effects>
+					Relationship[Everybody]+(Gossip + Intelligence + Style)/20,
+					Relationship[Friend]-20
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Invite"></a>Invite</td>
+<td>Friend, Location</td>
+<td>
+				<p>When you Invite somebody to do something, it
+				fixes that occasion in your Schedule at the
+				time you choose. Depending on the time of day,
+				you can Invite somebody for</p>
+				<ul>
+					<li>This afternoon (if it's morning)</li>
+					<li>Tomorrow afternoon (if it's afternoon already)</li>
+					<li>The weekend</li>
+				</ul>
+				
+			</td>
+<td><effects>
+					Depends on where you invite somebody to, and with
+					how many other people. See <a href="#section:Locations">Locations</a>.
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Look"></a>Look</td>
+<td>Friend</td>
+<td>
+				Informs you about friend. You can 
+				<ul>
+					<li>Get their physical description Sex, Eyes, Hair, Height, Weight.</li>
+					<li>See how they look (stressed, happy, etc.).</li>
+					<li>Guess what they're thinking (Intelligence test).</li>
+				</ul>
+				
+			</td>
+<td><effects>
+					Relationship.Attention+1,
+					Gossip+1
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Play"></a>Play</td>
+<td>Friend, Game</td>
+<td>
+				Play a game with a friend.
+				
+			</td>
+<td><effects>
+					BossApproval+10(?),
+					Money+Salary
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Read"></a>Read</td>
+<td>Item</td>
+<td>
+				Read an item available to you.
+				
+			</td>
+<td><effects>
+					Dolly: Style+1<br>
+					Textbooks: Studiousness+1<br>
+					Diary: ?<br>
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Spend quality time with parents"></a>Spend quality time with parents</td>
+<td>N/A</td>
+<td>
+				Improving your relationship with your parents ensures
+				you don't get shipped off to boarding school.
+				
+			</td>
+<td><effects>
+					ParentalApproval+(hours)
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Study"></a>Study</td>
+<td>Friend</td>
+<td>
+				Study with a study partner.
+				
+			</td>
+<td><effects>
+					Studiousness+1/hour,
+					Relationship+1/hour,
+					Relationship.Attention+1/hour
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Suck up to teacher"></a>Suck up to teacher</td>
+<td>N/A</td>
+<td>
+				Improving your relationship with your teacher can get
+				you decent grades without the study, but it can ruin
+				your reputation.
+				
+			</td>
+<td><effects>
+					TeacherApproval+1,
+					Relationship[Everybody]-1
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Talk"></a>Talk</td>
+<td>Friend</td>
+<td>
+				<dd>
+					Talk to a person about something. Opens up further
+					options depending on whether they're
+					<a href="#section:Students">Students</a> or <a href="#section:Adults">Adults</a>.
+				</dd>
+				
+			</td>
+<td><effects>
+					TeacherApproval-1 if done in class
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Telephone"></a>Telephone</td>
+<td>Person</td>
+<td>
+				Phone a friend to chat to them, but only if you
+				exchanged phone numbers. Opens up further options.
+				
+			</td>
+<td><effects>
+					ParentalApproval-(hours)/2
+				</effects></td>
+</tr>
+<tr>
+<td>
+<a name="act:Tell Joke"></a>Tell Joke</td>
+<td>Friend</td>
+<td>
+				Tell somebody a joke. Ha ha.
+				
+			</td>
+<td><effects>
+					Relationship.Attention+1,
+					Relationship+1,
+					Extroversion+2,
+					TeacherApproval-1
+				</effects></td>
+</tr>
+</table>
+	</div>
+	<a name="section:People"></a><font class="heading">People</font><div class="section">
+		<a name="section:Person"></a><font class="heading">Person</font><div class="section">
+			<dl>
+<dt>Menu</dt>
+<dd><ul class="menu">
+				<li><a href="#act:Give">Give</a></li>
+				<li><a href="#act:Look">Look</a></li>
+			</ul></dd>
+</dl>
+			<a name="section:Students"></a><font class="heading">Students</font><div class="section">
+				<dl>
+<dt>Menu</dt>
+<dd><ul class="menu">
+					<li>
+						Talk
+						<ul class="menu">
+							<li><a href="#act:Chat">Chat</a></li>
+							<li><a href="#act:Gossip">Gossip</a></li>
+							<li><a href="#act:Tell Joke">Tell Joke</a></li>
+							<li><a href="#act:Invite">Invite</a></li>
+							<li><a href="#act:Compliment">Compliment</a></li>
+							<li><a href="#act:Insult">Insult</a></li>
+							<li><a href="#act:Exchange Phone Numbers">Exchange Phone Numbers</a></li>
+						</ul>
+					</li>
+					<li><a href="#act:Study">Study</a></li>
+					<li><a href="#act:Play">Play</a></li>
+					<li>
+						Make Move
+						<ul class="menu">
+							<li><a href="#act:Kiss">Kiss</a></li>
+							<li><a href="#act:Hug">Hug</a></li>
+						</ul>
+					</li>
+				</ul></dd>
+</dl>
+			</div>
+			<a name="section:Adults"></a><font class="heading">Adults</font><div class="section">
+				<a name="section:Teacher"></a><font class="heading">Teacher</font><div class="section">
+					<dl>
+<dt>Menu</dt>
+<dd><ul class="menu">
+						<li><a href="#act:Suck Up">Suck Up</a></li>
+					</ul></dd>
+</dl>
+				</div>
+				<a name="section:Parents"></a><font class="heading">Parents</font><div class="section">
+					<dl>
+<dt>Menu</dt>
+<dd><ul class="menu">
+						<li><a href="#act:Spend Quality Time">Spend Quality Time</a></li>
+					</ul></dd>
+</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a name="section:Items"></a><font class="heading">Items</font><div class="section">
+		
+			
+		<a name="item:Newspaper"></a><div class="item">
+<a name="section:Newspaper"></a><font class="heading">Newspaper</font><div class="section">
+				<dl>
+<dt>Menu</dt>
+<dd><ul class="menu">
+					<li><a href="#act:Find Job">Find Job</a></li>
+				</ul></dd>
+</dl>
+			</div>
+</div>
+		<a name="section:Fixtures"></a><font class="heading">Fixtures</font><div class="section">
+			
+				
+				
+				
+			<a name="item:Gym Equipment"></a><div class="item">
+<a name="section:Gym Equipment"></a><font class="heading">Gym Equipment</font><div class="section">
+					<dl>
+<dt>Menu</dt>
+<dd><ul class="menu">
+						<li><a href="#act:Exercise">Exercise</a></li>
+					</ul></dd>
+</dl>
+				</div>
+</div>
+<a name="item:Telephone"></a><div class="item">
+<a name="section:Telephone"></a><font class="heading">Telephone</font><div class="section">
+					<dl>
+<dt>Menu</dt>
+<dd><ul class="menu">
+						<li><a href="#act:Call">Call</a></li>
+					</ul></dd>
+</dl>
+				</div>
+</div>
+<a name="item:Ticket Booth"></a><div class="item">
+<a name="section:Ticket Booth"></a><font class="heading">Ticket Booth</font><div class="section">
+					<dl>
+<dt>Menu</dt>
+<dd><ul class="menu">
+						<li><a href="#act:Buy Tickets">Buy Tickets</a></li>
+					</ul></dd>
+</dl>
+				</div>
+</div>
+		</div>
+		<a name="section:Books"></a><font class="heading">Books</font><div class="section">
+			<dl>
+<dt>Menu</dt>
+<dd><ul class="menu">
+				<li><a href="#act:Read">Read</a></li>
+			</ul></dd>
+</dl>
+			<a name="section:Magazines"></a><font class="heading">Magazines</font><div class="section">
+				
+					
+				<a name="item:Dolly Magazine"></a><div class="item">
+<a name="section:Dolly Magazine"></a><font class="heading">Dolly Magazine</font><div class="section">
+					</div>
+</div>
+			</div>
+			<a name="section:Textbooks"></a><font class="heading">Textbooks</font><div class="section">
+				
+					
+				<a name="item:History: A Brief History"></a><div class="item">
+<a name="section:History: A Brief History"></a><font class="heading">History: A Brief History</font><div class="section">
+					</div>
+</div>
+			</div>
+		</div>
+	</div>
+	<a name="section:Locations"></a><font class="heading">Locations</font><div class="section">
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		<div class="location">
+<a name="section:Arcade"></a><font class="heading">Arcade</font><div class="section">
+   				<inventory>
+					<a href="#item:Virtual Ninja IX">Virtual Ninja IX</a>
+					<a href="#item:Frogger: the Blindspot">Frogger: the Blindspot</a>
+				</inventory>
+			</div>
+</div>
+<div class="location">
+<a name="section:Cinema"></a><font class="heading">Cinema</font><div class="section">
+   				<inventory>
+					<a href="#item:Ticket Booth">Ticket Booth</a>
+				</inventory>
+			</div>
+</div>
+<div class="location">
+<a name="section:Friends' Houses"></a><font class="heading">Friends' Houses</font><div class="section">
+				<dl>
+<dt>Description</dt>
+<dd>
+				</dd>
+</dl>
+   				<people>
+					<person>Parents</person>
+				</people>
+			</div>
+</div>
+<div class="location">
+<a name="section:Gym"></a><font class="heading">Gym</font><div class="section">
+   				<inventory>
+					<a href="#item:Gym Equipment">Gym Equipment</a>
+					<a href="#item:Drink Machine">Drink Machine</a>
+				</inventory>
+			</div>
+</div>
+<div class="location">
+<img class="scenery" src="images/home.jpg" alt="Home" align="right"><a name="section:Home"></a><font class="heading">Home</font><div class="section">
+				<dl>
+<dt>Description</dt>
+<dd>
+					You start each day here.
+				</dd>
+</dl>
+   				<people>
+					<person>Parents</person>
+				</people>
+			</div>
+</div>
+<div class="location">
+<a name="section:Library"></a><font class="heading">Library</font><div class="section">
+			</div>
+</div>
+<div class="location">
+<a name="section:Mall"></a><font class="heading">Mall</font><div class="section">
+			</div>
+</div>
+<div class="location">
+<a name="section:Restaurant"></a><font class="heading">Restaurant</font><div class="section">
+			</div>
+</div>
+<div class="location">
+<a name="section:School"></a><font class="heading">School</font><div class="section">
+   				<people>
+					<person>Teacher</person>
+				</people>
+			</div>
+</div>
+	</div>
+	<a name="section:Stereotypes"></a><font class="heading">Stereotypes</font><div class="section">
+		<a name="section:Adjectives"></a><font class="heading">Adjectives</font><div class="section">
+			<p>Stereotypes can be prefixed with an adjective depending
+			on your <a href="#section:Primary Attributes">Primary Attributes</a>.</p>
+
+			<p>The prefixes are: 'Buff', 'Babelicious' and 'Smart',
+			which you get if one of your attributes Health, Style or
+			Studiousness is greater than 70. Whichever is greatest
+			will determine your prefix.</p>
+		</div>
+		<a name="section:Stereotype Listing"></a><font class="heading">Stereotype Listing</font><div class="section">
+			<table class="data">
+<tr class="headings">
+<td>Name</td>
+<td>Notes</td>
+</tr>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			<tr>
+<td>Bimbo</td>
+<td>
+					Aquired if you spend too much time reading Dolly
+					or at the Mall.
+				</td>
+</tr>
+<tr>
+<td>Bitch</td>
+<td>
+					Aquired if you spread bad gossip and insult
+					people.
+				</td>
+</tr>
+<tr>
+<td>Class Clown</td>
+<td>
+					Aquired if you act up and tell one too many jokes
+					in class.
+				</td>
+</tr>
+<tr>
+<td>Money Bags</td>
+<td>
+					Aquired if you always pay for people when you
+					invite them places, or when they ask.
+				</td>
+</tr>
+<tr>
+<td>Mummy's Boy/Daddy's Girl</td>
+<td>
+					Aquired if you spend too much time with your
+					parents and refuse too many invitations.
+				</td>
+</tr>
+<tr>
+<td>Nerd</td>
+<td>
+					Aquired if you spend too much time studying.
+				</td>
+</tr>
+<tr>
+<td>Pervert</td>
+<td>
+					Aquired if you spend too much time looking at
+					people who aren't even your friends, especially at
+					the gym.
+				</td>
+</tr>
+<tr>
+<td>Rebel</td>
+<td>
+					Aquired if you wag school and talk in class.
+				</td>
+</tr>
+<tr>
+<td>Runaround</td>
+<td>
+					Aquired if you're ever caught with two different
+					dates, or if you spread your lovin' around too
+					much.
+				</td>
+</tr>
+<tr>
+<td>Scrooge</td>
+<td>
+					Aquired if you <em>don't</em> pay for people when
+					you invite them places or when they ask.
+				</td>
+</tr>
+<tr>
+<td>Teacher's Pet</td>
+<td>
+					Aquired if you suck up to the teacher too much.
+				</td>
+</tr>
+<tr>
+<td>Workaholic</td>
+<td>
+					Aquired if you're always missing invitations
+					because you're working.
+				</td>
+</tr>
+</table>
+		</div>
+	</div>
+	<a name="section:Random Events"></a><font class="heading">Random Events</font><div class="section">
+		Someone (not a friend) hits on your bf/gf.
+		The new black changes colour (read Dolly to keep up!).
+		Your favourite band breaks up (lose Style/happiness?).
+	</div>
+	<hr>
+	<hr>
+	<hr>
+	<a name="section:Class Implementation"></a><font class="heading">Class Implementation</font><div class="section">
+		<a name="section:Person"></a><font class="heading">Person</font><div class="section">
+			<table class="data">
+<tr class="headings">
+<td>Attribute</td>
+<td>Type</td>
+<td>Range</td>
+<td>Notes</td>
+</tr>
+				<tr>
+<td>Sex</td>
+<td>Enumeration</td>
+<td>M, F</td>
+<td>
+					M = male, F = female.
+				</td>
+</tr>
+				<tr>
+<td>Birthday</td>
+<td>Date</td>
+<td>Any</td>
+<td>
+					Determines age and horoscope. Age differences can
+					cause social stigmas.
+				</td>
+</tr>
+				<tr>
+<td>Height</td>
+<td>String</td>
+<td>little, short, normal, tall, imposing</td>
+<td>
+				</td>
+</tr>
+				<tr>
+<td>Weight</td>
+<td>String</td>
+<td>skinny, slim, normal, plump, fat</td>
+<td>
+				</td>
+</tr>
+				<tr>
+<td>Hair</td>
+<td>String</td>
+<td>{HAIR_ADJ} {HAIR_COL}</td>
+<td>
+				</td>
+</tr>
+				<tr>
+<td>Eyes</td>
+<td>String</td>
+<td>{EYES_ADJ} {EYES_COL}</td>
+<td>
+				</td>
+</tr>
+				<tr>
+<td>Inventory</td>
+<td>Array[Item]</td>
+<td>0..n</td>
+<td>
+				</td>
+</tr>
+				<tr>
+<td>Relationships</td>
+<td>Hash[Person=&gt;Relationship]</td>
+<td>0..n</td>
+<td>
+					See <a href="#section:Relationship">Relationship</a>.
+				</td>
+</tr>
+			</table>
+			<a name="section:Student"></a><font class="heading">Student</font><div class="section">
+				<p>Inherits <a href="#section:Person">Person</a>.</p>
+				<table class="data">
+<tr class="headings">
+<td>Attribute</td>
+<td>Type</td>
+<td>Range</td>
+<td>Notes</td>
+</tr>
+					<tr>
+<td>Metabolism</td>
+<td>Integer</td>
+<td>1-10</td>
+<td>
+						People with high metabolism don't get fat no
+						matter what they eat. They seem fit and healthy.
+					</td>
+</tr>
+					<tr>
+<td>Beauty</td>
+<td>Integer</td>
+<td>1-10</td>
+<td>
+						Beautiful people attract more romantic interest.
+					</td>
+</tr>
+					<tr>
+<td>Intelligence</td>
+<td>Integer</td>
+<td>1-10</td>
+<td>
+						Intelligent people get good Grades and attract
+						other intelligent people.
+					</td>
+</tr>
+					<tr>
+<td>Health</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+						Health suffers if you eat poorly, stay up late, etc. If it
+						reaches 0, your concerned parents ship you off to a fat
+						farm (Game Over). Exercise and healthy food increase your
+						health. Being fit and healthy can attract some people.
+					</td>
+</tr>
+					<tr>
+<td>Style</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+						This represents your dress sense. Go shopping with a high
+						Style rating, and you'll come back with super classy
+						outfits. If you don't have any style, you may have to go
+						shopping with a friend who has a high Style rating, and
+						listen to their advice. Reading fashion magazines
+						increases Style.
+					</td>
+</tr>
+					<tr>
+<td>Extroversion</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+						Extroversion suffers when you don't talk to people enough,
+						or go out with friends in groups. Some people like
+						extroverts and some like introverts.
+					</td>
+</tr>
+				</table>
+				<a name="section:You"></a><font class="heading">You</font><div class="section">
+					<p>Inherits <a href="#section:Student">Student</a>.</p>
+					<table class="data">
+<tr class="headings">
+<td>Attribute</td>
+<td>Type</td>
+<td>Range</td>
+<td>Notes</td>
+</tr>
+						<tr>
+<td>Gossip</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+							The amount of gossip you have accumulated. 
+							Increases when you gossip on the phone and observe
+							friends. Increases the rewards of gossiping.
+						</td>
+</tr>
+						<tr>
+<td>ParentalApproval</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+							0 = &quot;the evil child&quot;, 100 = &quot;the perfect angel&quot;. 
+							The happier your parents are with you, the more of
+							their income they'll pass on to you as pocket
+							money. If your parents aren't happy with you,
+							they'll ground you or, if you really neglect them,
+							ship you off to boarding school (Game Over).
+						</td>
+</tr>
+						<tr>
+<td>TeacherApproval</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+						</td>
+</tr>
+						<tr>
+<td>Job</td>
+<td>Enumeration</td>
+<td>TODO</td>
+<td>
+							A part time job will reel in the money for you to
+							spend on your loved ones. But you may be asked to
+							work at inconvenient times. And, of course, if you
+							don't turn up to your job repeatedly, you'll get
+							the sack.
+						</td>
+</tr>
+						<tr>
+<td>Promotions</td>
+<td>Integer</td>
+<td>0-10</td>
+<td>
+							0 = new employee, 10 = inheriting the business. 
+							Your level of promotion. This combined with your
+							job determines your salary.
+						</td>
+</tr>
+						<tr>
+<td>BossApproval</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+							Each time your boss' approval hits 100, you get
+							promoted, and it starts again at 20 + Job Level. 
+							If it hits 0 you're fired. Each time you miss work
+							you lose Boss Approval.
+						</td>
+</tr>
+						<tr>
+<td>Money</td>
+<td>Integer</td>
+<td>0..n</td>
+<td>
+							With money you can buy your loved ones presents,
+							and take them to the cinema or the arcade. You'll
+							have to be on good terms with your (wealthy)
+							parents, or have a part-time job to get money
+							though.
+						</td>
+</tr>
+					</table>
+				</div>
+				<a name="section:Friend"></a><font class="heading">Friend</font><div class="section">
+					<p>Inherits <a href="#section:Student">Student</a>.</p>
+					<table class="data">
+<tr class="headings">
+<td>Attribute</td>
+<td>Type</td>
+<td>Range</td>
+<td>Notes</td>
+</tr>
+						<tr>
+<td>Sexuality</td>
+<td>Enumeration</td>
+<td>M, F, B</td>
+<td>
+							M = like males, F = like females, B = likes both.
+						</td>
+</tr>
+						<tr>
+<td>Resolve</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+							How hard this person's resolve is. Stubborn
+							friends can go without Attention for longer and
+							still maintain Friendship and Romance, however
+							they are harder to befriend in the first place.
+						</td>
+</tr>
+						<tr>
+<td>Likes[Metabolism]</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+						</td>
+</tr>
+						<tr>
+<td>Likes[Beauty]</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+						</td>
+</tr>
+						<tr>
+<td>Likes[Intelligence]</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+						</td>
+</tr>
+						<tr>
+<td>Likes[Extroversion]</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+							How much does this person like extroverted people. 
+							Lower means they prefer introverted people. 50
+							means they have no preference. People *usually*
+							like the opposite personality types as themselves.
+						</td>
+</tr>
+						<tr>
+<td>Likes[Money]</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+							How important is material wealth to this person.
+						</td>
+</tr>
+					</table>
+				</div>
+			</div>
+			<a name="section:Adult"></a><font class="heading">Adult</font><div class="section">
+				<p>Inherits <a href="#section:Person">Person</a>.</p>
+			</div>
+		</div>
+		<a name="section:Relationship"></a><font class="heading">Relationship</font><div class="section">
+			<p>Had between <a href="#section:Person">Person</a>s. Inherits Integer. The
+			value of the relationship represents the strength of your
+			relationship with this person. 0 means you don't know this
+			person. 50 means you consider this person your friend and
+			100 is bestest friends ever.</p>
+
+			<a name="section:FriendRelationship"></a><font class="heading">FriendRelationship</font><div class="section">
+				<p>Had between <a href="#section:Friend">Friend</a>s. Inherits
+				<a href="#section:Relationship">Relationship</a>.</p>
+
+				<table class="data">
+<tr class="headings">
+<td>Attribute</td>
+<td>Type</td>
+<td>Range</td>
+<td>Notes</td>
+</tr>
+					<tr>
+<td>Romance</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+						What proportion of the relationship is romantic. 
+						100 means 100% of the strength of the relationship
+						is romantic.
+					</td>
+</tr>
+					<tr>
+<td>Attention</td>
+<td>Integer</td>
+<td>0-100</td>
+<td>
+						How much attention they've had from you. Paying
+						people too much attention when you're not yet
+						their friend or romantic interest can get you
+						labelled as a Pervert. Aside from this danger,
+						attention is a good thing. Slowly declines over
+						time. If it hits 0, your Friendship and Romance
+						start dropping.
+					</td>
+</tr>
+				</table>
+			</div>
+		</div>
+		<a name="section:Item"></a><font class="heading">Item</font><div class="section">
+			<p>Possessed by <a href="#section:Person">Person</a>s or exist at <a href="#section:Location">Location</a>s.</p>
+			<table class="data">
+<tr class="headings">
+<td>Attribute</td>
+<td>Type</td>
+<td>Range</td>
+<td>Notes</td>
+</tr>
+				<tr>
+<td>Owners</td>
+<td>Array[Person]</td>
+<td>0..n</td>
+<td>
+					Giving presents back is never a good idea. This is
+					also used to determine whether or not you own
+					something, so that you can't use things you
+					haven't bought yet at the Mall, for example.
+				</td>
+</tr>
+				<tr>
+<td>Cost</td>
+<td>Integer</td>
+<td>1..n</td>
+<td>
+					In dollars.
+				</td>
+</tr>
+				<tr>
+<td>Categories</td>
+<td>Array[Enumeration]</td>
+<td>1..n[Food, Jewellry, Stupid, Quiet, Athletic, Sexual, etc.]</td>
+<td>
+					The type of an item is represented by the
+					categories it fits into. For example, it's
+					possible to have Stupid Jewellry (Phantom Keyring
+					with Secret Compartment) or Sexual Food (body
+					chocolate).
+				</td>
+</tr>
+				<tr>
+<td>Description</td>
+<td>String</td>
+<td>Any string.</td>
+<td>
+				</td>
+</tr>
+				<tr>
+<td>Effects</td>
+<td>Array[Effect]</td>
+<td>0..n</td>
+<td>
+					Using an item can have various effects on you.
+				</td>
+</tr>
+			</table>
+		</div>
+		<a name="section:Location"></a><font class="heading">Location</font><div class="section">
+			<p>Has <a href="#section:Person">Person</a>s and provides <a href="#section:Activities">Activities</a>
+			for <a href="#section:Person">Person</a>s.</p>
+	
+			<table class="data">
+<tr class="headings">
+<td>Attribute</td>
+<td>Type</td>
+<td>Range</td>
+<td>Notes</td>
+</tr>
+				<tr>
+<td>Description</td>
+<td>String</td>
+<td>Any</td>
+<td>
+				</td>
+</tr>
+				<tr>
+<td>Picture</td>
+<td>Image</td>
+<td>GIF, JPEG images</td>
+<td>
+				</td>
+</tr>
+				<tr>
+<td>Items</td>
+<td>Array[Item]</td>
+<td>0..n</td>
+<td>
+					Things at this location. e.g. The library has
+					textbooks and Dolly magazines. Shops at the Mall
+					have items.
+				</td>
+</tr>
+				<tr>
+<td>Activities</td>
+<td>Array[Activity]</td>
+<td>0..n</td>
+<td>
+				</td>
+</tr>
+			</table>
+		</div>
+		<a name="section:Activity"></a><font class="heading">Activity</font><div class="section">
+			<p>Done by <a href="#section:Person">Person</a>s at <a href="#section:Location">Location</a>s.</p>
+	
+			<table class="data">
+<tr class="headings">
+<td>Attribute</td>
+<td>Type</td>
+<td>Range</td>
+<td>Notes</td>
+</tr>
+				<tr>
+<td>Description</td>
+<td>String</td>
+<td>Any</td>
+<td>
+				</td>
+</tr>
+				<tr>
+<td>Callback</td>
+<td>Script</td>
+<td>Set of prewritten activity scripts</td>
+<td>
+				</td>
+</tr>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

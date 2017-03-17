@@ -1,0 +1,727 @@
+<?xml version="1.0" ?>
+
+<!DOCTYPE doc [
+	<!-- Files -->
+	<!ENTITY tm "<sup>(TM)</sup>">
+]>
+
+<doc title="Heart Attack" subtitle="A love simulation game" author="Lucy Ding and Greg McIntyre">
+	<section name="Introduction">
+		<p>A love simulation game...</p>
+		<section name="Influences">
+			<p>Among its influences, this game has the following games and
+			anime: Rockstar, Princess Maker, Megatokyo, Himechan no Ribon,
+			Kareshi Kanajo no Jijou.</p>
+		</section>
+	</section>
+	<section name="Character Creation">
+		<character-creation>
+			<step>
+				Select sex.
+			</step>
+			<step>
+				Enter name.
+			</step>
+			<step>
+				Select birthday. Your <ref>Horoscope</ref> will be given to you
+				based on your birthday.
+			</step>
+			<step>
+				Spend points on <ref>Primary Attributes</ref>. These
+				will be fixed for the duration of the game.
+			</step>
+		</character-creation>
+		<section name="Primary Attributes">
+			<p>Metabolism, Beauty and Intelligence.</p>
+		</section>
+		<section name="Horoscope">
+			<p>One of Aries, Aquarius, Cancer, Capricorn, Gemini, Leo,
+			Libra, Pisces, Sagitarius, Scorpio, Taurus, Virgo.</p>
+
+			<p>The fortune telling machine at the arcade can give you good
+			or bad readings for you and a friend based on your
+			horoscope.</p>
+		</section>
+	</section>
+	<section name="Playing the Game">
+		<section name="Goal">
+			<p>The goal of the game is to aquire a boyfriend or
+			girlfriend.</p>
+		</section>
+		<section name="Basic Gameplay">
+			<p>There are two stages to each day, morning and
+			afternoon. Each stage is 6 hours long. For each, you first
+			select one of a set of possible <ref>Locations</ref> where
+			it will take place (travel time is negligible) and then
+			select <ref>Activities</ref> from a menu until the stage's
+			time is up.</p>
+
+			<p>If an activity takes longer than can be fitted in the
+			morning, a warning will be shown, and if you wish, the
+			extra time will be deducted from the afternoon.</p>
+
+			<p>When morning time is used up, afternoon arrives. In the
+			afternoon the process is repeated. If you do something
+			which takes too much time in the afternoon, a warning will
+			be shown, and if you wish, you'll stay up late. The number
+			of hours you stay up late are deducted from your
+			Health.</p>
+		</section>
+		<section name="The Game Screen">
+			<p>TODO: INCLUDE DIAGRAM.</p>
+	
+			<p>Each event in the game is logged and displayed in a
+			scrolling list to the player. The most recent logged
+			messages are kept between saved games.</p>
+		</section>
+		<section name="End Conditions">
+			<section name="Winning Conditions">
+				<p>Aquire a boyfriend or girlfriend!</p>
+			</section>
+			<section name="Losing Conditions">
+				<dl>
+					<dt>The Same-Sex School</dt>
+					<dt>The Boarding School</dt>
+					<dt>The Fat Farm</dt>
+				</dl>
+			</section>
+		</section>
+		<section name="Time">
+			<p>Store: Year, Month, Day, Stage (Morning/Afternoon).</p>
+			<p>'Hours left' (in the current stage) is also stored somewhere.</p>
+		</section>
+		<section name="Schedule">
+			<p>To keep organised, you have a schedule feature in the
+			game which simply keeps track of what invitations you've
+			extended to whom and for when. When you Invite somebody,
+			it fixes your activity for this time. When the time comes,
+			you will simply receive a prompt asking if you'd like to
+			proceed with the promise. If you wish, you can break your
+			promise and do something else, but it costs a lot of
+			friendship.</p>
+	
+			<p>Sometimes other people will arrange parties or other
+			events, and invite you. If you accept, the scheule works
+			in the same way.</p>
+
+			<p>Store: Hash[Time =&gt; Array[(Friend, Location)]].</p>
+		</section>
+	</section>
+	<section name="Activities">
+		<p>
+			Activities are associated with <ref>People</ref> (e.g. 
+			Talk) and <ref>Items</ref> (e.g. Read). Each stage, the
+			activity menu is built from all the activities provided by
+			these things. When you select an activity from the menu,
+			all the things which provide that activity are listed
+			(e.g. if you select Chat, you can choose from all the
+			people you can Chat to).
+		</p>
+		<activities>
+			<activity name="Talk" select="Friend">
+				<description>
+					Talk to a person about something. Opens up further
+					options depending on whether they're
+					<ref>Students</ref> or <ref>Adults</ref>.
+				</description>
+				<effects>
+					TeacherApproval-1 if done in class
+				</effects>
+			</activity>
+			<activity name="Chat" select="Friend">
+				Just chat about stuff, y'know?
+				<effects>
+					Relationship+1,
+					Relationship.Attention+1,
+					Gossip+1
+				</effects>
+			</activity>
+			<activity name="Look" select="Friend">
+				Informs you about friend. You can 
+				<ul>
+					<li>Get their physical description Sex, Eyes, Hair, Height, Weight.</li>
+					<li>See how they look (stressed, happy, etc.).</li>
+					<li>Guess what they're thinking (Intelligence test).</li>
+				</ul>
+				<effects>
+					Relationship.Attention+1,
+					Gossip+1
+				</effects>
+			</activity>
+			<activity name="Study" select="Friend">
+				Study with a study partner.
+				<effects>
+					Studiousness+1/hour,
+					Relationship+1/hour,
+					Relationship.Attention+1/hour
+				</effects>
+			</activity>
+			<activity name="Excercise" select="Type?, Duration">
+				Work out.
+				<effects>
+					Health+1/hour
+				</effects>
+			</activity>
+			<activity name="Read" select="Item">
+				Read an item available to you.
+				<effects>
+					Dolly: Style+1<br/>
+					Textbooks: Studiousness+1<br/>
+					Diary: ?<br/>
+				</effects>
+			</activity>
+			<activity name="Exchange phone numbers" select="Friend">
+				Allows you to telephone this friend and vice versa,
+				but can backfire if your Relationship isn't strong. 
+				Once you have a Friend's phone number, you cannot do
+				this again.
+				<effects>
+					Relationship.Attention+1,
+					Relationship+10,
+					Extroversion+1
+				</effects>
+			</activity>
+			<activity name="Gossip" select="Friend, Target Friend, Type (Nice/Nasty)">
+				Exchange titbits of gossip about somebody. Can
+				exchange nice or nasty gossip. Nasty gossip gets you
+				more attention but can get you labelled as a bitch. 
+				There's a small chance that nasty gossip will get back
+				to the person whom it's about, and they won't be
+				happy.
+				<effects>
+					Chance that in 2-20 days, nasty gossip will get
+					back to its subject.
+					TODO
+				</effects>
+			</activity>
+			<activity name="Give" select="Person, Item">
+				Give an item of your choice to somebody as a gift. You
+				should give something to your friends' parents if you
+				go to their house.
+				<effects>
+					Relationship.Attention+1,
+					Relationship+(10*Friend.Materialism/100),
+					Relationship.Romance+1,
+					Gossip+1,
+					Extroversion+1
+				</effects>
+			</activity>
+			<activity name="Compliment" select="Friend">
+				Pay somebody a nice compliment.
+				<effects>
+					Relationship.Attention+1,
+					Relationship+1,
+					Relationship.Romance+1,
+					Extroversion+1
+				</effects>
+			</activity>
+			<activity name="Insult" select="Friend">
+				Insult somebody to appear cool in front of your other
+				friends. Can easily get you labelled as a Bitch.
+				<effects>
+					Relationship[Everybody]+(Gossip + Intelligence + Style)/20,
+					Relationship[Friend]-20
+				</effects>
+			</activity>
+			<activity name="Invite" select="Friend, Location">
+				<p>When you Invite somebody to do something, it
+				fixes that occasion in your Schedule at the
+				time you choose. Depending on the time of day,
+				you can Invite somebody for</p>
+				<ul>
+					<li>This afternoon (if it's morning)</li>
+					<li>Tomorrow afternoon (if it's afternoon already)</li>
+					<li>The weekend</li>
+				</ul>
+				<effects>
+					Depends on where you invite somebody to, and with
+					how many other people. See <ref>Locations</ref>.
+				</effects>
+			</activity>
+			<activity name="Tell Joke" select="Friend">
+				Tell somebody a joke. Ha ha.
+				<effects>
+					Relationship.Attention+1,
+					Relationship+1,
+					Extroversion+2,
+					TeacherApproval-1
+				</effects>
+			</activity>
+			<activity name="Suck up to teacher" select="N/A">
+				Improving your relationship with your teacher can get
+				you decent grades without the study, but it can ruin
+				your reputation.
+				<effects>
+					TeacherApproval+1,
+					Relationship[Everybody]-1
+				</effects>
+			</activity>
+			<activity name="Spend quality time with parents" select="N/A">
+				Improving your relationship with your parents ensures
+				you don't get shipped off to boarding school.
+				<effects>
+					ParentalApproval+(hours)
+				</effects>
+			</activity>
+			<activity name="Telephone" select="Person">
+				Phone a friend to chat to them, but only if you
+				exchanged phone numbers. Opens up further options.
+				<effects>
+					ParentalApproval-(hours)/2
+				</effects>
+			</activity>
+			<activity name="Find job" select="Duration">
+				After a time, presents you with a set of jobs to
+				choose from. This could schedule a lot of your time.
+				<effects>
+					Gives you a job!
+				</effects>
+			</activity>
+			<activity name="Go to work" select="N/A">
+				Not an option as such, but something that gets
+				scheduled if you have a job. Not going to work
+				drastically reduces your BossApproval.
+				<effects>
+					BossApproval+10(?),
+					Money+Salary
+				</effects>
+			</activity>
+			<activity name="Play" select="Friend, Game">
+				Play a game with a friend.
+				<effects>
+					BossApproval+10(?),
+					Money+Salary
+				</effects>
+			</activity>
+		</activities>
+	</section>
+	<section name="People">
+		<section name="Person">
+			<menu>
+				<menuitem><act>Give</act></menuitem>
+				<menuitem><act>Look</act></menuitem>
+			</menu>
+			<section name="Students">
+				<menu>
+					<menuitem>
+						Talk
+						<menu>
+							<menuitem><act>Chat</act></menuitem>
+							<menuitem><act>Gossip</act></menuitem>
+							<menuitem><act>Tell Joke</act></menuitem>
+							<menuitem><act>Invite</act></menuitem>
+							<menuitem><act>Compliment</act></menuitem>
+							<menuitem><act>Insult</act></menuitem>
+							<menuitem><act>Exchange Phone Numbers</act></menuitem>
+						</menu>
+					</menuitem>
+					<menuitem><act>Study</act></menuitem>
+					<menuitem><act>Play</act></menuitem>
+					<menuitem>
+						Make Move
+						<menu>
+							<menuitem><act>Kiss</act></menuitem>
+							<menuitem><act>Hug</act></menuitem>
+						</menu>
+					</menuitem>
+				</menu>
+			</section>
+			<section name="Adults">
+				<section name="Teacher">
+					<menu>
+						<menuitem><act>Suck Up</act></menuitem>
+					</menu>
+				</section>
+				<section name="Parents">
+					<menu>
+						<menuitem><act>Spend Quality Time</act></menuitem>
+					</menu>
+				</section>
+			</section>
+		</section>
+	</section>
+	<section name="Items">
+		<items>
+			<item name="Newspaper">
+				<menu>
+					<menuitem><act>Find Job</act></menuitem>
+				</menu>
+			</item>
+		</items>
+		<section name="Fixtures">
+			<items>
+				<item name="Telephone">
+					<menu>
+						<menuitem><act>Call</act></menuitem>
+					</menu>
+				</item>
+				<item name="Ticket Booth">
+					<menu>
+						<menuitem><act>Buy Tickets</act></menuitem>
+					</menu>
+				</item>
+				<item name="Gym Equipment">
+					<menu>
+						<menuitem><act>Exercise</act></menuitem>
+					</menu>
+				</item>
+			</items>
+		</section>
+		<section name="Books">
+			<menu>
+				<menuitem><act>Read</act></menuitem>
+			</menu>
+			<section name="Magazines">
+				<items>
+					<item name="Dolly Magazine">
+					</item>
+				</items>
+			</section>
+			<section name="Textbooks">
+				<items>
+					<item name="History: A Brief History">
+					</item>
+				</items>
+			</section>
+		</section>
+	</section>
+	<section name="Locations">
+		<locations>
+			<location name="Home" image="home.jpg">
+				<description>
+					You start each day here.
+				</description>
+   				<people>
+					<person>Parents</person>
+				</people>
+			</location>
+			<location name="Friends' Houses">
+				<description>
+				</description>
+   				<people>
+					<person>Parents</person>
+				</people>
+			</location>
+			<location name="School">
+   				<people>
+					<person>Teacher</person>
+				</people>
+			</location>
+			<location name="Library">
+			</location>
+			<location name="Arcade">
+   				<inventory>
+					<item>Virtual Ninja IX</item>
+					<item>Frogger: the Blindspot</item>
+				</inventory>
+			</location>
+			<location name="Mall">
+			</location>
+			<location name="Restaurant">
+			</location>
+			<location name="Gym">
+   				<inventory>
+					<item>Gym Equipment</item>
+					<item>Drink Machine</item>
+				</inventory>
+			</location>
+			<location name="Cinema">
+   				<inventory>
+					<item>Ticket Booth</item>
+				</inventory>
+			</location>
+		</locations>
+	</section>
+	<section name="Stereotypes">
+		<section name="Adjectives">
+			<p>Stereotypes can be prefixed with an adjective depending
+			on your <ref>Primary Attributes</ref>.</p>
+
+			<p>The prefixes are: 'Buff', 'Babelicious' and 'Smart',
+			which you get if one of your attributes Health, Style or
+			Studiousness is greater than 70. Whichever is greatest
+			will determine your prefix.</p>
+		</section>
+		<section name="Stereotype Listing">
+			<stereotypes>
+				<stereotype name="Mummy's Boy/Daddy's Girl">
+					Aquired if you spend too much time with your
+					parents and refuse too many invitations.
+				</stereotype>
+				<stereotype name="Nerd">
+					Aquired if you spend too much time studying.
+				</stereotype>
+				<stereotype name="Bitch">
+					Aquired if you spread bad gossip and insult
+					people.
+				</stereotype>
+				<stereotype name="Teacher's Pet">
+					Aquired if you suck up to the teacher too much.
+				</stereotype>
+				<stereotype name="Rebel">
+					Aquired if you wag school and talk in class.
+				</stereotype>
+				<stereotype name="Runaround">
+					Aquired if you're ever caught with two different
+					dates, or if you spread your lovin' around too
+					much.
+				</stereotype>
+				<stereotype name="Pervert">
+					Aquired if you spend too much time looking at
+					people who aren't even your friends, especially at
+					the gym.
+				</stereotype>
+				<stereotype name="Class Clown">
+					Aquired if you act up and tell one too many jokes
+					in class.
+				</stereotype>
+				<stereotype name="Workaholic">
+					Aquired if you're always missing invitations
+					because you're working.
+				</stereotype>
+				<stereotype name="Money Bags">
+					Aquired if you always pay for people when you
+					invite them places, or when they ask.
+				</stereotype>
+				<stereotype name="Scrooge">
+					Aquired if you <em>don't</em> pay for people when
+					you invite them places or when they ask.
+				</stereotype>
+				<stereotype name="Bimbo">
+					Aquired if you spend too much time reading Dolly
+					or at the Mall.
+				</stereotype>
+			</stereotypes>
+		</section>
+	</section>
+	<section name="Random Events">
+		Someone (not a friend) hits on your bf/gf.
+		The new black changes colour (read Dolly to keep up!).
+		Your favourite band breaks up (lose Style/happiness?).
+	</section>
+	<hr/>
+	<hr/>
+	<hr/>
+	<section name="Class Implementation">
+		<section name="Person">
+			<attributes>
+				<attribute name="Sex" type="Enumeration" range="M, F">
+					M = male, F = female.
+				</attribute>
+				<attribute name="Birthday" type="Date" range="Any">
+					Determines age and horoscope. Age differences can
+					cause social stigmas.
+				</attribute>
+				<attribute name="Height" type="String" range="little, short, normal, tall, imposing">
+				</attribute>
+				<attribute name="Weight" type="String" range="skinny, slim, normal, plump, fat">
+				</attribute>
+				<attribute name="Hair" type="String" range="{HAIR_ADJ} {HAIR_COL}">
+				</attribute>
+				<attribute name="Eyes" type="String" range="{EYES_ADJ} {EYES_COL}">
+				</attribute>
+				<attribute name="Inventory" type="Array[Item]" range="0..n">
+				</attribute>
+				<attribute name="Relationships" type="Hash[Person=>Relationship]" range="0..n">
+					See <ref>Relationship</ref>.
+				</attribute>
+			</attributes>
+			<section name="Student">
+				<p>Inherits <ref>Person</ref>.</p>
+				<attributes>
+					<attribute name="Metabolism" type="Integer" range="1-10">
+						People with high metabolism don't get fat no
+						matter what they eat. They seem fit and healthy.
+					</attribute>
+					<attribute name="Beauty" type="Integer" range="1-10">
+						Beautiful people attract more romantic interest.
+					</attribute>
+					<attribute name="Intelligence" type="Integer" range="1-10">
+						Intelligent people get good Grades and attract
+						other intelligent people.
+					</attribute>
+					<attribute name="Health" type="Integer" range="0-100">
+						Health suffers if you eat poorly, stay up late, etc. If it
+						reaches 0, your concerned parents ship you off to a fat
+						farm (Game Over). Exercise and healthy food increase your
+						health. Being fit and healthy can attract some people.
+					</attribute>
+					<attribute name="Style" type="Integer" range="0-100">
+						This represents your dress sense. Go shopping with a high
+						Style rating, and you'll come back with super classy
+						outfits. If you don't have any style, you may have to go
+						shopping with a friend who has a high Style rating, and
+						listen to their advice. Reading fashion magazines
+						increases Style.
+					</attribute>
+					<attribute name="Extroversion" type="Integer" range="0-100">
+						Extroversion suffers when you don't talk to people enough,
+						or go out with friends in groups. Some people like
+						extroverts and some like introverts.
+					</attribute>
+				</attributes>
+				<section name="You">
+					<p>Inherits <ref>Student</ref>.</p>
+					<attributes>
+						<attribute name="Gossip" type="Integer" range="0-100">
+							The amount of gossip you have accumulated. 
+							Increases when you gossip on the phone and observe
+							friends. Increases the rewards of gossiping.
+						</attribute>
+						<attribute name="ParentalApproval" type="Integer" range="0-100" initial="50">
+							0 = "the evil child", 100 = "the perfect angel". 
+							The happier your parents are with you, the more of
+							their income they'll pass on to you as pocket
+							money. If your parents aren't happy with you,
+							they'll ground you or, if you really neglect them,
+							ship you off to boarding school (Game Over).
+						</attribute>
+						<attribute name="TeacherApproval" type="Integer" range="0-100" initial="50">
+						</attribute>
+						<attribute name="Job" type="Enumeration" range="TODO">
+							A part time job will reel in the money for you to
+							spend on your loved ones. But you may be asked to
+							work at inconvenient times. And, of course, if you
+							don't turn up to your job repeatedly, you'll get
+							the sack.
+						</attribute>
+						<attribute name="Promotions" type="Integer" range="0-10">
+							0 = new employee, 10 = inheriting the business. 
+							Your level of promotion. This combined with your
+							job determines your salary.
+						</attribute>
+						<attribute name="BossApproval" type="Integer" range="0-100">
+							Each time your boss' approval hits 100, you get
+							promoted, and it starts again at 20 + Job Level. 
+							If it hits 0 you're fired. Each time you miss work
+							you lose Boss Approval.
+						</attribute>
+						<attribute name="Money" type="Integer" range="0..n">
+							With money you can buy your loved ones presents,
+							and take them to the cinema or the arcade. You'll
+							have to be on good terms with your (wealthy)
+							parents, or have a part-time job to get money
+							though.
+						</attribute>
+					</attributes>
+				</section>
+				<section name="Friend">
+					<p>Inherits <ref>Student</ref>.</p>
+					<attributes>
+						<attribute name="Sexuality" type="Enumeration" range="M, F, B">
+							M = like males, F = like females, B = likes both.
+						</attribute>
+						<attribute name="Resolve" type="Integer" range="0-100">
+							How hard this person's resolve is. Stubborn
+							friends can go without Attention for longer and
+							still maintain Friendship and Romance, however
+							they are harder to befriend in the first place.
+						</attribute>
+						<attribute name="Likes[Metabolism]" type="Integer" range="0-100">
+						</attribute>
+						<attribute name="Likes[Beauty]" type="Integer" range="0-100">
+						</attribute>
+						<attribute name="Likes[Intelligence]" type="Integer" range="0-100">
+						</attribute>
+						<attribute name="Likes[Extroversion]" type="Integer" range="0-100">
+							How much does this person like extroverted people. 
+							Lower means they prefer introverted people. 50
+							means they have no preference. People *usually*
+							like the opposite personality types as themselves.
+						</attribute>
+						<attribute name="Likes[Money]" type="Integer" range="0-100">
+							How important is material wealth to this person.
+						</attribute>
+					</attributes>
+				</section>
+			</section>
+			<section name="Adult">
+				<p>Inherits <ref>Person</ref>.</p>
+			</section>
+		</section>
+		<section name="Relationship">
+			<p>Had between <ref>Person</ref>s. Inherits Integer. The
+			value of the relationship represents the strength of your
+			relationship with this person. 0 means you don't know this
+			person. 50 means you consider this person your friend and
+			100 is bestest friends ever.</p>
+
+			<section name="FriendRelationship">
+				<p>Had between <ref>Friend</ref>s. Inherits
+				<ref>Relationship</ref>.</p>
+
+				<attributes>
+					<attribute name="Romance" type="Integer" range="0-100">
+						What proportion of the relationship is romantic. 
+						100 means 100% of the strength of the relationship
+						is romantic.
+					</attribute>
+					<attribute name="Attention" type="Integer" range="0-100">
+						How much attention they've had from you. Paying
+						people too much attention when you're not yet
+						their friend or romantic interest can get you
+						labelled as a Pervert. Aside from this danger,
+						attention is a good thing. Slowly declines over
+						time. If it hits 0, your Friendship and Romance
+						start dropping.
+					</attribute>
+				</attributes>
+			</section>
+		</section>
+		<section name="Item">
+			<p>Possessed by <ref>Person</ref>s or exist at <ref>Location</ref>s.</p>
+			<attributes>
+				<attribute name="Owners" type="Array[Person]" range="0..n">
+					Giving presents back is never a good idea. This is
+					also used to determine whether or not you own
+					something, so that you can't use things you
+					haven't bought yet at the Mall, for example.
+				</attribute>
+				<attribute name="Cost" type="Integer" range="1..n">
+					In dollars.
+				</attribute>
+				<attribute name="Categories" type="Array[Enumeration]" range="1..n[Food, Jewellry, Stupid, Quiet, Athletic, Sexual, etc.]">
+					The type of an item is represented by the
+					categories it fits into. For example, it's
+					possible to have Stupid Jewellry (Phantom Keyring
+					with Secret Compartment) or Sexual Food (body
+					chocolate).
+				</attribute>
+				<attribute name="Description" type="String" range="Any string.">
+				</attribute>
+				<attribute name="Effects" type="Array[Effect]" range="0..n">
+					Using an item can have various effects on you.
+				</attribute>
+			</attributes>
+		</section>
+		<section name="Location">
+			<p>Has <ref>Person</ref>s and provides <ref>Activities</ref>
+			for <ref>Person</ref>s.</p>
+	
+			<attributes>
+				<attribute name="Description" type="String" range="Any">
+				</attribute>
+				<attribute name="Picture" type="Image" range="GIF, JPEG images">
+				</attribute>
+				<attribute name="Items" type="Array[Item]" range="0..n">
+					Things at this location. e.g. The library has
+					textbooks and Dolly magazines. Shops at the Mall
+					have items.
+				</attribute>
+				<attribute name="Activities" type="Array[Activity]" range="0..n">
+				</attribute>
+			</attributes>
+		</section>
+		<section name="Activity">
+			<p>Done by <ref>Person</ref>s at <ref>Location</ref>s.</p>
+	
+			<attributes>
+				<attribute name="Description" type="String" range="Any">
+				</attribute>
+				<attribute name="Callback" type="Script" range="Set of prewritten activity scripts">
+				</attribute>
+			</attributes>
+		</section>
+	</section>
+
+</doc>

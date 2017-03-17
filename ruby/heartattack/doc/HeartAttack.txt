@@ -1,0 +1,376 @@
+
+Heart Attack!
+	A love simulation game by Lucy Ding and Gregory McIntyre.
+
+Character Creation
+	o Select Sex.
+	o Enter name.
+	o Enter birthday.
+	o Your Horoscope will be given to you based on your birthday.
+	o Spend points on Primary Attributes.
+		These will be fixed for the duration of the game.
+	o Purchase Merits and Flaws.
+		Merits cost character points at creation time, while Flaws
+		give you more points to spend elsewhere.
+
+		Merits
+			Rich Parents
+				You obtain twice the money you otherwise would from
+				your parents.
+			??
+		Flaws
+			??
+
+Basic Gameplay
+	There are two stages to each day, morning and afternoon, each has
+	different options in a menu. In the morning, you can go to school,
+	for example, and if you wag school you can do 'afternoon' things
+	in the morning.
+
+Activities
+	Each morning you start at home. You may choose to go somewhere
+	(to a Location), but once there must spent your entire morning
+	there. When at your desired Location, you have 6 hours to
+	spend on Activities. Some Activities take a long time, others
+	a short time.
+
+	If an activity takes longer than can be fitted in the morning,
+	a warning will be shown, and if you wish, the extra hours will
+	be deducted from the afternoon.
+
+	When morning hours are used up, afternoon arrives. In the
+	afternoon the process is repeated, except with 'afternoon'
+	options. If you do something which takes too many hours in the
+	afternoon, it means you stay up late, which decreases your
+	Health by the number of hours you stay up late.
+
+	Year (e.g. 2001) is not stored, but year of schooling (e.g. 
+	year 7 - year 12) is.
+
+	2 days out of 7 are Weekend days, during which you don't need
+	to attend school. The Morning is simply considered as an
+	Afternoon (i.e. you automatically get the Afternoon menu).
+
+	Store: Date, time (morning/afternoon), hours left.
+
+	Schedule
+		To keep organised, you have a schedule feature in the game
+		which simply keeps track of what invitations you've extended
+		to whom and for when. When you Invite somebody, it fixes your
+		activity for this time. When the time comes, you will simply
+		receive a prompt asking if you'd like to proceed with the
+		promise. If you wish, you can break your promise and do
+		something else, but it costs a lot of Friendship.
+
+		Sometimes other people will arrange parties or other events,
+		and invite you. If you accept, the scheule works in the same
+		way.
+
+		Store: Hash of (date, time) -> (activity, location, array of people).
+
+	Morning Activities
+		Wag School (Location = Home)
+			= You get to do Afternoon Activities in the Morning.
+			- You can miss friends and exam dates.
+			- Small chance of being caught by a truancy officer, which
+			  greatly lowers Parental Approval.
+		Go out...
+			(See Afternoon)
+		Go to School... (Location = School)
+			Study (2 hours)
+				+ Increases Studiousness.
+				= Slightly decreases Extroversion.
+			Pay Attention to <person> (1 hour)
+				+ Informs you about <person>. You can 
+					o Get their physical description (short, slim, blue eyes).
+					o See how they look (stressed, happy).
+					o Guess what they're thinking.
+				+ Increases their Attention.
+				= Slightly decreases Extroversion.
+			Talk to <person>... (1 hour)
+				+ Increases (person)'s Attention.
+				= Slightly increases Extroversion.
+				- Small chance of getting a detention for talking in class.
+				Choices:
+					Exchange phone numbers
+						+ Increases Friendship.
+						+ Increases Romance if already high.
+						- Fails and decreases Friendship and Romance if neither are high.
+					Gossip about <person>
+						+ Increases Friendship.
+						+ Reveals information about a Relationship.
+						- Increase Jealousy of <person> if Romance with both is high.
+					Give Present
+						+ Increases Friendship (Materialism).
+						+ Increases Romance (Materialism).
+						- Must have Item to give.
+					Compliment
+						+ Increases Friendship.
+						+ Increases Romance.
+						- Decreases Friendship and Romance if neither are high.
+					Invite
+						When you Invite somebody to do something, it
+						fixes that occasion in your Schedule at the
+						time you choose. Depending on the time of day,
+						you can Invite somebody for
+							This/Tomorrow Afternoon
+							The Weekend
+						Choices:
+							Invite to Cinema
+								+ Increases Friendship.
+								+ Increases Romance if already high and only one invited.
+								- Costs Money.
+							Invite to Arcade
+								= Increases Extroversion.
+								+ Increases Friendship if Extroverted.
+								- Decreases Friendship if Introverted.
+								- Costs Money.
+							Invite to Mall
+								= Increases Extroversion.
+								+ Increases Friendship if Extroverted.
+								- Decreases Friendship if Introverted.
+								+ Allows you to buy Items.
+							Invite to Library
+								= Slightly decreases Extroversion.
+								+ Increases Studiousness.
+								+ Increases Friendship if Introverted.
+								- Decreases Friendship if Extroverted.
+								+ Increases Romance if already high and only one invited.
+								- Decreases Friendship and Romance if neither are high.
+							Invite to My House
+								+ Increases Friendship.
+								+ Increases Romance if already very high.
+								- Decreases Friendship and Romance if Friendship not high.
+							Invite to Gym
+								+ Increases Health.
+								+ Increases Friendship if Extroverted.
+								- Decreases Friendship if Introverted.
+								+ Increases Romance if already high.
+								- Decreases Friendship and Romance if Friendship not high.
+							Invite to Restaurant
+								+ Increases Health.
+								+ Increases Friendship.
+								+ Increases Romance if already high.
+								- Decreases Friendship and Romance if Friendship not high.
+			Tell Joke (1 hour)
+				= Slightly increases Extroversion.
+				= Increases or decreases friendship with class members
+				  depending on whether or not they like extroverts or
+				  introverts.
+				- Small chance of getting a detention for telling jokes in class.
+			Suck Up to Teacher (1 hour)
+				+ Increases Studiousness.
+				- Slightly decreases Friendship with everybody.
+
+	Afternoon Activities
+		Study (2 hours)
+			+ Increases Studiousness.
+			= Slightly decreases Extroversion.
+		Spend Quality Time with Parents (4 hours)
+			+ Increases Parental Approval.
+			= Slightly decreases Extroversion.
+		Call <person>... (1 hour)
+			= Must have their number.
+			+ Gives you Talk menu from Morning.
+			+ Increases (person)'s Attention.
+			- Small chance of annoying parents by hogging phone (-Parental Approval).
+		Work
+		Look for Work
+		Go out...
+			= Set Location for the duration of this Morning/Afternoon.
+			Choices:
+				Mall
+					Clothes shop
+					Presents shops
+					Florist (must be used that day or next day)
+					Book shop (Lots of fun here Greg)
+					Supermarket
+					Toys
+
+				<person>'s House
+					Give present to parents
+					Gossip
+					Study
+					Play board games
+					Read their diary while they're not looking (chance of getting caught!)
+					Make Move
+						Hold hands
+						Quick hug
+						Arm around shoulder
+						Peck on the cheek
+						Kiss
+				Cinema
+				Library
+					Read
+						Read Dolly (teenage) Magazines
+							+ Increases Style.
+						Read text books
+							+ Increases Studiousness.
+					Study with <person>
+				Gym
+					Workout
+				Arcade (play various games) - increases extroversion
+					Fortune teller machine
+						Uses player's and (friend)'s horoscopes
+					Skilltester
+						You can win prizes for friends
+					Air hockey
+						Winning or losing too much against (friend)
+						decreases your friendship with them. Keeping a
+						ratio of 45% winning is ideal. Anything between
+						60% and 30% increases friendship. Anything outside
+						30-60% decreases friendship. Ability to win
+						determined by a combination of health,
+						intelligence and chance.
+					Video games
+						???
+
+Class Implementations
+	Person
+		Sex (M/F)
+			M = male, F = female.
+		Age (13 - 18)
+			Age differences can cause social stigmas.
+		Horoscope (1-12)
+			Aries, Aquarius, Cancer, Capricorn, Gemini, Leo, Libra,
+			Pisces, Sagitarius, Scorpio, Taurus, Virgo. Used for the
+			fortune teller machine in the arcade.
+		Height (String)
+			little, short, normal, tall, imposing
+		Weight (String)
+			skinny, slim, normal, plump, fat
+		Hair (String)
+			{HAIR_ADJ} {HAIR_COL}
+		Eyes (String)
+			{EYES_ADJ} {EYES_COL}
+		Primary Attributes
+			Metabolism (1 - 10)
+				People with high metabolism don't get fat no matter what
+				they eat. They seem fit and healthy.
+			Beauty (1 - 10)
+				Beautiful people attract more romantic interest.
+			Intelligence (1 - 10)
+				Intelligent people get good Grades and attract other
+				intelligent people.
+
+		Attributes
+			Health (0 - 100)
+				Health suffers if you eat poorly, stay up late, etc. If it
+				reaches 0, your concerned parents ship you off to a fat
+				farm (Game Over). Exercise and healthy food increase your
+				health. Being fit and healthy can attract some people.
+			Style (0 - 100)
+				This represents your dress sense. Go shopping with a high
+				Style rating, and you'll come back with super classy
+				outfits. If you don't have any style, you may have to go
+				shopping with a friend who has a high Style rating, and
+				listen to their advice. Reading fashion magazines
+				increases Style.
+			Studiousness (0 - 100)
+				Determines your Grades for exams. Grades are the primary
+				influencing factor on Parental Approval and therefore the
+				main thing preventing you from being shipped off to
+				boarding school.
+			Perception (0 - 100)
+				Increases when you gossip on the phone and observe
+				friends. Determines how accurate your information is,
+				and your ability to gossip.
+			Extroversion (0 - 100)
+				Extroversion suffers when you don't talk to people enough,
+				or go out with friends in groups. Some people like
+				extroverts and some like introverts.
+		Inventory (Array)
+		Relationships (Hash of people -> Relationship)
+
+	You (are a Person)
+		Parental Approval (0 - 100)
+			0 = "the evil child", 100 = "the perfect angel". Starting
+			value = 50. The happier your parents are with you, the
+			more of their income they'll pass on to you as pocket
+			money. If your parents aren't happy with you, they'll
+			ground you or, if you really neglect them, ship you off
+			to boarding school (Game Over).
+		Job (name of job, if you have one)
+			A part time job will reel in the money for you to spend on
+			your loved ones. But you may be asked to work at
+			inconvenient times. And, of course, if you don't turn up
+			to your job repeatedly, you'll get the sack.
+		Job Level (0 - 10)
+			0 = new employee, 10 = inheriting the business. Your level of
+			promotion. This combined with your job determines your salary.
+		Job Salary (1 - ?)
+			How much moola your job earns you each time you work.
+		Boss Approval (0 - 100)
+			Each time your boss' approval hits 100, you get promoted,
+			and it starts again at 20 + Job Level. If it hits 0 you're
+			fired. Each time you miss work you lose Boss Approval.
+		Money (0 - ?)
+			With money you can buy your loved ones presents, and take
+			them to the cinema or the arcade. You'll have to be on
+			good terms with your (wealthy) parents, or have a
+			part-time job to get money though.
+
+	Friend (is a Person)
+		Sexuality (M/F/B)
+			M = like males, F = like females, B = likes both.
+		Stubbornness (0 - 100)
+			How hard this person's resolve is. Stubborn friends
+			can go without Attention for longer and still maintain
+			Friendship and Romance, however they are harder to
+			befriend in the first place.
+		Like intelligent people (0 - 100)
+		Like extroverted people (0 - 100)
+			How much does this person like extroverted people. Lower
+			means they prefer introverted people. 50 means they have
+			no preference. People *usually* like the opposite
+			personality types as themselves.
+		Materialism (0 - 100)
+			How important is material wealth to this person.
+
+	Relationship (had between Persons, directed)
+		Friendship (0 - 100)
+			How much this person considers you their friend. 0 is
+			hatred, 50 is neutral and 100 is for best friends.
+		Romance (0 - 100)
+			How interested this person is in you, romantically. 0 is
+			nothing, up to 100 which is undying love.
+		Attention (0 - 100)
+			How much attention they've had from you. Paying people too
+			much attention when you're not yet their friend or
+			romantic interest can get you labelled as a Pervert. Aside
+			from this danger, attention is a good thing.
+		Jealousy (Hash of people -> ratings from 0 - 100)
+			How jealous this person is of your relationship with
+			somebody else. Jealousy can lead to segmentation of groups
+			and even hatred.
+
+	Item (owned by Persons)
+		Previous owner(s) (keep list if other people can give gifts, i.e. not just you)
+		Cost (in dollars)
+		Categories (e.g. Stupid, Quiet, Athletic, Sexual, etc.)
+		Description
+		Potential Player Attribute Effects
+
+	Location
+		Description
+		Picture
+		Set of options
+		A script/function for each option.
+
+End Conditions
+	Winning Conditions
+		Aquiring a Boyfriend/Girlfriend
+	Losing Conditions
+		The Same-Sex School
+		The Fat Farm
+
+Random Events
+	Someone (not a friend) hits on your bf/gf.
+	The new black changes colour (read Dolly to keep up!).
+	Your favourite band breaks up (lose Style/happiness?).
+
+Message Logs
+	Each event in the game is logged and displayed in a scrolling
+	list to the player. The most recent logged messages are kept
+	between saved games.
+
