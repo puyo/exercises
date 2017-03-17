@@ -1,0 +1,28 @@
+#
+# Standard resources definition file
+# Shadowrun Character Generator
+# Gregory McIntyre, 2001
+#
+
+Resources = 500, 5000, 20000, 90000, 200000, 400000, 650000, 1000000
+
+500_BuildPoints = -5
+
+5000_BuildPoints = 0
+5000_Priority = E
+
+20000_BuildPoints = 5
+20000_Priority = D
+
+90000_BuildPoints = 10
+90000_Priority = C
+
+200000_BuildPoints = 15
+
+400000_BuildPoints = 20
+400000_Priority = B
+
+650000_BuildPoints = 25
+
+1000000_BuildPoints = 30
+1000000_Priority = A

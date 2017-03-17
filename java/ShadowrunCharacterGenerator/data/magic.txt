@@ -1,0 +1,27 @@
+#
+# Standard race definition file
+# Shadowrun Character Generator
+# Gregory McIntyre, 2001
+#
+
+MagicOptions = Mundane, Adept, Aspected_Magician, Full_Magician
+
+Mundane_Description = Boring snoring.
+Mundane_Priority = E
+Mundane_BuildPoints = 0
+
+Adept_Description = Self improvement magic.
+Adept_Priority = B
+Adept_BuildPoints = 25
+
+Aspected_Magician_Name = Aspected Magician
+Aspected_Magician_Description = Limited to one area.
+Aspected_Magician_Priority = B
+Aspected_Magician_BuildPoints = 25
+Aspected_Magician_SpellPoints = 35
+
+Full_Magician_Name = Full Magician
+Full_Magician_Description = Skilled at all forms of magic.
+Full_Magician_Priority = A
+Full_Magician_BuildPoints = 30
+Full_Magician_SpellPoints = 25

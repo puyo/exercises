@@ -1,0 +1,172 @@
+#
+# Standard race definition file
+# Shadowrun Character Generator
+# Gregory McIntyre, 2001
+#
+
+Races = Human, Dwarf, Ork, Elf, Troll, Cyclops, Koborokuru, Fomori, Menehune, Hobgoblin, Giant, Gnome, Oni, Wakyambi, Ogre, Minotaur, Satyr, Night_One, Dryad
+
+Human_Description = Boring snoring.
+Human_Priority = E
+Human_BuildPoints = 0
+
+Dwarf_Description = Short and grumpy.
+Dwarf_Priority = D
+Dwarf_BuildPoints = 5
+Dwarf_BodyModifier = 1
+Dwarf_StrengthModifier = 2
+Dwarf_WillpowerModifier = 1
+Dwarf_ThermographicVision = true
+Dwarf_DiseaseAndToxinResistance = 2
+
+Ork_Description = Big and ugly.
+Ork_Priority = D
+Ork_BuildPoints = 5
+Ork_BodyModifier = 3
+Ork_StrengthModifier = 2
+Ork_CharismaModifier = -1
+Ork_IntelligenceModifier = -1
+Ork_LowLightVision = true
+
+Elf_Description = Lean and mean.
+Elf_Priority = C
+Elf_BuildPoints = 10
+Elf_QuicknessModifier = 1
+Elf_CharismaModifier = 2
+Elf_LowLightVision = true
+
+Troll_Description = Huge and ugly and strong.
+Troll_Priority = C
+Troll_BuildPoints = 10
+Troll_BodyModifier = 5
+Troll_QuicknessModifier = -1
+Troll_StrengthModifier = 4
+Troll_CharismaModifier = -2
+Troll_IntelligenceModifier = -2
+Troll_ThermographicVision = true
+Troll_ReachModifier = 1
+Troll_DermalArmor = 1
+
+Cyclops_Description = One eye.
+Cyclops_BaseRace = Troll
+Cyclops_BodyModifier = 5
+Cyclops_QuicknessModifier = -1
+Cyclops_StrengthModifier = 6
+Cyclops_CharismaModifier = -2
+Cyclops_IntelligenceModifier = -2
+Cyclops_ReachModifier = 1
+Cyclops_RangedAttackModifier = 2
+
+Koborokuru_Description = Japanese dwarf.
+Koborokuru_BaseRace = Dwarf
+Koborokuru_BodyModifier = 1
+Koborokuru_StrengthModifier = 2
+Koborokuru_WillpowerModifier = 1
+Koborokuru_ThermographicVision = true
+Koborokuru_DiseaseAndToxinResistance = 2
+Koborokuru_RunningMultiplier = 3
+Koborokuru_NaturalImmunity1 = true
+Koborokuru_NaturalImmunity3 = true
+
+Fomori_Description = Celtic troll.
+Fomori_BaseRace = Troll
+Fomori_BodyModifier = 4
+Fomori_QuicknessModifier = -1
+Fomori_StrengthModifier = 3
+Fomori_IntelligenceModifier = -2
+Fomori_ThermographicVision = true
+Fomori_ReachModifier = 1
+
+Menehune_Description = Hawaiian dwarf.
+Menehune_BaseRace = Dwarf
+Menehune_BodyModifier = 2
+Menehune_StrengthModifier = 1
+Menehune_WillpowerModifier = 1
+Menehune_ThermographicVision = true
+Menehune_DiseaseAndToxinResistance = 2
+
+Hobgoblin_Description = Middle eastern ork.
+Hobgoblin_BaseRace = Ork
+Hobgoblin_BodyModifier = 2
+Hobgoblin_StrengthModifier = 2
+Hobgoblin_CharismaModifier = -1
+Hobgoblin_LowLightVision = true
+
+Giant_Description = Nordic troll.
+Giant_BaseRace = Troll
+Giant_BodyModifier = 5
+Giant_QuicknessModifier = -1
+Giant_StrengthModifier = 5
+Giant_CharismaModifier = -2
+Giant_IntelligenceModifier = -2
+Giant_ThermographicVision = true
+Giant_ReachModifier = 1
+
+Gnome_Description = Childlike dwarf.
+Gnome_BaseRace = Dwarf
+Gnome_BodyModifier = 1
+Gnome_StrengthModifier = 1
+Gnome_WillpowerModifier = 2
+Gnome_ThermographicVision = true
+
+Oni_Description = Japanese ork.
+Oni_BaseRace = Ork
+Oni_BodyModifier = 2
+Oni_StrengthModifier = 2
+Oni_CharismaModifier = -1
+Oni_IntelligenceModifier = -1
+Oni_WillpowerModifier = 1
+Oni_LowLightVision = true
+
+Wakyambi_Description = African elf.
+Wakyambi_BaseRace = Elf
+Wakyambi_CharismaModifier = 2
+Wakyambi_WillpowerModifier = 1
+Wakyambi_LowLightVision = true
+
+Ogre_Description = Shorter stockier ork.
+Ogre_BaseRace = Ork
+Ogre_BodyModifier = 3
+Ogre_StrengthModifier = 2
+Ogre_IntelligenceModifier = -1
+
+Minotaur_Description = Mediterranean troll.
+Minotaur_BaseRace = Troll
+Minotaur_BodyModifier = 4
+Minotaur_QuicknessModifier = -1
+Minotaur_StrengthModifier = 3
+Minotaur_CharismaModifier = -1
+Minotaur_IntelligenceModifier = -1
+Minotaur_ThermographicVision = true
+Minotaur_ReachModifier = 1
+Minotaur_DermalArmor = 1
+
+Satyr_Description = Goaty ork.
+Satyr_BaseRace = Ork
+Satyr_BodyModifier = 3
+Satyr_StrengthModifier = 2
+Satyr_QuicknessModifier = -1
+Satyr_CharismaModifier = -1
+Satyr_IntelligenceModifier = -1
+Satyr_WillpowerModifier = 1
+Satyr_LowLightVision = true
+Satyr_RunningMultiplier = 4
+
+Night_One_Name = Night One
+Night_One_Description = Furry elf.
+Night_One_BaseRace = Elf
+Night_One_BuildPoints = 15
+Night_One_QuicknessModifier = 2
+Night_One_CharismaModifier = 2
+Night_One_LowLightVision = true
+Night_One_Allergy = Sunlight, Mild
+
+Dryad_Description = Female nature elf.
+Dryad_BaseRace = Elf
+Dryad_BodyModifier = -1
+Dryad_QuicknessModifier = 1
+Dryad_StrengthModifier = -1
+Dryad_CharismaModifier = 3
+Dryad_LowLightVision = true
+Dryad_Allergy = Urban areas, Mild
+Dryad_DryadAnimalEmpathy = true

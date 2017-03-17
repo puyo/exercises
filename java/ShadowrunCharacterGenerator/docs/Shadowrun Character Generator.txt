@@ -1,0 +1,86 @@
+
+Shadowrun Character Generator
+-----------------------------
+
+	Gregory McInytre, 2001
+
+
+	Stages of Character Creation
+	----------------------------
+
+		o Character Generation Options
+			o Choose system (Priority/Build Point)
+			o Build options (Build Points, house rules)
+			o Source books used
+		o Choose Priorities/Allocate Build Points
+			o Race
+			o Magic
+			o Attributes
+			o Skills
+			o Resources
+		o Magic
+		o Attributes
+		o Skills
+		o Resources
+			o Buy cyberware
+			o Buy bioware
+			o Buy gear
+			o Buy contacts
+			o Buy etc. ?
+		o Written Description
+			o Appearance
+			o Psychology
+			o Background
+
+		Data Input
+		----------
+		
+			o Character Generation Options (Dialog)
+				o Choose system (Radio buttons)
+				o Build options
+					o Build Points (Text box)
+					o House Rules (Checkboxes with Descriptions)
+				o Source books used (Checkboxes)
+			o Choose Priorities/Allocate Build Points (Tab)
+				o Race (Drop down box with description/picture frame to the side)
+				o Magic (Drop down box)
+				o Attributes (Drop down box/Text box, depending on system)
+				o Skills (Drop down box/Text box, depending on system)
+				o Resources (Drop down box)
+			o Magic (Tab)
+				o Spells (Tab, Expandable Tree, Spinners, Descriptions)
+				o Spirits (Tab, Expandable Tree, Spinners(?), Descriptions)
+				o etc.
+			o Attributes (Tab, Text boxes with spent/total)
+			o Skills (Tab, Expandable Tree, Spinners, Descriptions)
+			o Resources (Tab)
+				o Cyberware (Expandable Tree, Checkboxes, Descriptions)
+				o Bioware (Expandable Tree, Checkboxes, Descriptions)
+				o Gear (Expandable Tree, Spinners, Descriptions)
+				o Contacts (Text boxes, 'Add' button)
+			o Written Description (Tab)
+				o Appearance (Tab, Large Text box)
+				o Psychology (Tab, Large Text box)
+				o Background (Tab, Large Text box)
+
+	Datafiles
+	---------
+
+		Text. Simple. Like current SRCG.
+
+		Each item should contain a reference to the sourcebook used. These 
+		sourcebooks can be checked and unchecked, which removes all associated 
+		options.
+
+	Stages
+	------
+	
+		What happens when a user changes something that affects a previous stage?
+
+			They can't. If the user has spent nearly all their resources, and 
+			tries to decrease their allocation 
+
+		What happens when a user skips a stage and comes back to it?
+
+			The later options are pointless. If no points are allocated to 
+			attributes, say, the user cannot spend points there.
