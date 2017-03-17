@@ -1,0 +1,16 @@
+#! /usr/bin/env ruby
+
+require 'checkhost'
+
+def main
+	names = ARGV
+	exts = "net org com".split
+	for n in names
+		for e in exts	
+			checkhost(n.strip, e)
+		end
+	end
+end
+
+main
+

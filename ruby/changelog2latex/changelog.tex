@@ -1,0 +1,96 @@
+\documentclass{article}
+\begin{document}
+
+
+\section{Technical Change Log}
+
+\begin{description}
+
+\item[2002-08-07 Greg McIntyre]\hspace{0em}
+
+\begin{itemize}
+
+\item Checked out first session's work and brutalised it, altering the directory structure by putting all .php and .html files into a subdirectory `web' and renaming, removing many files (such as functions.inc and include.inc), amalgamating the CVS `system' project by putting it in a subdirectory `docs'. Cleaned up a lot of code. 
+
+\end{itemize}
+
+\item[2002-08-14 Greg McIntyre]\hspace{0em}
+
+\begin{itemize}
+
+\item \textit{install.sh:} Wrote install script.
+\item Updated directory structure to mirror CVS, making testing a CVS working directory easier. 
+
+\end{itemize}
+
+\item[2002-08-20 Greg McIntyre]\hspace{0em}
+
+\begin{itemize}
+
+\item \textit{plugin/README:} Wrote plugin specification.
+\item \textit{install.sh:} Updated install script, removing references to `glob', which apparently is not a standard UNIX command. Replaced them with Bash's built-in globbing (e.g. echo *).
+
+\end{itemize}
+
+\item[2002-08-22 Greg McIntyre]\hspace{0em}
+
+\begin{itemize}
+
+\item \textit{plugins/shape:} Wrote new shape plugin, including generic C plugin framework (dgplugin.h, dgplugin.c).
+\item \textit{docs/Makefile:} Removed nearly-duplicate Makefiles from subdirectories under docs, and made them include the common rules from docs/Makefile.
+\item \textit{plugin/README:} Reworded a little to remove references to images (now `entities' as they may not be images). Clarified usage slightly. Updated examples.
+
+\end{itemize}
+
+\item[2002-08-29 Greg McIntyre]\hspace{0em}
+
+\begin{itemize}
+
+\item Imported work done this session to CVS.
+
+\end{itemize}
+
+\item[2002-08-30 Greg McIntyre]\hspace{0em}
+
+\begin{itemize}
+
+\item Moved the remainding global functions to classes.
+\item Wrote initial framework for SQL database. SQL is to replace use of flat form database (ffdb). 
+\item Implemented phpdocgen use (an internal documentation generator) and documented all classes used. 
+\item \textit{web/admin.inc.php:} Created to handle database admin methods. Also documented.
+\item \textit{web/session.inc.php, web/database\_admin.php:} Fixed problem where logging out of database admin caused currently logged in user from same browser to be logged off. Essentially, untied admin login and user login.
+\item \textit{install.sh:} Fixed to work in conjunction with CVS.
+\item \textit{web/plugin.inc.php:} Fixed plugin list to work in conjunction with CVS.
+\item \textit{web/menu.php:} Made more attractive.
+\item \textit{code/index.php:} Updated include files (was using old format).
+\item \textit{web/index.html:} Displays welcome.php instead of home.php at startup.
+
+\end{itemize}
+
+\item[2002-09-02 Greg McIntyre]\hspace{0em}
+
+\begin{itemize}
+
+\item Implemented random gallery.
+\item Implemented SQL database. (Still need attention to schema and primary keys). 
+
+\end{itemize}
+
+\item[2002-09-04 Greg McIntyre]\hspace{0em}
+
+\begin{itemize}
+
+\item Implemented copying entities between galleries, removing entities and evolving entities, along with all supported plugin options (randomness, method, number). 
+\item \textit{web/system.inc.php:} Changed PHP\_SELF to SCRIPT\_NAME, as PHP\_SELF doesn't seem to work on CSE machines. SCRIPT\_NAME works.
+\item \textit{web/welcome.php:} Added grey link to database admin page.
+\item \textit{install.sh:} Fixed again. It wasn't recursing properly. Also updated to set execute permissions.
+\item \textit{web/system.inc.php:} Empty array returned on error instead of false.
+\item \textit{phpdocgen.pl:} Included this script to create internal documentation from the source.
+\item Moved RandomGallery, Genepool and UserGallery classes out to their own files. 
+\item Updated SQL database schema, simplifying and testing. Had to remove some primary keys, as they could not include variable length TEXT data (only the first 255 characters). 
+
+\end{itemize}
+\end{description}
+
+
+\end{document}

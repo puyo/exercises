@@ -1,0 +1,2179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdoc>
+<file-list>
+  <file name="appearance.rb" id="appearance.rb">
+    <file-info>
+      <path>appearance.rb</path>
+      <dtm-modified>Mon Oct 27 16:56:33 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="overload"
+                        href="M000045"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="messagewindow.rb" id="messagewindow.rb">
+    <file-info>
+      <path>messagewindow.rb</path>
+      <dtm-modified>Mon Oct 27 17:48:36 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="curses"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="solid.rb" id="solid.rb">
+    <file-info>
+      <path>solid.rb</path>
+      <dtm-modified>Mon Oct 27 16:28:58 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="ruby/extensions"
+                        href="ruby%2fextensions.rb"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="visible.rb" id="visible.rb">
+    <file-info>
+      <path>visible.rb</path>
+      <dtm-modified>Mon Oct 27 16:52:32 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="ruby/extensions"
+                        href="ruby%2fextensions.rb"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="emitter.rb" id="emitter.rb">
+    <file-info>
+      <path>emitter.rb</path>
+      <dtm-modified>Sun Oct 26 19:27:49 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="ruby/extensions"
+                        href="ruby%2fextensions.rb"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="map_objects.rb" id="map_objects.rb">
+    <file-info>
+      <path>map_objects.rb</path>
+      <dtm-modified>Thu Nov 13 19:21:21 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="trigger"
+                        href="M000096"
+         />
+         <required-file name="visible"
+                        href="visible.rb"
+         />
+         <required-file name="appearance"
+                        href="M000085"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="log.rb" id="log.rb">
+    <file-info>
+      <path>log.rb</path>
+      <dtm-modified>Mon Oct 27 17:03:59 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <method-list>
+        <method name="log" type="Public" category="Instance" id="M000001">
+          <parameters>(*args)</parameters>
+          <source-code-listing>
+<span class="cmt"># File log.rb, line 6</span>
+<span class="kw">def</span> log(*args)
+        $log.puts(*args)
+<span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="flow" type="Public" category="Instance" id="M000002">
+          <parameters>(*args)</parameters>
+          <source-code-listing>
+<span class="cmt"># File log.rb, line 14</span>
+<span class="kw">def</span> flow(*args)
+        $flow.puts(*args)
+<span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </file>
+  <file name="action.rb" id="action.rb">
+    <file-info>
+      <path>action.rb</path>
+      <dtm-modified>Tue Nov 11 14:31:49 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="ruby/extensions"
+                        href="ruby%2fextensions.rb"
+         />
+         <required-file name="config-keyboard"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="position.rb" id="position.rb">
+    <file-info>
+      <path>position.rb</path>
+      <dtm-modified>Sun Oct 26 19:30:45 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="overload"
+                        href="M000045"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="overload.rb" id="overload.rb">
+    <file-info>
+      <path>overload.rb</path>
+      <dtm-modified>Sat Oct 25 21:58:44 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+     </contents>
+
+  </file>
+  <file name="trigger.rb" id="trigger.rb">
+    <file-info>
+      <path>trigger.rb</path>
+      <dtm-modified>Mon Oct 27 17:34:00 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="ruby/extensions"
+                        href="ruby%2fextensions.rb"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="tile.rb" id="tile.rb">
+    <file-info>
+      <path>tile.rb</path>
+      <dtm-modified>Thu Nov 13 19:25:21 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="emitter"
+                        href="emitter.rb"
+         />
+         <required-file name="log"
+                        href="M000001"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="maptile.rb" id="maptile.rb">
+    <file-info>
+      <path>maptile.rb</path>
+      <dtm-modified>Thu Nov 13 19:19:32 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="map"
+                        href="map.rb"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="openable.rb" id="openable.rb">
+    <file-info>
+      <path>openable.rb</path>
+      <dtm-modified>Sun Oct 26 09:22:22 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="ruby/extensions"
+                        href="ruby%2fextensions.rb"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="player.rb" id="player.rb">
+    <file-info>
+      <path>player.rb</path>
+      <dtm-modified>Mon Oct 27 17:42:52 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="language"
+                        href="language.rb"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="demo.rb" id="demo.rb">
+    <file-info>
+      <path>demo.rb</path>
+      <dtm-modified>Thu Nov 13 19:16:54 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="map_objects"
+                        href="map_objects.rb"
+         />
+         <required-file name="map"
+                        href="map.rb"
+         />
+         <required-file name="mapwindow"
+                        href="mapwindow.rb"
+         />
+         <required-file name="messagewindow"
+                        href="messagewindow.rb"
+         />
+         <required-file name="curses"
+         />
+         <required-file name="player"
+                        href="player.rb"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="language.rb" id="language.rb">
+    <file-info>
+      <path>language.rb</path>
+      <dtm-modified>Sat Oct 25 12:27:57 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+     </contents>
+
+  </file>
+  <file name="map.rb" id="map.rb">
+    <file-info>
+      <path>map.rb</path>
+      <dtm-modified>Thu Nov 13 19:27:10 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="language"
+                        href="language.rb"
+         />
+         <required-file name="trigger"
+                        href="M000096"
+         />
+         <required-file name="door"
+                        href="door.rb"
+         />
+         <required-file name="tile"
+                        href="tile.rb"
+         />
+         <required-file name="emitter"
+                        href="emitter.rb"
+         />
+         <required-file name="pp"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="door.rb" id="door.rb">
+    <file-info>
+      <path>door.rb</path>
+      <dtm-modified>Thu Nov 13 19:21:15 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="openable"
+                        href="openable.rb"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="mapwindow.rb" id="mapwindow.rb">
+    <file-info>
+      <path>mapwindow.rb</path>
+      <dtm-modified>Thu Nov 13 19:19:08 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="curses"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="shade.rb" id="shade.rb">
+    <file-info>
+      <path>shade.rb</path>
+      <dtm-modified>Sun Oct 26 19:40:22 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="player"
+                        href="player.rb"
+         />
+         <required-file name="door"
+                        href="door.rb"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="extensions.rb" id="ruby%2fextensions.rb">
+    <file-info>
+      <path>ruby/extensions.rb</path>
+      <dtm-modified>Sat Oct 25 10:59:04 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+      <required-file-list>
+         <required-file name="class"
+         />
+         <required-file name="module"
+         />
+      </required-file-list>
+     </contents>
+
+  </file>
+  <file name="module.rb" id="ruby%2fmodule.rb">
+    <file-info>
+      <path>ruby/module.rb</path>
+      <dtm-modified>Sat Oct 25 11:16:36 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+     </contents>
+
+  </file>
+  <file name="class.rb" id="ruby%2fclass.rb">
+    <file-info>
+      <path>ruby/class.rb</path>
+      <dtm-modified>Sat Oct 25 11:20:10 EST 2003</dtm-modified>
+    </file-info>
+
+    <contents>
+     </contents>
+
+  </file>
+</file-list>
+<class-module-list>
+  <Class name="Ground" id="Ground">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#map_objects.rb">map_objects.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <included-module-list>
+        <included-module name="Visible"
+                         href="Visible"
+        />
+      </included-module-list>
+      <method-list>
+        <method name="height" type="Public" category="Instance" id="M000003">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File map_objects.rb, line 6</span>
+        <span class="kw">def</span> height; Tile::HEIGHT_GROUND <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="appearance" type="Public" category="Instance" id="M000004">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File map_objects.rb, line 7</span>
+        <span class="kw">def</span> appearance; Appearance.ground <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="MapInstantiationError" id="MapInstantiationError">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#map.rb">map.rb</a></infile>
+      </infiles>
+     <superclass><a href="#InstantiationError">InstantiationError</a></superclass>
+    </classmod-info>
+
+    <contents>
+     </contents>
+
+  </Class>
+  <Class name="Player" id="Player">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#player.rb">player.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Unit">Unit</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <attribute-list>
+        <attribute name="messages">
+          <attribute-rw>R</attribute-rw>
+          <description></description>
+        </attribute>
+      </attribute-list>
+      <included-module-list>
+        <included-module name="Emitter"
+                         href="Emitter"
+        />
+        <included-module name="Visible"
+                         href="Visible"
+        />
+      </included-module-list>
+      <method-list>
+        <method name="new" type="Public" category="Class" id="M000005">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File player.rb, line 19</span>
+        <span class="kw">def</span> initialize
+                @messages = []
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="command" type="Public" category="Instance" id="M000006">
+          <parameters>(command, object)</parameters>
+          <source-code-listing>
+<span class="cmt"># File player.rb, line 23</span>
+        <span class="kw">def</span> command(command, object)
+                <span class="kw">if</span> object.respond_to?(command)
+                        object.send(command, <span class="kw">self</span>)
+                <span class="kw">else</span>
+                        message &quot;You can't #{command} #{an object}.&quot;
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="object_opened" type="Public" category="Instance" id="M000007">
+          <parameters>(object)</parameters>
+          <source-code-listing>
+<span class="cmt"># File player.rb, line 31</span>
+        <span class="kw">def</span> object_opened(object)
+                message &quot;You opened #{the object}.&quot;
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="object_closed" type="Public" category="Instance" id="M000008">
+          <parameters>(object)</parameters>
+          <source-code-listing>
+<span class="cmt"># File player.rb, line 35</span>
+        <span class="kw">def</span> object_closed(object)
+                message &quot;You closed #{the object}.&quot;
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="object_triggered" type="Public" category="Instance" id="M000009">
+          <parameters>(object)</parameters>
+          <source-code-listing>
+<span class="cmt"># File player.rb, line 39</span>
+        <span class="kw">def</span> object_triggered(object)
+                message &quot;You triggered #{the object}.&quot;
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="message" type="Public" category="Instance" id="M000010">
+          <parameters>(*args)</parameters>
+          <source-code-listing>
+<span class="cmt"># File player.rb, line 43</span>
+        <span class="kw">def</span> message(*args)
+                @messages &lt;&lt; args.to_s
+                emit(:message, @messages)
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="appearance" type="Public" category="Instance" id="M000011">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File player.rb, line 48</span>
+        <span class="kw">def</span> appearance; Appearance.new(<span class="str">'@'</span>) <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="MessageWindow" id="MessageWindow">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#messagewindow.rb">messagewindow.rb</a></infile>
+      </infiles>
+     <superclass>Curses::Window</superclass>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="new" type="Public" category="Class" id="M000012">
+          <parameters>(subject, x, y, width, height)</parameters>
+          <source-code-listing>
+<span class="cmt"># File messagewindow.rb, line 5</span>
+        <span class="kw">def</span> initialize(subject, x, y, width, height)
+                <span class="kw">super</span>(height, width, y, x)
+                subject.connect(<span class="kw">self</span>, :message, :update)
+                refresh
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="update" type="Public" category="Instance" id="M000013">
+          <parameters>(messages)</parameters>
+          <source-code-listing>
+<span class="cmt"># File messagewindow.rb, line 11</span>
+        <span class="kw">def</span> update(messages)
+                flow &quot;#{self.class}#update(#{messages})&quot;
+                messages.each_with_index <span class="kw">do</span> |message, index|
+                        setpos(index, 0)
+                        addstr(message)
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Shade" id="Shade">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#shade.rb">shade.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="start" type="Public" category="Class" id="M000014">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File shade.rb, line 5</span>
+        <span class="kw">def</span> <span class="kw">self</span>.start
+                init_video
+                demo = Demo.new
+                demo.play
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="init_video" type="Public" category="Class" id="M000015">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File shade.rb, line 11</span>
+        <span class="kw">def</span> <span class="kw">self</span>.init_video
+                init_screen
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Position" id="Position">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#position.rb">position.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <attribute-list>
+        <attribute name="x">
+          <attribute-rw>R</attribute-rw>
+          <description></description>
+        </attribute>
+        <attribute name="y">
+          <attribute-rw>R</attribute-rw>
+          <description></description>
+        </attribute>
+      </attribute-list>
+      <included-module-list>
+        <included-module name="Method::Overload"
+                         href="Method::Overload"
+        />
+      </included-module-list>
+      <method-list>
+        <method name="new" type="Public" category="Class" id="M000016">
+          <parameters>(*args)</parameters>
+          <source-code-listing>
+<span class="cmt"># File position.rb, line 8</span>
+        <span class="kw">def</span> initialize(*args)
+                overload(args) <span class="kw">do</span> |signature|
+                        signature.dispatch(Integer, Integer) <span class="kw">do</span> |x, y|
+                                @x, @y = x, y
+                        <span class="kw">end</span>
+                        signature.dispatch(Position) <span class="kw">do</span> |pos|
+                                @x, @y = pos.x, pos.y
+                        <span class="kw">end</span>
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Tile" id="Tile">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#tile.rb">tile.rb</a></infile>
+        <infile><a href="#maptile.rb">maptile.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <attribute-list>
+        <attribute name="map">
+          <attribute-rw>R</attribute-rw>
+          <description></description>
+        </attribute>
+        <attribute name="x">
+          <attribute-rw>R</attribute-rw>
+          <description></description>
+        </attribute>
+        <attribute name="y">
+          <attribute-rw>R</attribute-rw>
+          <description></description>
+        </attribute>
+      </attribute-list>
+      <included-module-list>
+        <included-module name="Emitter"
+                         href="Emitter"
+        />
+      </included-module-list>
+      <method-list>
+        <method name="new" type="Public" category="Class" id="M000017">
+          <parameters>(map, x, y, contents=nil)</parameters>
+          <source-code-listing>
+<span class="cmt"># File tile.rb, line 17</span>
+        <span class="kw">def</span> initialize(map, x, y, contents=<span class="kw">nil</span>)
+                @map, @x, @y = map, x, y
+                @objects = {}
+                @triggers = []
+                @teleport = <span class="kw">nil</span>
+                @unit = <span class="kw">nil</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="new" type="Public" category="Class" id="M000027">
+          <parameters>(map, x, y, contents=nil)</parameters>
+          <source-code-listing>
+<span class="cmt"># File maptile.rb, line 4</span>
+        <span class="kw">def</span> initialize(map, x, y, contents=<span class="kw">nil</span>)
+                @map, @x, @y = map, x, y
+                @objects = []
+                @triggers = []
+                @teleport = <span class="kw">nil</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="appearance" type="Public" category="Instance" id="M000018">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File tile.rb, line 25</span>
+        <span class="kw">def</span> appearance
+                <span class="kw">if</span> <span class="kw">not</span> @unit.nil?
+                        @unit.appearance
+                <span class="kw">elsif</span> <span class="kw">not</span> @objects.empty?
+                        @objects[@objects.keys.sort.last].first.appearance
+                <span class="kw">else</span>
+                        <span class="kw">nil</span>
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="add_trigger" type="Public" category="Instance" id="M000019">
+          <parameters>(thing)</parameters>
+          <source-code-listing>
+<span class="cmt"># File tile.rb, line 35</span>
+        <span class="kw">def</span> add_trigger(thing)
+                @triggers |= [thing]
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="teleport=" type="Public" category="Instance" id="M000020">
+          <parameters>(teleport)</parameters>
+          <source-code-listing>
+<span class="cmt"># File tile.rb, line 39</span>
+        <span class="kw">def</span> teleport=(teleport)
+                @teleport = teleport
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="unit=" type="Public" category="Instance" id="M000021">
+          <parameters>(unit)</parameters>
+          <source-code-listing>
+<span class="cmt"># File tile.rb, line 43</span>
+        <span class="kw">def</span> unit=(unit)
+                flow &quot;#{self.class}#unit=(#{unit})&quot;
+                @unit = unit
+                emit(:appearance_changed, <span class="kw">self</span>)
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="trigger" type="Public" category="Instance" id="M000022">
+          <parameters>(actor)</parameters>
+          <source-code-listing>
+<span class="cmt"># File tile.rb, line 49</span>
+        <span class="kw">def</span> trigger(actor)
+                <span class="kw">if</span> @objects[HEIGHT_NONE]
+                        @objects[HEIGHT_NONE].each <span class="kw">do</span> |obj|
+                                <span class="kw">if</span> obj.is_a?(Trigger)
+                                        obj.trigger(actor)
+                                <span class="kw">end</span>
+                        <span class="kw">end</span>
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="add_object" type="Public" category="Instance" id="M000023">
+          <parameters>(thing)</parameters>
+          <source-code-listing>
+<span class="cmt"># File tile.rb, line 59</span>
+        <span class="kw">def</span> add_object(thing)
+                <span class="kw">if</span> thing.respond_to?(:height)
+                        height = thing.height
+                <span class="kw">else</span>
+                        height = HEIGHT_NONE
+                <span class="kw">end</span>
+                @objects[height] = @objects[height].to_a | [thing]
+                <span class="kw">if</span> height == @objects.keys.sort.last
+                        emit(:appearance_changed, <span class="kw">self</span>)
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="obstacles" type="Public" category="Instance" id="M000024">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File tile.rb, line 71</span>
+        <span class="kw">def</span> obstacles
+                objects.reject{|o| !o.respond_to?(:passable?) <span class="kw">or</span> o.passable? }
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="objects" type="Public" category="Instance" id="M000025">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File tile.rb, line 75</span>
+        <span class="kw">def</span> objects
+                @objects.values.flatten
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="inspect" type="Public" category="Instance" id="M000026">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File tile.rb, line 79</span>
+        <span class="kw">def</span> inspect
+                result = &quot;Tile: (#{@x}, #{@y})\n&quot;
+                result &lt;&lt; &quot;  Objects: #{@objects.inspect}\n&quot;
+                result &lt;&lt; &quot;  Triggers: #{@triggers.inspect}\n&quot;
+                result &lt;&lt; &quot;  Teleport: #{@teleport.inspect}\n&quot;
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="add_trigger" type="Public" category="Instance" id="M000028">
+          <parameters>(thing)</parameters>
+          <source-code-listing>
+<span class="cmt"># File maptile.rb, line 11</span>
+        <span class="kw">def</span> add_trigger(thing)
+                @triggers |= [thing]
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="set_teleport" type="Public" category="Instance" id="M000029">
+          <parameters>(teleport)</parameters>
+          <source-code-listing>
+<span class="cmt"># File maptile.rb, line 15</span>
+        <span class="kw">def</span> set_teleport(teleport)
+                raise TileError, &quot;Already a teleport on tile #{inspect}&quot; <span class="kw">unless</span> @teleport.nil?
+                @teleport = teleport
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="add_object" type="Public" category="Instance" id="M000030">
+          <parameters>(thing)</parameters>
+          <source-code-listing>
+<span class="cmt"># File maptile.rb, line 20</span>
+        <span class="kw">def</span> add_object(thing)
+                @objects |= [thing]
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="inspect" type="Public" category="Instance" id="M000031">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File maptile.rb, line 24</span>
+        <span class="kw">def</span> inspect
+                result = &quot;Tile: (#{@x}, #{@y})\n&quot;
+                result &lt;&lt; &quot;  Objects: #{@objects.inspect}\n&quot;
+                result &lt;&lt; &quot;  Triggers: #{@triggers.inspect}\n&quot;
+                result &lt;&lt; &quot;  Teleport: #{@teleport.inspect}\n&quot;
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Open" id="Open">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#action.rb">action.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <included-module-list>
+        <included-module name="Action"
+                         href="Action"
+        />
+      </included-module-list>
+      <method-list>
+        <method name="perform" type="Public" category="Instance" id="M000032">
+          <parameters>(actor, object)</parameters>
+          <source-code-listing>
+<span class="cmt"># File action.rb, line 34</span>
+        <span class="kw">def</span> perform(actor, object)
+
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Table" id="Table">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#map_objects.rb">map_objects.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <included-module-list>
+        <included-module name="Visible"
+                         href="Visible"
+        />
+      </included-module-list>
+      <method-list>
+        <method name="height" type="Public" category="Instance" id="M000033">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File map_objects.rb, line 19</span>
+        <span class="kw">def</span> height; Tile::HEIGHT_WAIST <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="appearance" type="Public" category="Instance" id="M000034">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File map_objects.rb, line 20</span>
+        <span class="kw">def</span> appearance; Appearance.furniture <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="passable?" type="Public" category="Instance" id="M000035">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File map_objects.rb, line 21</span>
+        <span class="kw">def</span> passable?; <span class="kw">false</span> <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="BorderWall" id="BorderWall">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#map_objects.rb">map_objects.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Wall">Wall</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <included-module-list>
+        <included-module name="Indestructible"
+                         href="Indestructible"
+        />
+      </included-module-list>
+     </contents>
+
+  </Class>
+  <Class name="Marker" id="Marker">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#map_objects.rb">map_objects.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <attribute-list>
+        <attribute name="id">
+          <attribute-rw>R</attribute-rw>
+          <description></description>
+        </attribute>
+      </attribute-list>
+      <method-list>
+        <method name="new" type="Public" category="Class" id="M000036">
+          <parameters>(id)</parameters>
+          <source-code-listing>
+<span class="cmt"># File map_objects.rb, line 39</span>
+        <span class="kw">def</span> initialize(id)
+                @id = id
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Teleport" id="Teleport">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#map_objects.rb">map_objects.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <included-module-list>
+        <included-module name="Trigger"
+                         href="Trigger"
+        />
+      </included-module-list>
+      <method-list>
+        <method name="new" type="Public" category="Class" id="M000037">
+          <parameters>(dest, id)</parameters>
+          <source-code-listing>
+<span class="cmt"># File map_objects.rb, line 26</span>
+        <span class="kw">def</span> initialize(dest, id)
+                @dest, @id = dest, id
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="triggered_by" type="Public" category="Instance" id="M000038">
+          <parameters>(actor)</parameters>
+          <source-code-listing>
+<span class="cmt"># File map_objects.rb, line 30</span>
+        <span class="kw">def</span> triggered_by(actor)
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="MapWindow" id="MapWindow">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#mapwindow.rb">mapwindow.rb</a></infile>
+      </infiles>
+     <superclass>Curses::Window</superclass>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="new" type="Public" category="Class" id="M000039">
+          <parameters>(map, x, y, width, height)</parameters>
+          <source-code-listing>
+<span class="cmt"># File mapwindow.rb, line 5</span>
+        <span class="kw">def</span> initialize(map, x, y, width, height)
+                <span class="kw">super</span>(height, width, x, y)
+                @map = map
+                map.each_tile <span class="kw">do</span> |tile|
+                        tile.connect(<span class="kw">self</span>, :appearance_changed, :draw_tile)
+                        draw_tile(tile)
+                <span class="kw">end</span>
+                refresh
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="draw_tile" type="Public" category="Instance" id="M000040">
+          <parameters>(tile)</parameters>
+          <source-code-listing>
+<span class="cmt"># File mapwindow.rb, line 15</span>
+        <span class="kw">def</span> draw_tile(tile)
+                flow &quot;#{self.class}#draw_tile&quot;
+                <span class="kw">if</span> appearance = tile.appearance
+                        appearance.draw(<span class="kw">self</span>, tile.x, tile.y)
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="InstantiationError" id="InstantiationError">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#map.rb">map.rb</a></infile>
+      </infiles>
+     <superclass>StandardError</superclass>
+    </classmod-info>
+
+    <contents>
+     </contents>
+
+  </Class>
+  <Class name="Module" id="Module">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#overload.rb">overload.rb</a></infile>
+        <infile><a href="#ruby%2fmodule.rb">ruby/module.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="overload" type="Public" category="Instance" id="M000041">
+          <parameters>(func, *types)</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 135</span>
+  <span class="kw">def</span> overload(func, *types)
+    func = func.intern <span class="kw">if</span> func.respond_to? :intern
+    sig = Method::Signature[*types]
+    meth = instance_method(func)
+    <span class="kw">if</span> meth.arity &lt; 0
+      sig &lt;&lt; <span class="kw">nil</span> <span class="kw">unless</span> sig.varargs?
+    <span class="kw">elsif</span> meth.arity &gt; sig.length
+      sig.concat(Array.new(meth.arity - sig.length, Object))
+    <span class="kw">elsif</span> meth.arity &lt; sig.length
+      raise ArgumentError, &quot;too many arguments for #{func}(#{sig.length} for #{meth.arity})&quot;
+    <span class="kw">end</span>
+    alias_method(meth = &quot;#{func}#{sig}&quot;.intern, func)
+    tbl = @overload ||= {}
+    (tbl[func] ||= []) &lt;&lt; [sig, meth]
+    module_eval &quot;def #{func}(*a, &amp;b) Method.dispatch(self, :#{func}, a, b) end&quot;
+  <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="unoverload" type="Public" category="Instance" id="M000042">
+          <parameters>(func, *types)</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 152</span>
+  <span class="kw">def</span> unoverload(func, *types)
+    func = func.intern <span class="kw">if</span> func.respond_to? :intern
+    sig = Method::Signature[*types]
+    remove_method(&quot;#{func}#{sig}&quot;.intern)
+    tbl = @overload[func] <span class="kw">and</span> tbl.delete(sig) <span class="kw">if</span> @overload
+  <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="append_features" type="Public" category="Instance" id="M000043">
+          <parameters>(klass)</parameters>
+          <source-code-listing>
+<span class="cmt"># File ruby/module.rb, line 3</span>
+        <span class="kw">def</span> append_features(klass)
+                append_features_old(klass)
+                included(klass) <span class="kw">if</span> respond_to?(:included)
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Method" id="Method">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#overload.rb">overload.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="dispatch" type="Public" category="Class" id="M000044">
+          <parameters>(recv, func, args, block)</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 114</span>
+  <span class="kw">def</span> <span class="kw">self</span>.dispatch(recv, func, args, block)
+    klass = tbl = sig = meth = <span class="kw">nil</span>
+    recv.type.ancestors.find <span class="kw">do</span> |klass|
+      tbl = klass.instance_eval {@overload} <span class="kw">or</span> <span class="kw">next</span>
+      tbl = tbl[func] <span class="kw">or</span> <span class="kw">next</span>
+      sig, meth = tbl.find {|sig, meth| sig === args}
+      meth
+    <span class="kw">end</span>
+    meth <span class="kw">or</span> Signature[*args].nomatch(recv, func, 3)
+    <span class="kw">begin</span>
+      recv.__send__(meth, *args, &amp;block)
+    <span class="kw">rescue</span> Exception
+      n = -caller.size
+      $@[n-2, 3] = <span class="kw">nil</span>
+      $@[n].sub!(/\`#{func}\'\z/, &quot;\`#{meth}\'&quot;)
+      raise
+    <span class="kw">end</span>
+  <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Module name="Method::Overload" id="Method::Overload">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#overload.rb">overload.rb</a></infile>
+      </infiles>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="overload" type="Public" category="Instance" id="M000045">
+          <parameters>(args) {|args| ...}</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 103</span>
+    <span class="kw">def</span> overload(args)
+      args = Signature[*args]
+      catch(:dispatched) <span class="kw">do</span>
+        <span class="kw">yield</span> args
+        raise args.invalid
+      <span class="kw">end</span>
+    <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Module>
+  <Class name="Method::Signature" id="Method::Signature">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#overload.rb">overload.rb</a></infile>
+      </infiles>
+     <superclass>Array</superclass>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="invalid" type="Public" category="Instance" id="M000046">
+          <parameters>(func = nil)</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 7</span>
+    <span class="kw">def</span> invalid(func = <span class="kw">nil</span>)
+      msg = <span class="str">&quot;Invalid signature: &quot;</span>
+      msg &lt;&lt; func.to_s <span class="kw">if</span> func
+      TypeError.new(msg &lt;&lt; to_s)
+    <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="nomatch" type="Public" category="Instance" id="M000047">
+          <parameters>(recv, func, level = 1)</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 13</span>
+    <span class="kw">def</span> nomatch(recv, func, level = 1)
+      raise NoMethodError, &quot;no method match to `#{func}#{self}' for #{recv.inspect}&quot;
+    <span class="kw">rescue</span> NoMethodError
+      $@[0, level] = <span class="kw">nil</span>
+      raise
+    <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="varargs?" type="Public" category="Instance" id="M000048">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 20</span>
+    <span class="kw">def</span> varargs?
+      !(empty? <span class="kw">or</span> last)
+    <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="arity" type="Public" category="Instance" id="M000049">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 24</span>
+    <span class="kw">def</span> arity
+      varargs? ? -length : length
+    <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="to_str" type="Public" category="Instance" id="M000050">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 28</span>
+    <span class="kw">def</span> to_str
+      sig = Array[*<span class="kw">self</span>]
+      sig.pop <span class="kw">if</span> v = varargs?
+      sig = sig.inspect
+      sig[-1, 0] = <span class="str">', ...'</span> <span class="kw">if</span> v
+      sig
+    <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="inspect" type="Public" category="Instance" id="M000051">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 36</span>
+    <span class="kw">def</span> inspect
+      <span class="kw">self</span>.class.name+<span class="kw">self</span>
+    <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="to_s" type="Public" category="Instance" id="M000052">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 40</span>
+    <span class="kw">def</span> to_s
+      sig = to_str
+      sig[0] = ?(
+      sig[-1] = ?)
+      sig
+    <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="===" type="Public" category="Instance" id="M000053">
+          <parameters>(args)</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 47</span>
+    <span class="kw">def</span> ===(args)
+      <span class="kw">if</span> varargs?
+        (l = length-1) &lt;= args.length <span class="kw">or</span> <span class="kw">return</span> <span class="kw">false</span>
+      <span class="kw">else</span>
+        (l = length) == args.length <span class="kw">or</span> <span class="kw">return</span> <span class="kw">false</span>
+      <span class="kw">end</span>
+      l.times {|i| <span class="kw">self</span>[i] === args[i] <span class="kw">or</span> <span class="kw">return</span> <span class="kw">false</span>}
+      <span class="kw">true</span>
+    <span class="kw">rescue</span> StandardError
+      <span class="kw">false</span>
+    <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="&gt;" type="Public" category="Instance" id="M000054">
+          <parameters>(sig)</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 59</span>
+    <span class="kw">def</span> &gt;(sig)
+      v1, l1 = varargs?, length
+      v2, l2 = sig.varargs?, sig.length
+      l1 -= 1 <span class="kw">if</span> v1
+      l2 -= 1 <span class="kw">if</span> v2
+      <span class="kw">begin</span>
+        [l1, l2].min.times <span class="kw">do</span> |i|
+          <span class="kw">return</span> <span class="kw">false</span> <span class="kw">if</span> sig[i] &gt; <span class="kw">self</span>[i]
+        <span class="kw">end</span>
+      <span class="kw">rescue</span> TypeError
+        <span class="kw">return</span> <span class="kw">false</span>
+      <span class="kw">end</span>
+      <span class="kw">if</span> v1
+        <span class="kw">return</span> <span class="kw">false</span> <span class="kw">if</span> l1 &gt; l2
+      <span class="kw">elsif</span> v2
+        <span class="kw">return</span> <span class="kw">false</span>
+      <span class="kw">else</span>
+        <span class="kw">return</span> <span class="kw">false</span> <span class="kw">unless</span> l1 == l2
+      <span class="kw">end</span>
+      <span class="kw">true</span>
+    <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="&lt;" type="Public" category="Instance" id="M000055">
+          <parameters>(sig)</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 81</span>
+    <span class="kw">def</span> &lt;(sig)
+      sig &gt; <span class="kw">self</span>
+    <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="&lt;=&gt;" type="Public" category="Instance" id="M000056">
+          <parameters>(sig)</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 85</span>
+    <span class="kw">def</span> &lt;=&gt;(sig)
+      <span class="kw">if</span> <span class="kw">self</span> &gt; sig
+        1
+      <span class="kw">elsif</span> sig &gt; <span class="kw">self</span>
+        -1
+      <span class="kw">else</span>
+        0
+      <span class="kw">end</span>
+    <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="dispatch" type="Public" category="Instance" id="M000057">
+          <parameters>(*types, &amp;block) {|*self| ...}</parameters>
+          <source-code-listing>
+<span class="cmt"># File overload.rb, line 95</span>
+    <span class="kw">def</span> dispatch(*types, &amp;block)
+      throw :dispatched, <span class="kw">yield</span>(*<span class="kw">self</span>) <span class="kw">if</span> <span class="kw">self</span>.class[*types] === <span class="kw">self</span>
+    <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Class" id="Class">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#ruby%2fclass.rb">ruby/class.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="ensure_instance_methods" type="Public" category="Instance" id="M000058">
+          <parameters>(*methods)</parameters>
+          <source-code-listing>
+<span class="cmt"># File ruby/class.rb, line 2</span>
+        <span class="kw">def</span> ensure_instance_methods(*methods)
+                methods.each <span class="kw">do</span> |method|
+                        <span class="kw">unless</span> instance_methods(<span class="kw">true</span>).include?(method.to_s)
+                                raise NoMethodError, &quot;#{self}##{method} must be defined&quot;, caller(5)
+                        <span class="kw">end</span>
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Map" id="Map">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#map.rb">map.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <description>
+<p>A segment of the entire game map.
+</p>
+    </description>
+    <contents>
+      <included-module-list>
+        <included-module name="Emitter"
+                         href="Emitter"
+        />
+      </included-module-list>
+      <method-list>
+        <method name="definitions" type="Public" category="Class" id="M000059">
+          <parameters>()</parameters>
+          <description>
+<p>A list of definitions of maps included in the game so far.
+</p>
+          </description>
+          <source-code-listing>
+<span class="cmt"># File map.rb, line 22</span>
+                <span class="kw">def</span> definitions
+                        @@definitions.dup
+                <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="new" type="Public" category="Class" id="M000060">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File map.rb, line 64</span>
+        <span class="kw">def</span> initialize
+                layout = <span class="kw">self</span>.class::LAYOUT.split($/)
+                key = <span class="kw">self</span>.class::KEY
+
+                fill_layout(layout)
+                @width = layout.first.size
+                @height = layout.size
+                @tiles = Array.new(@width*@height)
+                @markers = {}
+
+                chars = []
+                layout.each <span class="kw">do</span> |line|
+                        line.split(<span class="re">//</span>).each <span class="kw">do</span> |char|
+                                chars |= [char]
+                        <span class="kw">end</span>
+                <span class="kw">end</span>
+                undefined = chars - key.keys - [<span class="str">' '</span>]
+                <span class="kw">if</span> undefined.size &gt; 0
+                        raise MapDefinitionError, &quot;#{self.class} has no key entry for character(s): #{undefined.map{|c| c.inspect }.join(', ')}&quot;
+                <span class="kw">end</span>
+
+                y = 0
+                layout.each <span class="kw">do</span> |line|
+                        x = 0
+                        line.split(<span class="re">//</span>).each <span class="kw">do</span> |c|
+                                <span class="kw">self</span>[x, y] = tile = Tile.new(<span class="kw">self</span>, x, y)
+                                <span class="kw">if</span> contents = key[c]
+                                        <span class="kw">case</span> contents
+                                        <span class="kw">when</span> Array
+                                                contents.each <span class="kw">do</span> |thing|
+                                                        <span class="kw">case</span> thing
+                                                        <span class="kw">when</span> Marker
+                                                                add_marker(thing.id, x, y)
+                                                        <span class="kw">else</span>
+                                                                tile.add_object(thing.dup)
+                                                        <span class="kw">end</span>
+                                                <span class="kw">end</span>
+                                        <span class="kw">else</span>
+                                                tile.add_object(contents.dup)
+                                        <span class="kw">end</span>
+                                <span class="kw">end</span>
+                                x += 1
+                        <span class="kw">end</span>
+                        y += 1
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Door" id="Door">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#door.rb">door.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <included-module-list>
+        <included-module name="Visible"
+                         href="Visible"
+        />
+        <included-module name="Openable"
+                         href="Openable"
+        />
+      </included-module-list>
+      <method-list>
+        <method name="new" type="Public" category="Class" id="M000061">
+          <parameters>(open=false)</parameters>
+          <source-code-listing>
+<span class="cmt"># File door.rb, line 4</span>
+        <span class="kw">def</span> initialize(open=<span class="kw">false</span>)
+                @open = open
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="appearance" type="Public" category="Instance" id="M000062">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File door.rb, line 8</span>
+        <span class="kw">def</span> appearance
+                @open ? Appearance.door_open : Appearance.door_closed
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="opened_by" type="Public" category="Instance" id="M000063">
+          <parameters>(actor)</parameters>
+          <source-code-listing>
+<span class="cmt"># File door.rb, line 12</span>
+        <span class="kw">def</span> opened_by(actor)
+                puts <span class="str">&quot;Squeak!&quot;</span>
+                <span class="cmt"># change appearance, etc.</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="closed_by" type="Public" category="Instance" id="M000064">
+          <parameters>(actor)</parameters>
+          <source-code-listing>
+<span class="cmt"># File door.rb, line 17</span>
+        <span class="kw">def</span> closed_by(actor)
+                puts <span class="str">&quot;Bang!&quot;</span>
+                <span class="cmt"># change appearance, etc.</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="height" type="Public" category="Instance" id="M000065">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File door.rb, line 22</span>
+        <span class="kw">def</span> height; Tile::HEIGHT_HEAD <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="passable?" type="Public" category="Instance" id="M000066">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File door.rb, line 24</span>
+        <span class="kw">def</span> passable?; @open <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="MapDefinitionError" id="MapDefinitionError">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#map.rb">map.rb</a></infile>
+      </infiles>
+     <superclass><a href="#DefinitionError">DefinitionError</a></superclass>
+    </classmod-info>
+
+    <contents>
+     </contents>
+
+  </Class>
+  <Class name="DemoMap" id="DemoMap">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#demo.rb">demo.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Map">Map</a></superclass>
+    </classmod-info>
+
+    <contents>
+     </contents>
+
+  </Class>
+  <Class name="Keyboard" id="Keyboard">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#action.rb">action.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="new" type="Public" category="Class" id="M000067">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File action.rb, line 20</span>
+        <span class="kw">def</span> initialize
+                @map = DefaultMap
+                update_config
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="update_config" type="Public" category="Instance" id="M000068">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File action.rb, line 25</span>
+        <span class="kw">def</span> update_config
+                require <span class="str">'config-keyboard'</span>
+                <span class="kw">if</span> Keyboard.constants.include?(<span class="str">'Map'</span>)
+                        @map.update(Keyboard::Map)
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Unit" id="Unit">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#player.rb">player.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <attribute-list>
+        <attribute name="location">
+          <attribute-rw>RW</attribute-rw>
+          <description></description>
+        </attribute>
+      </attribute-list>
+      <method-list>
+        <method name="new" type="Public" category="Class" id="M000069">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File player.rb, line 6</span>
+        <span class="kw">def</span> initialize
+                @location = <span class="kw">nil</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="location=" type="Public" category="Instance" id="M000070">
+          <parameters>(tile)</parameters>
+          <source-code-listing>
+<span class="cmt"># File player.rb, line 10</span>
+        <span class="kw">def</span> location=(tile)
+                flow &quot;#{self.class}#location=(#{tile})&quot;
+                @location = tile
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Appearance" id="Appearance">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#appearance.rb">appearance.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <description>
+<p>Lists characters for various things
+</p>
+    </description>
+    <contents>
+      <included-module-list>
+        <included-module name="Method::Overload"
+                         href="Method::Overload"
+        />
+      </included-module-list>
+      <method-list>
+        <method name="ground" type="Public" category="Class" id="M000071">
+          <parameters>(*args)</parameters>
+          <source-code-listing>
+<span class="cmt"># File appearance.rb, line 8</span>
+                <span class="kw">def</span> ground(*args); Appearance.new(<span class="str">'.'</span>, *args) <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="wall" type="Public" category="Class" id="M000072">
+          <parameters>(*args)</parameters>
+          <source-code-listing>
+<span class="cmt"># File appearance.rb, line 9</span>
+                <span class="kw">def</span> wall(*args); Appearance.new(<span class="str">'#'</span>, *args) <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="furniture" type="Public" category="Class" id="M000073">
+          <parameters>(*args)</parameters>
+          <source-code-listing>
+<span class="cmt"># File appearance.rb, line 10</span>
+                <span class="kw">def</span> furniture(*args); Appearance.new(<span class="str">'='</span>, *args) <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="window" type="Public" category="Class" id="M000074">
+          <parameters>(*args)</parameters>
+          <source-code-listing>
+<span class="cmt"># File appearance.rb, line 11</span>
+                <span class="kw">def</span> window(*args); Appearance.new(<span class="str">'/'</span>, *args) <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="door_closed" type="Public" category="Class" id="M000075">
+          <parameters>(*args)</parameters>
+          <source-code-listing>
+<span class="cmt"># File appearance.rb, line 12</span>
+                <span class="kw">def</span> door_closed(*args); Appearance.new(<span class="str">'+'</span>, *args) <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="door_open" type="Public" category="Class" id="M000076">
+          <parameters>(*args)</parameters>
+          <source-code-listing>
+<span class="cmt"># File appearance.rb, line 13</span>
+                <span class="kw">def</span> door_open(*args); Appearance.new(<span class="str">'/'</span>, *args) <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="new" type="Public" category="Class" id="M000077">
+          <parameters>(character, *colour)</parameters>
+          <source-code-listing>
+<span class="cmt"># File appearance.rb, line 16</span>
+        <span class="kw">def</span> initialize(character, *colour)
+                @character = character
+                overload(colour) <span class="kw">do</span> |signature|
+                        signature.dispatch(Integer, Integer, Integer, Integer) <span class="kw">do</span> |r, g, b, a|
+                                @r, @g, @b, @a = r, g, b, a
+                        <span class="kw">end</span>
+                        signature.dispatch(Integer, Integer, Integer) <span class="kw">do</span> |r, g, b|
+                                @r, @g, @b, @a = r, g, b, 0xff
+                        <span class="kw">end</span>
+                        signature.dispatch(Integer) <span class="kw">do</span> |rgb|
+                                @r = (rgb &gt;&gt; 16) &amp; 0xff
+                                @g = (rgb &gt;&gt; 8) &amp; 0xff
+                                @b = rgb &amp; 0xff
+                                @a = 0xff
+                        <span class="kw">end</span>
+                        signature.dispatch() <span class="kw">do</span>
+                                @r, @g, @b, @a = 0xff, 0xff, 0xff, 0xff
+                        <span class="kw">end</span>
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="draw" type="Public" category="Instance" id="M000078">
+          <parameters>(win, x, y)</parameters>
+          <source-code-listing>
+<span class="cmt"># File appearance.rb, line 37</span>
+        <span class="kw">def</span> draw(win, x, y)
+                win.setpos(y, x)
+                win.addch(@character)
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Object" id="Object">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#language.rb">language.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="name_from_class" type="Public" category="Instance" id="M000079">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File language.rb, line 2</span>
+        <span class="kw">def</span> name_from_class
+                result = <span class="kw">self</span>.class.to_s.split(<span class="re">/::/</span>).last
+                result.gsub!(<span class="re">/([A-Z][^A-Z]*)/</span>) <span class="kw">do</span> |word|
+                        word.downcase + <span class="str">' '</span>
+                <span class="kw">end</span>
+                <span class="kw">return</span> result.strip
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="the" type="Public" category="Instance" id="M000080">
+          <parameters>(object)</parameters>
+          <source-code-listing>
+<span class="cmt"># File language.rb, line 10</span>
+        <span class="kw">def</span> the(object)
+                &quot;the #{object.name_from_class}&quot;
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="a" type="Public" category="Instance" id="M000081">
+          <parameters>(object)</parameters>
+          <source-code-listing>
+<span class="cmt"># File language.rb, line 14</span>
+        <span class="kw">def</span> a(object)
+                name = object.name_from_class
+                &quot;#{name[0].chr.match(/[aeiou]/) ? 'an' : 'a'} #{name}&quot;
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="an" type="Public" category="Instance" id="M000082">
+          <parameters>(object)</parameters>
+          <description>
+<p>Alias for <a href="#M000081">a</a>
+</p>
+          </description>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="DefinitionError" id="DefinitionError">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#map.rb">map.rb</a></infile>
+      </infiles>
+     <superclass>StandardError</superclass>
+    </classmod-info>
+
+    <description>
+<p>An error caused from inclusion of a map definition. Definitions of maps are
+checked for various errors when they are defined, such as missing key
+entries. See <a href="#Map">Map</a>.
+</p>
+    </description>
+    <contents>
+     </contents>
+
+  </Class>
+  <Class name="SpecialTrap" id="SpecialTrap">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#demo.rb">demo.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <included-module-list>
+        <included-module name="Trigger"
+                         href="Trigger"
+        />
+      </included-module-list>
+      <method-list>
+        <method name="triggered_by" type="Public" category="Instance" id="M000083">
+          <parameters>(actor)</parameters>
+          <source-code-listing>
+<span class="cmt"># File demo.rb, line 9</span>
+        <span class="kw">def</span> triggered_by(actor)
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Class name="Wall" id="Wall">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#map_objects.rb">map_objects.rb</a></infile>
+      </infiles>
+     <superclass><a href="#Object">Object</a></superclass>
+    </classmod-info>
+
+    <contents>
+      <included-module-list>
+        <included-module name="Visible"
+                         href="Visible"
+        />
+      </included-module-list>
+      <method-list>
+        <method name="height" type="Public" category="Instance" id="M000084">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File map_objects.rb, line 12</span>
+        <span class="kw">def</span> height; Tile::HEIGHT_CEILING <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="appearance" type="Public" category="Instance" id="M000085">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File map_objects.rb, line 13</span>
+        <span class="kw">def</span> appearance; Appearance.wall <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="passable?" type="Public" category="Instance" id="M000086">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File map_objects.rb, line 14</span>
+        <span class="kw">def</span> passable?; <span class="kw">false</span> <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Class>
+  <Module name="Action" id="Action">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#action.rb">action.rb</a></infile>
+      </infiles>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="included" type="Public" category="Class" id="M000087">
+          <parameters>(klass)</parameters>
+          <source-code-listing>
+<span class="cmt"># File action.rb, line 4</span>
+        <span class="kw">def</span> <span class="kw">self</span>.included(klass)
+                klass.ensure_instance_methods(:perform)
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Module>
+  <Module name="Visible" id="Visible">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#visible.rb">visible.rb</a></infile>
+      </infiles>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="included" type="Public" category="Class" id="M000088">
+          <parameters>(klass)</parameters>
+          <source-code-listing>
+<span class="cmt"># File visible.rb, line 4</span>
+        <span class="kw">def</span> <span class="kw">self</span>.included(klass)
+                klass.ensure_instance_methods(:appearance)
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Module>
+  <Module name="TileObject" id="TileObject">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#solid.rb">solid.rb</a></infile>
+      </infiles>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="included" type="Public" category="Class" id="M000089">
+          <parameters>(klass)</parameters>
+          <source-code-listing>
+<span class="cmt"># File solid.rb, line 4</span>
+        <span class="kw">def</span> <span class="kw">self</span>.included(klass)
+                klass.ensure_instance_methods(:height)
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Module>
+  <Module name="Emitter" id="Emitter">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#emitter.rb">emitter.rb</a></infile>
+      </infiles>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="connect" type="Public" category="Instance" id="M000090">
+          <parameters>(target, signal, method)</parameters>
+          <description>
+<p>Connect a target object to this emitter, so that when it emits the given
+signal, the given method will be called.
+</p>
+          </description>
+          <source-code-listing>
+<span class="cmt"># File emitter.rb, line 7</span>
+        <span class="kw">def</span> connect(target, signal, method)
+                init(signal)
+                <span class="kw">unless</span> target.respond_to? method
+                        raise NoMethodError, &quot;Target needs to respond to method '#{method}'&quot;
+                <span class="kw">end</span>
+                <span class="kw">if</span> signal.nil?
+                        raise RuntimeException, <span class="str">&quot;Signal 'nil' is not permitted&quot;</span> 
+                <span class="kw">end</span>
+                @_slots[signal].push([target, method])
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="disconnect" type="Public" category="Instance" id="M000091">
+          <parameters>(target=nil, signal=nil)</parameters>
+          <description>
+<p>Dettach specific target, or all targets if none specified.
+</p>
+          </description>
+          <source-code-listing>
+<span class="cmt"># File emitter.rb, line 19</span>
+        <span class="kw">def</span> disconnect(target=<span class="kw">nil</span>, signal=<span class="kw">nil</span>)
+                <span class="kw">if</span> <span class="kw">defined?</span> @_slots
+                        <span class="kw">if</span> target
+                                <span class="kw">if</span> signal
+                                        init(signal)
+                                        <span class="kw">if</span> @_slots[signal].delete_if{|t,m| t == target }.empty?
+                                                @_slots.delete(signal)
+                                        <span class="kw">end</span>
+                                <span class="kw">else</span>
+                                        @_slots.keys.each <span class="kw">do</span> |signal|
+                                                dettach(target, signal)
+                                        <span class="kw">end</span>
+                                <span class="kw">end</span>
+                        <span class="kw">else</span>
+                                @_slots.clear
+                        <span class="kw">end</span>
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="count_targets" type="Public" category="Instance" id="M000092">
+          <parameters>()</parameters>
+          <description>
+<p>The number of targets.
+</p>
+          </description>
+          <source-code-listing>
+<span class="cmt"># File emitter.rb, line 39</span>
+        <span class="kw">def</span> count_targets
+                <span class="kw">if</span> <span class="kw">defined?</span> @_slots
+                        count = 0
+                        @_slots.values.each{|targets| count += targets.size }
+                        count
+                <span class="kw">else</span>
+                        0
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="count_signals" type="Public" category="Instance" id="M000093">
+          <parameters>()</parameters>
+          <description>
+<p>The number of signals to which targets are attached.
+</p>
+          </description>
+          <source-code-listing>
+<span class="cmt"># File emitter.rb, line 50</span>
+        <span class="kw">def</span> count_signals
+                <span class="kw">if</span> <span class="kw">defined?</span> @_slots
+                        @_slots.size
+                <span class="kw">else</span>
+                        0
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="emit" type="Public" category="Instance" id="M000094">
+          <parameters>(signal, *args)</parameters>
+          <description>
+<p>Call method on all targets
+</p>
+          </description>
+          <source-code-listing>
+<span class="cmt"># File emitter.rb, line 59</span>
+        <span class="kw">def</span> emit(signal, *args)
+                <span class="kw">if</span> <span class="kw">defined?</span> @_slots
+                        init(signal)
+                        @_slots[signal].each <span class="kw">do</span> |target, method|
+                                <span class="kw">begin</span>
+                                        target.send(method, *args)
+                                <span class="kw">rescue</span> ArgumentError =&gt; e
+                                        puts &quot;#{target.class}##{method}: #{e.message}&quot;
+                                        raise e
+                                <span class="kw">end</span>
+                        <span class="kw">end</span>
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Module>
+  <Module name="Trigger" id="Trigger">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#trigger.rb">trigger.rb</a></infile>
+      </infiles>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="included" type="Public" category="Class" id="M000095">
+          <parameters>(klass)</parameters>
+          <source-code-listing>
+<span class="cmt"># File trigger.rb, line 4</span>
+        <span class="kw">def</span> <span class="kw">self</span>.included(klass)
+                klass.ensure_instance_methods(:triggered_by)
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="trigger" type="Public" category="Instance" id="M000096">
+          <parameters>(actor)</parameters>
+          <source-code-listing>
+<span class="cmt"># File trigger.rb, line 8</span>
+        <span class="kw">def</span> trigger(actor)
+                <span class="kw">self</span>.triggered_by(actor)
+                actor.object_triggered(<span class="kw">self</span>) <span class="kw">if</span> actor
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Module>
+  <Module name="Indestructible" id="Indestructible">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#map_objects.rb">map_objects.rb</a></infile>
+      </infiles>
+    </classmod-info>
+
+    <contents>
+     </contents>
+
+  </Module>
+  <Module name="Openable" id="Openable">
+    <classmod-info>
+      <infiles>      
+        <infile><a href="#openable.rb">openable.rb</a></infile>
+      </infiles>
+    </classmod-info>
+
+    <contents>
+      <method-list>
+        <method name="included" type="Public" category="Class" id="M000097">
+          <parameters>(klass)</parameters>
+          <source-code-listing>
+<span class="cmt"># File openable.rb, line 4</span>
+        <span class="kw">def</span> <span class="kw">self</span>.included(klass)
+                klass.ensure_instance_methods(:opened_by, :closed_by)
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="open?" type="Public" category="Instance" id="M000098">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File openable.rb, line 8</span>
+        <span class="kw">def</span> open?; @open <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="closed?" type="Public" category="Instance" id="M000099">
+          <parameters>()</parameters>
+          <source-code-listing>
+<span class="cmt"># File openable.rb, line 9</span>
+        <span class="kw">def</span> closed?; <span class="kw">not</span> @open <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="open" type="Public" category="Instance" id="M000100">
+          <parameters>(actor)</parameters>
+          <source-code-listing>
+<span class="cmt"># File openable.rb, line 11</span>
+        <span class="kw">def</span> open(actor)
+                <span class="kw">if</span> open?
+                        puts &quot;#{the self} is already open.&quot;.capitalize
+                <span class="kw">else</span>
+                        @open = <span class="kw">true</span>
+                        <span class="kw">self</span>.opened_by(actor)
+                        actor.object_opened(<span class="kw">self</span>)
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+        <method name="close" type="Public" category="Instance" id="M000101">
+          <parameters>(actor)</parameters>
+          <source-code-listing>
+<span class="cmt"># File openable.rb, line 21</span>
+        <span class="kw">def</span> close(actor)
+                <span class="kw">if</span> closed?
+                        puts &quot;#{the self} is already closed.&quot;.capitalize
+                <span class="kw">else</span>
+                        @open = <span class="kw">false</span>
+                        <span class="kw">self</span>.closed_by(actor)
+                        actor.object_closed(<span class="kw">self</span>)
+                <span class="kw">end</span>
+        <span class="kw">end</span>
+          </source-code-listing>
+        </method>
+      </method-list>
+     </contents>
+
+  </Module>
+</class-module-list>
+</rdoc>

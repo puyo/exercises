@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding= ?>
+<section name="Commands" filename="commands.html">
+	<p>
+		These are the commands for manipulating the game which must be
+		invokable via a keyboard, mouse or joystick from the client
+		program.
+	</p>
+	<commands table="Commands">
+		<command>
+			<name>Turn Counterclockwise</name>
+			<default>Left (direction key)</default>
+			<description>
+				Turns the plane a small degree counterclockwise. This
+				may correspond to up or down depending on the
+				direction the plane is facing.
+			</description>
+		</command>
+		<command>
+			<name>Turn Clockwise</name>
+			<default>Right (direction key)</default>
+			<description>
+				Turns the plane a small degree clockwise. This may
+				correspond to up or down depending on the direction
+				the plane is facing.
+			</description>
+		</command>
+		<command>
+			<name>Ascend</name>
+			<default>Up (direction key)</default>
+			<description>
+				Move the plane up (according to its current direction).
+				This is useful for taking off and dodging bullets fired at you.
+			</description>
+		</command>
+		<command>
+			<name>Descend</name>
+			<default>Down (direction key)</default>
+			<description>
+				Move the plane down (according to its current direction).
+				This is useful for landing and dodging bullets fired at you.
+			</description>
+		</command>
+		<command>
+			<name>Drop Bomb</name>
+			<default>B</default>
+			<description>
+				Release a currently equipped bomb from the plane.
+			</description>
+		</command>
+		<command>
+			<name>Fire</name>
+			<default>Spacebar</default>
+			<description>
+				Fire the forward-firing machine guns mounted on the
+				side of the plane.
+			</description>
+		</command>
+		<command>
+			<name>Pause</name>
+			<default>P</default>
+			<description>
+				Pause the action. This pauses the server and all other
+				clients. Use with courtesy.
+			</description>
+		</command>
+		<command>
+			<name>Talk</name>
+			<default>Enter</default>
+			<description>
+				Broadcast a text message to all other players. After
+				executing this command, type the message and press
+				Enter or Return.
+			</description>
+		</command>
+	</commands>
+</section>

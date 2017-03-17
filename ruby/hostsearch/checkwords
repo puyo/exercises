@@ -1,0 +1,18 @@
+#! /usr/bin/env ruby
+
+require 'checkhost'
+
+def main
+	words = File::readlines("/usr/share/dict/words")
+	words.sort! { |a, b|
+		a.size <=> b.size
+	}
+	for w in words
+		if w[0].chr =~ /[a-z]/
+			checkhost(w.strip, ["net"])
+		end
+	end
+end
+
+main
+

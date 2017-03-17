@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding= ?>
+section name="Commands" filename="commands.html">
+	p>
+		These are the commands for manipulating the game which must be
+		invokable via a keyboard, mouse or joystick from the client
+		program.
+	commands table="Commands">
+		command>
+			name> Turn Counterclockwise
+			default> Left (direction key)
+			description>
+				Turns the plane a small degree counterclockwise. This
+				may correspond to up or down depending on the
+				direction the plane is facing.
+		command>
+			name> Turn Clockwise
+			default> Right (direction key)
+			description>
+				Turns the plane a small degree clockwise. This may
+				correspond to up or down depending on the direction
+				the plane is facing.
+		command>
+			name> Ascend
+			default> Up (direction key)
+			description>
+				Move the plane up (according to its current direction).
+				This is useful for taking off and dodging bullets fired at you.
+		command>
+			name> Descend
+			default> Down (direction key)
+			description>
+				Move the plane down (according to its current direction).
+				This is useful for landing and dodging bullets fired at you.
+		command>
+			name> Drop Bomb
+			default> B
+			description>
+				Release a currently equipped bomb from the plane.
+		command>
+			name> Fire
+			default> Spacebar
+			description>
+				Fire the forward-firing machine guns mounted on the
+				side of the plane.
+		command>
+			name> Pause
+			default> P 
+			description>
+				Pause the action. This pauses the server and all other
+				clients. Use with courtesy.
+		command>
+			name> Talk
+			default> Enter
+			description>
+				Broadcast a text message to all other players. After
+				executing this command, type the message and press
+				Enter or Return.

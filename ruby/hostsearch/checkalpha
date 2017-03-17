@@ -1,0 +1,14 @@
+#! /usr/bin/env ruby
+
+require 'checkhost'
+
+def main
+	letters = 'ab'
+	begin
+		checkhost(letters, ["net"])
+		letters = letters.succ
+	end while letters != 'zz'
+end
+
+main
+

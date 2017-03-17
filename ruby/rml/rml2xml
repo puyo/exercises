@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+
+class String
+	def indent
+		return index(/[^\t]/)
+	end
+end
+
+def rml2xml(input, indent=0)
+	result = ""
+	while (line = input[0]) != nil
+		if line.indent == indent
+			input.shift
+			case line
+			when /<.*>/                   # < ... > tag
+				result << line
+			when /(\w+?)(?: (.*))?\>(.*)/ # ...> tag
+				name = $1.to_s
+				attributes = $2.to_s
+				attributes = ' ' + attributes if attributes != ''
+				rest = $3.to_s.strip
+				starttag = "<#{name}#{attributes}>"
+				endtag = "</#{name}>"
+				indentstr = "\t"*indent
+				if rest != ""
+					result << "#{indentstr}#{starttag}#{rest}#{endtag}\n"
+				else
+					result << "#{indentstr}#{starttag}\n"
+					result << rml2xml(input, indent+1)
+					result << "#{indentstr}#{endtag}\n"
+				end
+			else
+				result << line
+			end
+		else
+			return result
+		end
+	end
+	return result
+end
+
+def main
+	files = ARGV.each{|x| files |= Dir[x]}
+	files.each do |file|
+		if File.exist?(file)
+			new = rml2xml(IO.readlines(file))
+			newfilename = file[0...file.rindex('.')] << '.xml'
+			puts "-> #{newfilename}"
+			File::open(newfilename, 'w') do |out|
+				out.puts new
+			end
+		else
+			puts "File '#{file}' does not exist; skipping."
+		end
+	end
+end
+
+if File.basename(__FILE__) == 'rml2xml'
+	main
+end

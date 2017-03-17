@@ -1,0 +1,185 @@
+#!/usr/bin/env ruby
+
+class LaTeX
+  def LaTeX::quote(s)
+    s.gsub!(/\\/, '$\backslash$')
+    s.gsub!(/_/, '\_')
+    s.gsub!(/</, '\<')
+    s.gsub!(/>/, '\>')
+    s.gsub!(/(\s)\'/, '\1`')
+    s.gsub!(/(\s)\"/, '\1``')
+    s.gsub!(/\"(\s)/, "''\\1")
+    return s
+  end
+end
+
+class ChangeLog < Array
+
+  class EntrySet < Array
+
+    REGEXP_AUTHOR = /^(.+) \<(.+)\>$/
+
+    attr :date
+    attr :author
+    attr :email
+
+    def initialize(date, author)
+      @date = date
+      case author
+      when REGEXP_AUTHOR
+        @author = $1.strip
+        @email = $2.strip
+      else
+        @author = author
+        @email = nil
+      end
+    end
+
+    def email_string
+      if @email
+        return " (#{@email})"
+      else
+        return ""
+      end
+    end
+
+    def to_s
+      result = ""
+      result += "#{@author} #{@date}#{email_string}\n\n"
+      result += join("")
+      return result
+    end
+
+    def to_latex
+      result = ""
+
+      result += format("\n\n\\item[%s %s]\\hspace{0em}\n\n", LaTeX::quote(@date), LaTeX::quote(@author))
+      result += "\\begin{itemize}\n\n"
+
+      each do |entry|
+        result += entry.to_latex
+      end
+
+      result += "\n\\end{itemize}"
+
+      return result
+    end
+
+    def <=>(other)
+      result = @date <=> other.date
+      if result == 0
+        result = @author <=> other.author
+      end
+      return result
+    end
+  end
+
+  class Entry
+
+    REGEXP_FILE = /^(.+?)\: (.+)$/
+
+    attr :file
+    attr :entry
+
+    def initialize(entry)
+      raise "Empty entry" if entry == ""
+      case entry
+      when REGEXP_FILE
+        @file = $1.strip
+        @entry = $2.strip
+      else
+        @file = nil
+        @entry = entry
+      end
+    end
+
+    def to_s
+      return format "\t* %s%s\n\n", file_string, @entry
+    end
+
+    def file_string
+      if @file
+        return "#{@file}: "
+      else
+        return ""
+      end
+    end
+
+    def file_latex
+      if @file
+        return '\\textit{' + LaTeX::quote(@file) + ':} '
+      else
+        return ""
+      end
+    end
+
+    def to_latex
+
+      result = ""
+
+      result += format("\\item %s%s\n", file_latex, LaTeX::quote(@entry))
+
+      return result
+    end
+  end
+
+  REGEXP_DATE_AUTHOR = /^([\d-]+?) (.+)$/
+  REGEXP_ENTRY = /^\t\*\s+?(.+)$/
+  REGEXP_EMPTY_LINE = /^\s*$/
+
+  def ChangeLog::read(file)
+    result = ChangeLog.new
+    lines = file.readlines
+    current_entry = ""
+    current_set = nil
+    lines.each do |line|
+      case line
+      when REGEXP_DATE_AUTHOR
+        if current_entry != ""
+          current_set << Entry.new(current_entry)
+          current_entry = ""
+        end
+        current_set = EntrySet.new($1.strip, $2.strip)
+        result << current_set
+      when REGEXP_ENTRY
+        if current_entry != ""
+          current_set << Entry.new(current_entry)
+          current_entry = ""
+        end
+        current_entry = $1
+      when REGEXP_EMPTY_LINE
+        # nothing
+      else
+        current_entry += line
+        current_entry.gsub!(/\s+/, ' ') # squeeze whitespace
+      end
+    end
+
+    current_set << Entry.new(current_entry)
+    current_entry = ""
+
+    return result
+  end
+
+  def to_latex
+    last = nil
+
+    result = "\\begin{description}"
+    each do |set|
+      result += set.to_latex
+    end
+    result += "\n\\end{description}"
+    return result
+  end
+
+  def to_s
+    join
+  end
+end
+
+if __FILE__ == $0
+  c = ChangeLog::read(ARGF)
+  c.sort!
+  puts c.to_latex
+  #puts c.to_s
+end

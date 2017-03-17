@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+require 'options'
+require 'imlib2'
+include Imlib2
+
+opts = Options.new
+opts['l'] = [false, nil, 'List available fonts']
+opts['f'] = ['verdanab', 'font', 'TTF font used to render']
+opts['t'] = [nil, 'string', 'Text to render']
+opts['p'] = ['', 'path1:path2:...:pathn', 'Paths to font files']
+opts['s'] = [24, 'size', 'Size (pt) of font used to render']
+opts['o'] = ['rtext.png', 'outputfile', 'Output file']
+opts.set
+options = opts.values
+text = options['t']
+fontname = options['f']
+fontpaths = options['p']
+fontsize = options['s']
+outputfilename = options['o']
+dropx = 2
+dropy = 2
+
+fontpaths = fontpaths.split(':')
+fontpaths |= ['.']
+for path in fontpaths
+	Imlib2::Font::add_path(path)
+end
+fontname = "#{fontname}/#{fontsize}"
+font = Imlib2::Font.new(fontname)
+
+width, height = font.size(text)
+exit if width <= 0 or height <= 0
+
+image = Imlib2::Image::new(width + dropx, height + dropy)
+image.clear_color!(Imlib2::Color::WHITE)
+
+l = 60
+fg = Imlib2::Color::RgbaColor.new(l, l, l, 255)
+image.draw_text(font, text, dropx, dropy, Imlib2::Color::LIGHTGREY)
+image.draw_text(font, text, 0, 0, fg)
+
+image.save(outputfilename)
+
+system("qiv -p #{outputfilename}")

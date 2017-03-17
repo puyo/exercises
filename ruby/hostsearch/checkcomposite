@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require 'checkhost'
+
+def main
+	puts "Iterating..."
+	for a in ARGV
+		for b in ARGV
+			w = a + b
+			checkhost(w, ["net"])
+		end
+	end
+end
+
+main
+
