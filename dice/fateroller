@@ -1,0 +1,90 @@
+#!/usr/bin/env ruby
+
+class FudgeFate
+  Ladder = %(
+    +6 Legendary
+    +5 Epic
+    +4 Superb
+    +3 Great
+    +2 Good
+    +1 Fair
+    0 Average
+    -1 Mediocre
+    -2 Poor
+    -3 Terrible
+    -4 Abysmal
+  ).each_line.map do |line|
+    n, a = line.split(' ')
+    next if n.nil?
+    [n.to_i, a]
+  end.compact
+
+  DieFace = { -1 => '-', 0 => ' ', 1 => '+' }.freeze
+
+  def self.roll(skill)
+    srand
+    results = Array.new(4) { rand(3) - 1 }
+    sum = results.inject(:+)
+    result = shift(skill, sum)
+    details = '[' + results.map{|r| DieFace[r] }.join + ']'
+    [result, details]
+  end
+
+  def self.shift(skill, difference)
+    skill + difference
+  end
+
+  def self.number(arg)
+    if arg.respond_to?(:downcase) && r = Ladder.rassoc(arg.downcase.capitalize)
+      r.first
+    elsif arg.respond_to? :to_i
+      arg.to_i
+    else
+      raise RuntimeError, "Could not find number and adjective for #{arg.inspect}"
+    end
+  end
+
+  def self.adjective(n)
+    n = n.to_i
+    if n < Ladder.last.first
+      Kernel.format('%s%+d', Ladder.last.last.capitalize, n - Ladder.last.first)
+    elsif n > Ladder.first.first
+      Kernel.format('%s%+d', Ladder.first.last.capitalize, n - Ladder.first.first)
+    else
+      Ladder.assoc(n).last
+    end
+  end
+
+  def self.format(n)
+    result = Kernel.format('%+d', n)
+    if adj = adjective(n)
+      result << ' ' + adj.capitalize
+    end
+    result
+  end
+end
+
+def usage
+  puts format('Usage: %s [<skill name> <skill rating>]+', File.basename($PROGRAM_NAME))
+  exit
+end
+
+if $PROGRAM_NAME == __FILE__
+  system = FudgeFate
+  usage if ARGV.size < 2
+  while ARGV.size > 1
+    skillname = ARGV.shift
+    skill = system.number(ARGV.shift)
+    if skillname && skill
+      result, details = system.roll(skill)
+      line = format '[Rolling "%s" (%s) ... %s ... %s]',
+                    skillname,
+                    system.format(skill),
+                    details,
+                    system.format(result)
+      puts line
+    else
+      usage
+    end
+  end
+end
