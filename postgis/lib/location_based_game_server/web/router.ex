@@ -18,7 +18,7 @@ defmodule LocationBasedGameServer.Web.Router do
 
     get "/", PageController, :index
 
-    resources "/games", GameController, except: [:new, :edit]
+    resources "/games", GameController
   end
 
   # Other scopes may use custom stacks.

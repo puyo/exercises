@@ -47,6 +47,23 @@ exports.config = {
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [/vendor/]
+    },
+    sass: {
+      debug: 'comments',
+      mode: 'native',
+      allowCache: true,
+      options: {
+        includePaths: [
+          'node_modules/leaflet/dist',
+          'node_modules/bootstrap-sass',
+          'node_modules',
+        ]
+      }
+    },
+    assetsmanager: {
+      copyTo: {
+        fonts: ['node_modules/bootstrap-sass/assets/fonts/bootstrap*']
+      }
     }
   },
 
