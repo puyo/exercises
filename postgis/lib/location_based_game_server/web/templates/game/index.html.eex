@@ -2,6 +2,18 @@
 
 <div id="games_map" style="height:400px"></div>
 
+<form class="form form-inline" action="">
+    Look for a game within
+    <input type="text" class="form-control input-sm" placeholder="km" value="10">
+    <select class="form-control input-sm">
+        <option value="km">km</option>
+        <option value="mi">mi</option>
+    </select>
+    of
+    <input type="text" class="form-control input-sm" placeholder="place" style="width:20em">
+</form>
+
+
 <table class="table">
   <thead>
     <tr>
