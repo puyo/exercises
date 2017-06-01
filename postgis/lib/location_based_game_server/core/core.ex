@@ -35,7 +35,7 @@ defmodule LocationBasedGameServer.Core do
       ** (Ecto.NoResultsError)
 
   """
-  def get_game!(id), do: Repo.get!(Game, id)
+  def get_game!(id), do: Repo.get_by!(Game, uuid: id)
 
   @doc """
   Creates a game.

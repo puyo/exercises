@@ -6,12 +6,6 @@
   <% end %>
 
   <div class="form-group">
-    <%= label f, :uuid, class: "control-label" %>
-    <%= text_input f, :uuid, class: "form-control" %>
-    <%= error_tag f, :uuid %>
-  </div>
-
-  <div class="form-group">
     <%= label f, :name, class: "control-label" %>
     <%= text_input f, :name, class: "form-control" %>
     <%= error_tag f, :name %>
@@ -21,12 +15,6 @@
     <%= label f, :game_type, class: "control-label" %>
     <%= text_input f, :game_type, class: "form-control" %>
     <%= error_tag f, :game_type %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :geometry, class: "control-label" %>
-    <%= text_input f, :geometry, class: "form-control" %>
-    <%= error_tag f, :geometry %>
   </div>
 
   <div class="form-group">

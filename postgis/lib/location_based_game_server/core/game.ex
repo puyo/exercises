@@ -3,6 +3,8 @@ defmodule LocationBasedGameServer.Core.Game do
   import Ecto.Changeset
   alias LocationBasedGameServer.Core.Game
 
+  @derive {Phoenix.Param, key: :uuid}
+
   schema "games" do
     field :uuid, Ecto.UUID
     field :name, :string
