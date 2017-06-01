@@ -1,12 +1,12 @@
-defmodule LocationBasedGameServer.Games do
+defmodule LocationBasedGameServer.Core do
   @moduledoc """
-  The boundary for the Games system.
+  The boundary for the Core system.
   """
 
   import Ecto.Query, warn: false
   alias LocationBasedGameServer.Repo
 
-  alias LocationBasedGameServer.Games.Game
+  alias LocationBasedGameServer.Core.Game
 
   @doc """
   Returns the list of games.
