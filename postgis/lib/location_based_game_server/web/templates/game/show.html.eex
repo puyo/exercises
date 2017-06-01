@@ -3,8 +3,23 @@
 <ul>
 
   <li>
+    <strong>Uuid:</strong>
+    <%= @game.uuid %>
+  </li>
+
+  <li>
     <strong>Name:</strong>
     <%= @game.name %>
+  </li>
+
+  <li>
+    <strong>Game type:</strong>
+    <%= @game.game_type %>
+  </li>
+
+  <li>
+    <strong>Geometry:</strong>
+    <%= @game.geometry.coordinates |> Tuple.to_list |> Enum.join(",") %>
   </li>
 
 </ul>
