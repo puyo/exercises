@@ -62,7 +62,8 @@ exports.config = {
     },
     assetsmanager: {
       copyTo: {
-        fonts: ['node_modules/bootstrap-sass/assets/fonts/bootstrap*']
+        'fonts': ['node_modules/bootstrap-sass/assets/fonts/bootstrap*'],
+        'css/images': ['node_modules/leaflet/dist/images/*']
       }
     }
   },

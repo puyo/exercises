@@ -1,9 +1,27 @@
 import L from "leaflet"
 
-const mymap = L.map('games_map')
-      .setView([-33.84829,151.1770955], 10);
+document.addEventListener("DOMContentLoaded", function(event) { 
+  const mapDiv = document.getElementById("games_map");
+  if (mapDiv) {
+    initMap(mapDiv);
+  }
+});
 
-L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
-  maxZoom: 18,
-}).addTo(mymap);
+function initMap(mapDiv) {
+  const map = L.map(mapDiv).setView([-33.84829,151.1770955], 10);
+
+  L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+    maxZoom: 18,
+  }).addTo(map);
+
+  fetch("/api/games")
+    .then(json => json.json())
+    .then(response => {
+      response.data.forEach(game => {
+        L.marker(game.coordinates)
+          .addTo(map)
+          .bindPopup(game.name);
+      })
+    })
+}
