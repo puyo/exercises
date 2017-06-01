@@ -11,6 +11,11 @@
 # and so on) as they will fail if something goes wrong.
 
 alias LocationBasedGameServer.Repo
-alias Ecto.Adapters.SQL
+alias LocationBasedGameServer.Core.Game
 
-Repo |> SQL.query!("INSERT INTO games (name, geom) VALUES ('my game', ST_GeometryFromText('POINT(-118.4079 33.9434)', 4326));")
+Repo.insert!(
+  %Game{
+    name: "my game",
+    geometry: %Geo.Point{coordinates: {30.0, -90.0}, srid: 4326 }
+  }
+)

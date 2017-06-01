@@ -11,7 +11,7 @@ defmodule LocationBasedGameServer.Repo.Migrations.CreateLocationBasedGameServer.
     end
 
     execute """
-    SELECT AddGeometryColumn('games', 'geom', 4326, 'POINT', 2);
+    SELECT AddGeometryColumn('games', 'geometry', 4326, 'POINT', 2);
     """
   end
 

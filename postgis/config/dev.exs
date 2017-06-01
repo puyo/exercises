@@ -55,4 +55,5 @@ config :location_based_game_server, LocationBasedGameServer.Repo,
   password: "postgres",
   database: "location_based_game_server_dev",
   hostname: "localhost",
-  pool_size: 10
+  pool_size: 10,
+  types: LocationBasedGameServer.PostgresTypes

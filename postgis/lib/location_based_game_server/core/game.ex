@@ -7,7 +7,7 @@ defmodule LocationBasedGameServer.Core.Game do
     field :uuid, Ecto.UUID
     field :name, :string
     field :game_type, :string
-    field :geometry, :string
+    field :geometry, Geo.Geometry
     field :created_at, :utc_datetime
     field :updated_at, :utc_datetime
   end

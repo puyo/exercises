@@ -16,4 +16,6 @@ config :location_based_game_server, LocationBasedGameServer.Repo,
   password: "postgres",
   database: "location_based_game_server_test",
   hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+  pool: Ecto.Adapters.SQL.Sandbox,
+  types: LocationBasedGameServer.PostgresTypes
+
