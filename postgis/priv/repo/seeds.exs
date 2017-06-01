@@ -19,3 +19,10 @@ Repo.insert!(
     geometry: %Geo.Point{coordinates: {30.0, -90.0}, srid: 4326 }
   }
 )
+
+Repo.insert!(
+  %Game{
+    name: "my other game",
+    geometry: %Geo.Point{coordinates: {31.0, -95.0}, srid: 4326 }
+  }
+)
