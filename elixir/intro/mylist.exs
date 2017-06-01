@@ -27,14 +27,9 @@ defmodule MyList do
   defp _span(from, to) when from < to, do: [from | _span(from + 1, to)]
   defp _span(from, to) when from > to, do: [from | _span(from - 1, to)]
   defp _span(from, _to), do: [from]
-
-  def primes(n) when n > 2 do
-    all = for x <- 2..n, y <- 2..n, x <= y, do: x*y
-    Enum.to_list(2..n) -- all
-  end
 end
 
-# IO.puts MyList.mapsum([1,2,3], &(&1 * &1))
+# IO.inspect MyList.mapsum([1,2,3], &(&1 * &1))
 
 # IO.puts MyList.max([1,20,3])
 # IO.puts MyList.max([])
@@ -45,5 +40,3 @@ end
 # IO.inspect MyList.span(1, 10)
 # IO.inspect MyList.span(10, 1)
 # IO.inspect MyList.span(10.5, 1)
-
-IO.inspect MyList.primes(50)
