@@ -15,6 +15,6 @@ defmodule LocationBasedGameServer.Web.GameView do
       uuid: game.uuid,
       name: game.name,
       game_type: game.game_type,
-      geometry: game.geometry}
+      coordinates: game.geometry.coordinates |> Tuple.to_list }
   end
 end
