@@ -5,10 +5,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Uuid</th>
       <th>Name</th>
       <th>Game type</th>
-      <th>Geometry</th>
 
       <th></th>
     </tr>
@@ -16,10 +14,8 @@
   <tbody>
 <%= for game <- @games do %>
     <tr>
-      <td><%= game.uuid %></td>
       <td><%= game.name %></td>
       <td><%= game.game_type %></td>
-      <td><%= game.geometry.coordinates |> Tuple.to_list |> Enum.join(",") %></td>
 
       <td class="text-right">
         <span><%= link "Show", to: game_path(@conn, :show, game), class: "btn btn-default btn-xs" %></span>

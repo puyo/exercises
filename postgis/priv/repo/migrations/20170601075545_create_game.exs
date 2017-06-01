@@ -9,13 +9,17 @@ defmodule LocationBasedGameServer.Repo.Migrations.CreateLocationBasedGameServer.
       add :created_at, :timestamp, null: false, default: fragment("CURRENT_TIMESTAMP")
       add :updated_at, :timestamp, null: false, default: fragment("CURRENT_TIMESTAMP")
     end
-
     execute """
     SELECT AddGeometryColumn('games', 'geometry', 4326, 'POINT', 2);
     """
+
+    create_if_not_exists unique_index(:games, [:name])
+    create_if_not_exists unique_index(:games, [:uuid])
   end
 
   def down do
+    drop_if_exists unique_index(:games, [:uuid])
+    drop_if_exists unique_index(:games, [:name])
     drop table(:games)
   end
 end
