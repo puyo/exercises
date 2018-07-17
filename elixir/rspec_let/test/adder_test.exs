@@ -55,6 +55,8 @@ end
 # --- lazy with functions
 
 defmodule LazyContextCase do
+  @moduledoc "Functions are lazily evaluated, so we don't have to order the terms right during setup"
+
   use ExUnit.CaseTemplate
 
   using do
@@ -91,8 +93,6 @@ defmodule LazyContextCase do
 end
 
 defmodule AdderWithFunctionsTest do
-  @moduledoc "Functions are lazily evaluated, so we don't have to order the terms right during setup"
-
   use LazyContextCase, async: true
 
   describe "add/2 with a = 1, b = 1" do
@@ -235,6 +235,8 @@ end
 # --- lazy with Agent
 
 defmodule AgentContextCase do
+  @moduledoc "Use an KV style agent instead of the test context object"
+
   use ExUnit.CaseTemplate
 
   using do
