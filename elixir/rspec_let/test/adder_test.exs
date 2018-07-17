@@ -160,7 +160,7 @@ defmodule EtsContextCase do
   end
 
   defmodule Helpers do
-    def get(var, f) do
+    def set(var, f) do
       :ets.insert(:ex_unit, {var, f})
       :ok
     end
@@ -175,7 +175,7 @@ defmodule EtsContextCase do
     defmacro let(var, expr) do
       quote do
         setup do
-          get(unquote(var), fn -> unquote(expr) end)
+          set(unquote(var), fn -> unquote(expr) end)
         end
       end
     end
@@ -253,7 +253,7 @@ defmodule AgentContextCase do
   defmodule Helpers do
     @name :ex_unit
 
-    def get(var, f) do
+    def set(var, f) do
       Agent.update(@name, fn state -> Map.put(state, var, f) end)
       :ok
     end
@@ -268,7 +268,7 @@ defmodule AgentContextCase do
     defmacro let(var, expr) do
       quote do
         setup do
-          get(unquote(var), fn -> unquote(expr) end)
+          set(unquote(var), fn -> unquote(expr) end)
         end
       end
     end
