@@ -368,25 +368,21 @@ state ready {
     }
 }
 
-
 /*
 TODO:
-- [x] textures for tiles esp ports so we can tell what is going on
-- [x] list of tile positions
-- [x] list of port positions
-- [ ] list of town positions
-- [ ] list of town positions
-- [ ] list of road positions
+- [x] textures for tiles and ports
+- [x] list of tile + port positions (37)
+- [x] lay out tiles
+- [ ] tile meshes (37 positions) - 7 prims currently but could be 5 prims with work
+- [ ] town meshes (~60 positions) - 8 prims? 
+- [ ] city meshes (~60 positions) - 8 prims?
+- [ ] road meshes (~80 positions) - 10-11 prims?
+- [ ] thief prim - 1 prim
+- [ ] 7 + 8 + 8 + 10 + 1 = 34
 - [ ] list of links between roads
 - [ ] list of links between town positions and tile positions
 - [ ] list of links between town positions and ports
 - [ ] list of pieces on the board - what, where, who owns it
-- [ ] road placeholder prim
-- [ ] road prim
-- [ ] town/city placeholder prim
-- [ ] town prim
-- [ ] city prim
-- [ ] thief prim
 - [ ] state off
   - remove all prims, reset all variables
 - [ ] state setup_questions
