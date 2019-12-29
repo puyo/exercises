@@ -374,11 +374,11 @@ TODO:
 - [x] list of tile + port positions (37)
 - [x] lay out tiles
 - [ ] tile meshes (37 positions) - 7 prims currently but could be 5 prims with work
-- [ ] town meshes (~60 positions) - 8 prims? 
-- [ ] city meshes (~60 positions) - 8 prims?
-- [ ] road meshes (~80 positions) - 10-11 prims?
+- [ ] town meshes (54 positions) - 7 prims
+- [ ] city meshes (54 positions) - 7 prims
+- [ ] road meshes (72 positions) - 9 prims
 - [ ] thief prim - 1 prim
-- [ ] 7 + 8 + 8 + 10 + 1 = 34
+- minimum: 5 + 7 + 7 + 9 + 1 = 29
 - [ ] list of links between roads
 - [ ] list of links between town positions and tile positions
 - [ ] list of links between town positions and ports
