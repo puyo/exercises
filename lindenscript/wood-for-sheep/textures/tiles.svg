@@ -9,6 +9,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:export-ydpi="139.99921"
+   inkscape:export-xdpi="139.99921"
+   inkscape:export-filename="/Users/greg/projects/exercises/lindenscript/wood-for-sheep/textures/tiles.png"
    width="744.09448819"
    height="1052.3622047"
    id="svg2"
@@ -609,6 +612,7 @@
     </pattern>
   </defs>
   <sodipodi:namedview
+     inkscape:lockguides="false"
      inkscape:snap-grids="false"
      inkscape:snap-to-guides="false"
      showborder="false"
@@ -621,16 +625,16 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.27150649"
-     inkscape:cx="248.45899"
-     inkscape:cy="599.05142"
+     inkscape:zoom="0.38396816"
+     inkscape:cx="347.21156"
+     inkscape:cy="647.36428"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1365"
      inkscape:window-height="934"
-     inkscape:window-x="19"
-     inkscape:window-y="30"
+     inkscape:window-x="27"
+     inkscape:window-y="37"
      showguides="false"
      inkscape:guide-bbox="true"
      inkscape:document-rotation="0"
@@ -639,10 +643,12 @@
        id="grid12170"
        type="xygrid" />
     <sodipodi:guide
+       inkscape:locked="false"
        id="guide12774"
        orientation="0,-1"
        position="334.24615,648.59652" />
     <sodipodi:guide
+       inkscape:locked="false"
        id="guide12776"
        orientation="0,-1"
        position="348.05798,661.02716" />
@@ -669,7 +675,7 @@
        inkscape:label=""
        inkscape:export-xdpi="357"
        inkscape:export-ydpi="357"
-       transform="matrix(1,0,0,1.0049429,774.47122,270.46692)">
+       transform="matrix(1,0,0,1.0049429,774.47122,-9.53308)">
       <path
          sodipodi:type="star"
          style="display:inline;overflow:visible;visibility:visible;fill:#a6f2f0;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.71165;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
@@ -741,7 +747,7 @@
          clip-path="url(#clipPath3251)" />
     </g>
     <g
-       transform="translate(454.67132,659.34857)"
+       transform="translate(454.67132,379.34857)"
        id="portore">
       <path
          d="m 457.27551,309.9165 -74.63122,-10e-6 -37.31561,-64.63253 37.31561,-64.63253 74.63122,1e-5 37.31561,64.63253 z"
@@ -821,7 +827,7 @@
          style="display:inline;overflow:visible;visibility:visible;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#ffffff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:6, 6;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate" />
     </g>
     <g
-       transform="translate(132.14648,939.34857)"
+       transform="translate(132.14648,659.34857)"
        id="portwheat">
       <path
          d="m 779.80035,309.9165 -74.63122,-10e-6 -37.31561,-64.63253 37.31562,-64.63253 74.63121,1e-5 37.31561,64.63253 z"
@@ -937,7 +943,7 @@
       </g>
     </g>
     <g
-       transform="translate(-25.328682,-41.916509)"
+       transform="translate(-25.328682,-321.91651)"
        id="ore2">
       <path
          d="m 457.27551,451.18157 -74.63122,0 -37.31561,-64.63253 37.31561,-64.63253 74.63122,0 37.31561,64.63254 z"
@@ -1027,7 +1033,7 @@
       </g>
     </g>
     <g
-       transform="translate(-26.591133,-41.916509)"
+       transform="translate(-26.591133,-321.91651)"
        id="brick2">
       <path
          d="m 618.53796,451.18157 -74.63122,0 -37.31561,-64.63253 37.31562,-64.63253 74.63121,0 37.31561,64.63254 z"
@@ -1147,7 +1153,7 @@
       </g>
     </g>
     <g
-       transform="translate(-27.853523,-41.916509)"
+       transform="translate(-27.853523,-321.91651)"
        id="wheat2">
       <path
          d="m 779.80035,451.18157 -74.63122,0 -37.31561,-64.63253 37.31562,-64.63253 74.63121,0 37.31561,64.63254 z"
@@ -1295,7 +1301,7 @@
       </g>
     </g>
     <g
-       transform="translate(777.19618,379.34857)"
+       transform="translate(777.19618,99.34857)"
        id="portsheep">
       <path
          d="m 134.75064,309.9165 -74.631216,-10e-6 -37.315606,-64.63253 37.315612,-64.63253 74.63122,1e-5 37.3156,64.63253 z"
@@ -1408,7 +1414,7 @@
          id="path7947-2" />
     </g>
     <g
-       transform="translate(615.93374,519.34857)"
+       transform="translate(615.93374,239.34857)"
        id="portwood">
       <path
          d="m 296.01309,309.9165 -74.63122,-10e-6 -37.31561,-64.63253 37.31561,-64.63253 74.63122,1e-5 37.31561,64.63253 z"
@@ -1515,7 +1521,7 @@
          style="opacity:0.508039;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.805069px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
     </g>
     <g
-       transform="translate(293.40887,799.34857)"
+       transform="translate(293.40887,519.34857)"
        id="portbrick">
       <path
          d="m 618.53796,309.9165 -74.63122,-10e-6 -37.31561,-64.63253 37.31562,-64.63253 74.63121,1e-5 37.31561,64.63253 z"
@@ -1597,7 +1603,7 @@
          transform="scale(-1,1)" />
     </g>
     <g
-       transform="translate(-22.803818,-41.916509)"
+       transform="translate(-22.803818,-321.91651)"
        id="sheep2">
       <path
          d="m 134.75064,451.18157 -74.631216,0 -37.315606,-64.63253 37.315612,-64.63253 74.63122,0 37.3156,64.63254 z"
@@ -1682,7 +1688,7 @@
       </g>
     </g>
     <g
-       transform="translate(-24.066261,-41.916509)"
+       transform="translate(-24.066261,-321.91651)"
        id="wood2">
       <path
          d="m 296.01309,451.18157 -74.63122,0 -37.31561,-64.63253 37.31561,-64.63253 74.63122,0 37.31561,64.63254 z"
@@ -1761,7 +1767,7 @@
       </g>
     </g>
     <g
-       transform="translate(614.78112,245.77782)"
+       transform="translate(614.78112,-34.22218)"
        id="desert">
       <path
          sodipodi:type="star"
@@ -1786,7 +1792,7 @@
          sodipodi:nodetypes="cczzzccc" />
     </g>
     <g
-       transform="translate(-25.328682,98.083491)"
+       transform="translate(-25.328682,-181.91651)"
        style="opacity:1"
        id="ore3">
       <path
@@ -1877,7 +1883,7 @@
       </g>
     </g>
     <g
-       transform="translate(-26.591133,98.083491)"
+       transform="translate(-26.591133,-181.91651)"
        style="opacity:1"
        id="brick3">
       <path
@@ -1998,7 +2004,7 @@
       </g>
     </g>
     <g
-       transform="translate(-27.853523,98.083491)"
+       transform="translate(-27.853523,-181.91651)"
        style="opacity:1"
        id="wheat3">
       <path
@@ -2147,7 +2153,7 @@
       </g>
     </g>
     <g
-       transform="translate(-22.803818,98.083491)"
+       transform="translate(-22.803818,-181.91651)"
        style="opacity:1"
        id="sheep3">
       <path
@@ -2233,7 +2239,7 @@
       </g>
     </g>
     <g
-       transform="translate(-24.066261,98.083491)"
+       transform="translate(-24.066261,-181.91651)"
        style="opacity:1"
        id="wood3">
       <path
@@ -2315,7 +2321,7 @@
     <g
        id="ore4"
        style="opacity:1"
-       transform="translate(-25.328682,238.08349)">
+       transform="translate(-25.328682,-41.91651)">
       <path
          d="m 457.27551,451.18157 -74.63122,0 -37.31561,-64.63253 37.31561,-64.63253 74.63122,0 37.31561,64.63254 z"
          sodipodi:type="star"
@@ -2406,7 +2412,7 @@
     <g
        id="brick4"
        style="opacity:1"
-       transform="translate(-26.591133,238.08349)">
+       transform="translate(-26.591133,-41.91651)">
       <path
          d="m 618.53796,451.18157 -74.63122,0 -37.31561,-64.63253 37.31562,-64.63253 74.63121,0 37.31561,64.63254 z"
          inkscape:randomized="0"
@@ -2527,7 +2533,7 @@
     <g
        id="wheat4"
        style="opacity:1"
-       transform="translate(-27.853523,238.08349)">
+       transform="translate(-27.853523,-41.91651)">
       <path
          d="m 779.80035,451.18157 -74.63122,0 -37.31561,-64.63253 37.31562,-64.63253 74.63121,0 37.31561,64.63254 z"
          sodipodi:type="star"
@@ -2676,7 +2682,7 @@
     <g
        id="sheep4"
        style="opacity:1"
-       transform="translate(-22.803818,238.08349)">
+       transform="translate(-22.803818,-41.91651)">
       <path
          d="m 134.75064,451.18157 -74.631216,0 -37.315606,-64.63253 37.315612,-64.63253 74.63122,0 37.3156,64.63254 z"
          sodipodi:type="star"
@@ -2762,7 +2768,7 @@
     <g
        id="wood4"
        style="opacity:1"
-       transform="translate(-24.066261,238.08349)">
+       transform="translate(-24.066261,-41.91651)">
       <path
          d="m 296.01309,451.18157 -74.63122,0 -37.31561,-64.63253 37.31561,-64.63253 74.63122,0 37.31561,64.63254 z"
          sodipodi:type="star"
@@ -2840,7 +2846,7 @@
       </g>
     </g>
     <g
-       transform="translate(-25.328682,378.08349)"
+       transform="translate(-25.328682,98.08349)"
        style="opacity:1"
        id="ore5">
       <path
@@ -2931,7 +2937,7 @@
       </g>
     </g>
     <g
-       transform="translate(-26.591133,378.08349)"
+       transform="translate(-26.591133,98.08349)"
        style="opacity:1"
        id="brick5">
       <path
@@ -3052,7 +3058,7 @@
       </g>
     </g>
     <g
-       transform="translate(-27.853523,378.08349)"
+       transform="translate(-27.853523,98.08349)"
        style="opacity:1"
        id="wheat5">
       <path
@@ -3201,7 +3207,7 @@
       </g>
     </g>
     <g
-       transform="translate(-22.803818,378.08349)"
+       transform="translate(-22.803818,98.08349)"
        style="opacity:1"
        id="sheep5">
       <path
@@ -3287,7 +3293,7 @@
       </g>
     </g>
     <g
-       transform="translate(-24.066261,378.08349)"
+       transform="translate(-24.066261,98.08349)"
        style="opacity:1"
        id="wood5">
       <path
@@ -3369,7 +3375,7 @@
     <g
        id="ore6"
        style="opacity:1"
-       transform="translate(-25.328682,518.08349)">
+       transform="translate(-25.328682,238.08349)">
       <path
          d="m 457.27551,451.18157 -74.63122,0 -37.31561,-64.63253 37.31561,-64.63253 74.63122,0 37.31561,64.63254 z"
          sodipodi:type="star"
@@ -3460,7 +3466,7 @@
     <g
        id="brick6"
        style="opacity:1"
-       transform="translate(-26.591133,518.08349)">
+       transform="translate(-26.591133,238.08349)">
       <path
          d="m 618.53796,451.18157 -74.63122,0 -37.31561,-64.63253 37.31562,-64.63253 74.63121,0 37.31561,64.63254 z"
          inkscape:randomized="0"
@@ -3579,7 +3585,7 @@
       </g>
     </g>
     <g
-       transform="translate(-24.089912,-80.610937)"
+       transform="translate(-24.089912,-360.61094)"
        id="wheat6">
       <path
          d="m 776.03674,1049.876 -74.63122,0 -37.31561,-64.63253 37.31561,-64.63253 74.63122,0 37.31561,64.63253 z"
@@ -3728,7 +3734,7 @@
     </g>
     <g
        id="ore8"
-       transform="translate(-25.328682,658.08349)">
+       transform="translate(-25.328682,378.08349)">
       <path
          sodipodi:type="star"
          style="display:inline;overflow:visible;visibility:visible;fill:#a8c1cf;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
@@ -3818,7 +3824,7 @@
     </g>
     <g
        id="brick8"
-       transform="translate(-26.591133,658.08349)">
+       transform="translate(-26.591133,378.08349)">
       <path
          inkscape:randomized="0"
          inkscape:rounded="0"
@@ -3937,7 +3943,7 @@
       </g>
     </g>
     <g
-       transform="translate(-18.565193,-87.937048)"
+       transform="translate(-18.565193,-367.93705)"
        id="wheat8">
       <path
          d="m 770.51202,1197.2021 -74.63122,0 -37.31561,-64.6325 37.31562,-64.6326 74.63121,1e-4 37.31561,64.6325 z"
@@ -4086,7 +4092,7 @@
     </g>
     <g
        id="sheep8"
-       transform="translate(-22.803818,658.08349)">
+       transform="translate(-22.803818,378.08349)">
       <path
          sodipodi:type="star"
          style="display:inline;overflow:visible;visibility:visible;fill:#c7e5b3;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
@@ -4171,7 +4177,7 @@
     </g>
     <g
        id="wood8"
-       transform="translate(-24.066261,658.08349)">
+       transform="translate(-24.066261,378.08349)">
       <path
          sodipodi:type="star"
          style="display:inline;overflow:visible;visibility:visible;fill:#82b08f;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
@@ -4251,7 +4257,7 @@
     <g
        id="sheep6"
        style="opacity:1"
-       transform="translate(-22.803818,518.08349)">
+       transform="translate(-22.803818,238.08349)">
       <path
          d="m 134.75064,451.18157 -74.631216,0 -37.315606,-64.63253 37.315612,-64.63253 74.63122,0 37.3156,64.63254 z"
          sodipodi:type="star"
@@ -4337,7 +4343,7 @@
     <g
        id="wood6"
        style="opacity:1"
-       transform="translate(-24.066261,518.08349)">
+       transform="translate(-24.066261,238.08349)">
       <path
          d="m 296.01309,451.18157 -74.63122,0 -37.31561,-64.63253 37.31561,-64.63253 74.63122,0 37.31561,64.63254 z"
          sodipodi:type="star"
@@ -4417,7 +4423,7 @@
     <g
        id="ore9"
        style="opacity:1"
-       transform="translate(-25.328682,798.08349)">
+       transform="translate(-25.328682,518.08349)">
       <path
          d="m 457.27551,451.18157 -74.63122,0 -37.31561,-64.63253 37.31561,-64.63253 74.63122,0 37.31561,64.63254 z"
          sodipodi:type="star"
@@ -4508,7 +4514,7 @@
     <g
        id="brick9"
        style="opacity:1"
-       transform="translate(-26.591133,798.08349)">
+       transform="translate(-26.591133,518.08349)">
       <path
          d="m 618.53796,451.18157 -74.63122,0 -37.31561,-64.63253 37.31562,-64.63253 74.63121,0 37.31561,64.63254 z"
          inkscape:randomized="0"
@@ -4629,7 +4635,7 @@
     <g
        id="wheat9"
        style="opacity:1"
-       transform="translate(-27.853523,798.08349)">
+       transform="translate(-27.853523,518.08349)">
       <path
          d="m 779.80035,451.18157 -74.63122,0 -37.31561,-64.63253 37.31562,-64.63253 74.63121,0 37.31561,64.63254 z"
          sodipodi:type="star"
@@ -4778,7 +4784,7 @@
     <g
        id="sheep9"
        style="opacity:1"
-       transform="translate(-22.803818,798.08349)">
+       transform="translate(-22.803818,518.08349)">
       <path
          d="m 134.75064,451.18157 -74.631216,0 -37.315606,-64.63253 37.315612,-64.63253 74.63122,0 37.3156,64.63254 z"
          sodipodi:type="star"
@@ -4864,7 +4870,7 @@
     <g
        id="wood9"
        style="opacity:1"
-       transform="translate(-24.066261,798.08349)">
+       transform="translate(-24.066261,518.08349)">
       <path
          d="m 296.01309,451.18157 -74.63122,0 -37.31561,-64.63253 37.31561,-64.63253 74.63122,0 37.31561,64.63254 z"
          sodipodi:type="star"
@@ -4942,7 +4948,7 @@
       </g>
     </g>
     <g
-       transform="translate(-25.328682,938.08349)"
+       transform="translate(-25.328682,658.08349)"
        style="opacity:1"
        id="ore10">
       <path
@@ -5033,7 +5039,7 @@
       </g>
     </g>
     <g
-       transform="translate(-26.591133,938.08349)"
+       transform="translate(-26.591133,658.08349)"
        style="opacity:1"
        id="brick10">
       <path
@@ -5154,7 +5160,7 @@
       </g>
     </g>
     <g
-       transform="translate(-27.853523,938.08349)"
+       transform="translate(-27.853523,658.08349)"
        style="opacity:1"
        id="wheat10">
       <path
@@ -5303,7 +5309,7 @@
       </g>
     </g>
     <g
-       transform="translate(-22.803818,938.08349)"
+       transform="translate(-22.803818,658.08349)"
        style="opacity:1"
        id="sheep10">
       <path
@@ -5389,7 +5395,7 @@
       </g>
     </g>
     <g
-       transform="translate(-24.066261,938.08349)"
+       transform="translate(-24.066261,658.08349)"
        style="opacity:1"
        id="wood5-4-8">
       <path
@@ -5471,7 +5477,7 @@
     <g
        id="ore11"
        style="opacity:1"
-       transform="translate(-25.328682,1078.0835)">
+       transform="translate(-25.328682,798.0835)">
       <path
          d="m 457.27551,451.18157 -74.63122,0 -37.31561,-64.63253 37.31561,-64.63253 74.63122,0 37.31561,64.63254 z"
          sodipodi:type="star"
@@ -5562,7 +5568,7 @@
     <g
        id="brick11"
        style="opacity:1"
-       transform="translate(-26.591133,1078.0835)">
+       transform="translate(-26.591133,798.0835)">
       <path
          d="m 618.53796,451.18157 -74.63122,0 -37.31561,-64.63253 37.31562,-64.63253 74.63121,0 37.31561,64.63254 z"
          inkscape:randomized="0"
@@ -5683,7 +5689,7 @@
     <g
        id="wheat11"
        style="opacity:1"
-       transform="translate(-27.853523,1078.0835)">
+       transform="translate(-27.853523,798.0835)">
       <path
          d="m 779.80035,451.18157 -74.63122,0 -37.31561,-64.63253 37.31562,-64.63253 74.63121,0 37.31561,64.63254 z"
          sodipodi:type="star"
@@ -5832,7 +5838,7 @@
     <g
        id="sheep11"
        style="opacity:1"
-       transform="translate(-22.803818,1078.0835)">
+       transform="translate(-22.803818,798.0835)">
       <path
          d="m 134.75064,451.18157 -74.631216,0 -37.315606,-64.63253 37.315612,-64.63253 74.63122,0 37.3156,64.63254 z"
          sodipodi:type="star"
@@ -5918,7 +5924,7 @@
     <g
        id="wood11"
        style="opacity:1"
-       transform="translate(-24.066261,1078.0835)">
+       transform="translate(-24.066261,798.0835)">
       <path
          d="m 296.01309,451.18157 -74.63122,0 -37.31561,-64.63253 37.31561,-64.63253 74.63122,0 37.31561,64.63254 z"
          sodipodi:type="star"
@@ -5996,7 +6002,7 @@
       </g>
     </g>
     <g
-       transform="translate(-25.328682,1218.0835)"
+       transform="translate(-25.328682,938.0835)"
        style="opacity:1"
        id="ore12">
       <path
@@ -6087,7 +6093,7 @@
       </g>
     </g>
     <g
-       transform="translate(-26.591133,1218.0835)"
+       transform="translate(-26.591133,938.0835)"
        style="opacity:1"
        id="brick12">
       <path
@@ -6208,7 +6214,7 @@
       </g>
     </g>
     <g
-       transform="translate(-27.853523,1218.0835)"
+       transform="translate(-27.853523,938.0835)"
        style="opacity:1"
        id="wheat12">
       <path
@@ -6357,7 +6363,7 @@
       </g>
     </g>
     <g
-       transform="translate(-22.803818,1218.0835)"
+       transform="translate(-22.803818,938.0835)"
        style="opacity:1"
        id="sheep12">
       <path
@@ -6443,7 +6449,7 @@
       </g>
     </g>
     <g
-       transform="translate(-24.066261,1218.0835)"
+       transform="translate(-24.066261,938.0835)"
        style="opacity:1"
        id="wood12">
       <path
