@@ -99,78 +99,78 @@ list make_texture_offsets() {
     // rotation = 270
 
     result += [
-        "desert",    <0.13,  0.45, 0.0>,
-        "port3for1", <0.13,  0.35, 0.0>,
-        "portsheep", <0.13,  0.25, 0.0>,
-        "portwood",  <0.13,  0.15, 0.0>,
-        "portore",   <0.13,  0.05, 0.0>,
-        "portbrick", <0.13, -0.05, 0.0>,
-        "portwheat", <0.13, -0.15, 0.0>
+        "desert",    <-0.54,  0.000, 0.0>,
+        "port3for1", <-0.54, -0.100, 0.0>,
+        "portsheep", <-0.54, -0.200, 0.0>,
+        "portwood",  <-0.54, -0.300, 0.0>,
+        "portore",   <-0.54, -0.400, 0.0>,
+        "portbrick", <-0.54, -0.502, 0.0>,
+        "portwheat", <-0.54, -0.605, 0.0>
     ];
 
     result += [
-        "wheat2",  <0.014,  0.45, 0.0>,
-        "wheat3",  <0.014,  0.35, 0.0>,
-        "wheat4",  <0.014,  0.25, 0.0>,
-        "wheat5",  <0.014,  0.15, 0.0>,
-        "wheat6",  <0.014,  0.05, 0.0>,
-        "wheat8",  <0.014, -0.05, 0.0>,
-        "wheat9",  <0.014, -0.15, 0.0>,
-        "wheat10", <0.014, -0.25, 0.0>,
-        "wheat11", <0.014, -0.35, 0.0>,
-        "wheat12", <0.014, -0.45, 0.0>
+        "sheep2",  <-0.115,  0.0, 0.0>,
+        "sheep3",  <-0.115, -0.10, 0.0>,
+        "sheep4",  <-0.115, -0.20, 0.0>,
+        "sheep5",  <-0.115, -0.30, 0.0>,
+        "sheep6",  <-0.115, -0.40, 0.0>,
+        "sheep8",  <-0.115, -0.502, 0.0>,
+        "sheep9",  <-0.115, -0.605, 0.0>,
+        "sheep10", <-0.115, -0.706, 0.0>,
+        "sheep11", <-0.115, -0.808, 0.0>,
+        "sheep12", <-0.115, -0.910, 0.0>
     ];
 
     result += [
-        "sheep2",  <0.553,  0.45, 0.0>,
-        "sheep3",  <0.553,  0.35, 0.0>,
-        "sheep4",  <0.553,  0.25, 0.0>,
-        "sheep5",  <0.553,  0.15, 0.0>,
-        "sheep6",  <0.553,  0.05, 0.0>,
-        "sheep8",  <0.553, -0.05, 0.0>,
-        "sheep9",  <0.553, -0.15, 0.0>,
-        "sheep10", <0.553, -0.25, 0.0>,
-        "sheep11", <0.553, -0.35, 0.0>,
-        "sheep12", <0.553, -0.45, 0.0>
+        "wood2",  <0.0,  0.000, 0.0>,
+        "wood3",  <0.0, -0.100, 0.0>,
+        "wood4",  <0.0, -0.200, 0.0>,
+        "wood5",  <0.0, -0.300, 0.0>,
+        "wood6",  <0.0, -0.400, 0.0>,
+        "wood8",  <0.0, -0.502, 0.0>,
+        "wood9",  <0.0, -0.605, 0.0>,
+        "wood10", <0.0, -0.706, 0.0>,
+        "wood11", <0.0, -0.808, 0.0>,
+        "wood12", <0.0, -0.910, 0.0>
     ];
 
     result += [
-        "wood2",  <0.669,  0.45, 0.0>,
-        "wood3",  <0.669,  0.35, 0.0>,
-        "wood4",  <0.669,  0.25, 0.0>,
-        "wood5",  <0.669,  0.15, 0.0>,
-        "wood6",  <0.669,  0.05, 0.0>,
-        "wood8",  <0.669, -0.05, 0.0>,
-        "wood9",  <0.669, -0.15, 0.0>,
-        "wood10", <0.669, -0.25, 0.0>,
-        "wood11", <0.669, -0.35, 0.0>,
-        "wood12", <0.669, -0.45, 0.0>
+        "ore2",  <0.115,  0.000, 0.0>,
+        "ore3",  <0.115, -0.100, 0.0>,
+        "ore4",  <0.115, -0.200, 0.0>,
+        "ore5",  <0.115, -0.300, 0.0>,
+        "ore6",  <0.115, -0.400, 0.0>,
+        "ore8",  <0.115, -0.502, 0.0>,
+        "ore9",  <0.115, -0.605, 0.0>,
+        "ore10", <0.115, -0.706, 0.0>,
+        "ore11", <0.115, -0.808, 0.0>,
+        "ore12", <0.115, -0.910, 0.0>
     ];
 
     result += [
-        "ore2",  <0.785,  0.45, 0.0>,
-        "ore3",  <0.785,  0.35, 0.0>,
-        "ore4",  <0.785,  0.25, 0.0>,
-        "ore5",  <0.785,  0.15, 0.0>,
-        "ore6",  <0.785,  0.05, 0.0>,
-        "ore8",  <0.785, -0.05, 0.0>,
-        "ore9",  <0.785, -0.15, 0.0>,
-        "ore10", <0.785, -0.25, 0.0>,
-        "ore11", <0.785, -0.35, 0.0>,
-        "ore12", <0.785, -0.45, 0.0>
+        "brick2",  <2 * 0.115,  0.000, 0.0>,
+        "brick3",  <2 * 0.115, -0.100, 0.0>,
+        "brick4",  <2 * 0.115, -0.200, 0.0>,
+        "brick5",  <2 * 0.115, -0.300, 0.0>,
+        "brick6",  <2 * 0.115, -0.400, 0.0>,
+        "brick8",  <2 * 0.115, -0.502, 0.0>,
+        "brick9",  <2 * 0.115, -0.605, 0.0>,
+        "brick10", <2 * 0.115, -0.706, 0.0>,
+        "brick11", <2 * 0.115, -0.808, 0.0>,
+        "brick12", <2 * 0.115, -0.910, 0.0>
     ];
 
     result += [
-        "brick2",  <0.9,  0.45, 0.0>,
-        "brick3",  <0.9,  0.35, 0.0>,
-        "brick4",  <0.9,  0.25, 0.0>,
-        "brick5",  <0.9,  0.15, 0.0>,
-        "brick6",  <0.9,  0.05, 0.0>,
-        "brick8",  <0.9, -0.05, 0.0>,
-        "brick9",  <0.9, -0.15, 0.0>,
-        "brick10", <0.9, -0.25, 0.0>,
-        "brick11", <0.9, -0.35, 0.0>,
-        "brick12", <0.9, -0.45, 0.0>
+        "wheat2",  <-0.655,  0.000, 0.0>,
+        "wheat3",  <-0.655, -0.100, 0.0>,
+        "wheat4",  <-0.655, -0.200, 0.0>,
+        "wheat5",  <-0.655, -0.300, 0.0>,
+        "wheat6",  <-0.655, -0.400, 0.0>,
+        "wheat8",  <-0.655, -0.502, 0.0>,
+        "wheat9",  <-0.655, -0.605, 0.0>,
+        "wheat10", <-0.655, -0.706, 0.0>,
+        "wheat11", <-0.655, -0.808, 0.0>,
+        "wheat12", <-0.655, -0.910, 0.0>
     ];
 
     return result;
@@ -180,55 +180,55 @@ list make_tile_list() {
     list result;
 
     // column 1
-    result += [0,  13, 1, <X0 - 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -150.0, <0.2, 0.7, 0.0>, BASE_PORT];
-    result += [1,  13, 2, <X0 - 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,  -90.0, <0.5, 0.5, 0.0>, BASE_WATER];
-    result += [2,  13, 3, <X0 - 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>,  210.0, <0.2, 0.7, 0.0>, BASE_PORT];
-    result += [3,  13, 4, <X0 - 3*XSTEP, Y0 + 1.5*YSTEP, ZPOS>,  -90.0, <0.5, 0.5, 0.0>, BASE_WATER];
+    result += [0,  13, 1, <X0 - 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -30.0, <0.52,  0.37, 0.0>, BASE_PORT];
+    result += [1,  13, 2, <X0 - 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
+    result += [2,  13, 3, <X0 - 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -30.0, <0.67,  0.45, 0.0>, BASE_PORT];
+    result += [3,  13, 4, <X0 - 3*XSTEP, Y0 + 1.5*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
 
     // column 2
-    result += [4,  12, 0, <X0 - 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_WATER];
-    result += [5,  12, 1, <X0 - 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [6,  12, 2, <X0 - 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [7,  12, 3, <X0 - 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [8,  12, 4, <X0 - 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>,  90.0, <0.5, 0.5, 0.0>, BASE_PORT];
+    result += [4,  12, 0, <X0 - 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
+    result += [5,  12, 1, <X0 - 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <0.67,  0.28, 0.0>, BASE_LAND];
+    result += [6,  12, 2, <X0 - 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <0.67,  0.365, 0.0>, BASE_LAND];
+    result += [7,  12, 3, <X0 - 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <0.67,  0.45, 0.0>, BASE_LAND];
+    result += [8,  12, 4, <X0 - 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>,  90.0, <0.67,  0.37, 0.0>, BASE_PORT];
 
     // column 3
-    result += [9,  14, 0, <X0 - 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_PORT];
-    result += [10, 14, 1, <X0 - 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [11, 14, 2, <X0 - 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [12, 14, 3, <X0 - 1*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [13, 14, 4, <X0 - 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [14, 14, 5, <X0 - 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_WATER];
+    result += [9,  14, 0, <X0 - 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <0.67,  0.19, 0.0>, BASE_PORT];
+    result += [10, 14, 1, <X0 - 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <0.67,  0.28, 0.0>, BASE_LAND];
+    result += [11, 14, 2, <X0 - 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <0.67,  0.365, 0.0>, BASE_LAND];
+    result += [12, 14, 3, <X0 - 1*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -90.0, <0.67,  0.45, 0.0>, BASE_LAND];
+    result += [13, 14, 4, <X0 - 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <0.67,  0.54, 0.0>, BASE_LAND];
+    result += [14, 14, 5, <X0 - 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
 
     // column 4 (centre)
-    result += [15, 11, 0, <X0 - 0*XSTEP, Y0 - 3.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_WATER];
-    result += [16, 11, 1, <X0 - 0*XSTEP, Y0 - 2.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [17, 11, 2, <X0 - 0*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [18, 11, 3, <X0 - 0*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [19, 11, 4, <X0 - 0*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [20, 11, 5, <X0 - 0*XSTEP, Y0 + 2.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [21, 11, 6, <X0 - 0*XSTEP, Y0 + 3.0*YSTEP, ZPOS>,  90.0, <0.5, 0.5, 0.0>, BASE_PORT];
+    result += [15, 11, 0, <X0 - 0*XSTEP, Y0 - 3.0*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
+    result += [16, 11, 1, <X0 - 0*XSTEP, Y0 - 2.0*YSTEP, ZPOS>, -90.0, <0.67,  0.28, 0.0>, BASE_LAND];
+    result += [17, 11, 2, <X0 - 0*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <0.67,  0.365, 0.0>, BASE_LAND];
+    result += [18, 11, 3, <X0 - 0*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <0.67,  0.45, 0.0>, BASE_LAND];
+    result += [19, 11, 4, <X0 - 0*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <0.67,  0.54, 0.0>, BASE_LAND];
+    result += [20, 11, 5, <X0 - 0*XSTEP, Y0 + 2.0*YSTEP, ZPOS>, -90.0, <0.67,  0.625, 0.0>, BASE_LAND];
+    result += [21, 11, 6, <X0 - 0*XSTEP, Y0 + 3.0*YSTEP, ZPOS>,  90.0, <0.67,  0.19, 0.0>, BASE_PORT];
 
     // column 5
-    result += [22, 10, 0, <X0 + 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_PORT];
-    result += [23, 10, 1, <X0 + 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [24, 10, 2, <X0 + 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [25, 10, 3, <X0 + 1*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [26, 10, 4, <X0 + 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [27, 10, 5, <X0 + 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_WATER];
-
+    result += [22, 10, 0, <X0 + 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <0.67,  0.19, 0.0>, BASE_PORT];
+    result += [23, 10, 1, <X0 + 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <0.67,  0.28, 0.0>, BASE_LAND];
+    result += [24, 10, 2, <X0 + 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <0.67,  0.365, 0.0>, BASE_LAND];
+    result += [25, 10, 3, <X0 + 1*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -90.0, <0.67,  0.45, 0.0>, BASE_LAND];
+    result += [26, 10, 4, <X0 + 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <0.67,  0.54, 0.0>, BASE_LAND];
+    result += [27, 10, 5, <X0 + 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
+ 
     // column 6
-    result += [28,  9, 0, <X0 + 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_WATER];
-    result += [29,  9, 1, <X0 + 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [30,  9, 2, <X0 + 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [31,  9, 3, <X0 + 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <0.5, 0.5, 0.0>, BASE_LAND];
-    result += [32,  9, 4, <X0 + 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>,  90.0, <0.5, 0.5, 0.0>, BASE_PORT];
+    result += [28,  9, 0, <X0 + 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
+    result += [29,  9, 1, <X0 + 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <0.67,  0.28, 0.0>, BASE_LAND];
+    result += [30,  9, 2, <X0 + 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <0.67,  0.365, 0.0>, BASE_LAND];
+    result += [31,  9, 3, <X0 + 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <0.67,  0.45, 0.0>, BASE_LAND];
+    result += [32,  9, 4, <X0 + 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>,  90.0, <0.67,  0.37, 0.0>, BASE_PORT];
 
     // column 7
-    result += [33,  8, 1, <X0 + 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>,  -30.0, <0.3, 0.8, 0.0>, BASE_PORT];
-    result += [34,  8, 2, <X0 + 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,  -90.0, <0.5, 0.5, 0.0>, BASE_WATER];
-    result += [35,  8, 3, <X0 + 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>,  -30.0, <0.3, 0.8, 0.0>, BASE_PORT];
-    result += [36,  8, 4, <X0 + 3*XSTEP, Y0 + 1.5*YSTEP, ZPOS>,  -90.0, <0.5, 0.5, 0.0>, BASE_WATER];
+    result += [33,  8, 1, <X0 + 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, 210.0, <0.82,  0.365, 0.0>, BASE_PORT];
+    result += [34,  8, 2, <X0 + 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
+    result += [35,  8, 3, <X0 + 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, 210.0, <0.67,  0.45, 0.0>, BASE_PORT];
+    result += [36,  8, 4, <X0 + 3*XSTEP, Y0 + 1.5*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
 
     return result;
 }
@@ -345,6 +345,9 @@ init_tile_prims() {
 
     args = [];
     last_link = tile_link(0);
+
+    repeats = <0.5, 0.5, 0.0>;
+
     for (i = 0; i < TILE_INFO_LEN; ++i) {
         link = tile_link(i);
 
@@ -355,26 +358,26 @@ init_tile_prims() {
         }
 
         face = tile_face(i);
-        t = tile_type(i);
-        n = tile_number(i);
-        texture = tile_texture(t, n);
-        repeats = <0.5, 0.5, 0.0>;
-        integer offset_index = llListFindList(TILE_TEXTURE_OFFSET_LIST, [texture]);
-        if (offset_index >= 0) {
-            offsets = llList2Vector(TILE_TEXTURE_OFFSET_LIST, offset_index + 1);
-        }
 
-        // offsets = tile_offsets(i);
-        // rot = (270.0 + tile_rotation(i)) * DEG_TO_RAD;
-        rot = 270.0 * DEG_TO_RAD;
-        llOwnerSay("Setting tile " + (string)i + " to " + texture);
-
-        if (texture == "water") {
+        if (tile_base_type(i) == BASE_WATER) {
             args += [
                 PRIM_COLOR, face, <0.651, 0.949, 0.941>, 1.0,
                 PRIM_TEXTURE, face, TEXTURE_BLANK, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
             ];
         } else {
+            t = tile_type(i);
+            n = tile_number(i);
+            texture = tile_texture(t, n);
+
+            //llOwnerSay("Setting tile " + (string)i + " to type " + (string)t + " num " + (string)n + "(" + texture + ")");
+
+            integer offset_index = llListFindList(TILE_TEXTURE_OFFSET_LIST, [texture]);
+            if (offset_index >= 0) {
+                offsets = llList2Vector(TILE_TEXTURE_OFFSET_LIST, offset_index + 1);
+            }
+
+            rot = tile_rotation(i) * DEG_TO_RAD;
+            offsets += tile_offsets(i);
             
             args += [
                 PRIM_TEXGEN, face, PRIM_TEXGEN_PLANAR,
