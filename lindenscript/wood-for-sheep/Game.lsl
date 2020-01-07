@@ -17,6 +17,8 @@ integer PORT_ORE = 105;
 integer PORT_BRICK = 106;
 integer PORT_WHEAT = 107;
 
+list TILE_INFO;
+integer TILE_INFO_LEN;
 integer TILE_INFO_ID = 0;
 integer TILE_INFO_LINK = 1;
 integer TILE_INFO_FACE = 2;
@@ -25,6 +27,20 @@ integer TILE_INFO_ROTATION = 4;
 integer TILE_INFO_OFFSETS = 5;
 integer TILE_INFO_BASE_TYPE = 6;
 integer TILE_INFO_COUNT = 7;
+
+list ROAD_INFO;
+integer ROAD_INFO_LEN;
+integer ROAD_INFO_ID = 0;
+integer ROAD_INFO_LINK = 1;
+integer ROAD_INFO_FACE = 2;
+integer ROAD_INFO_COUNT = 3;
+
+list TOWN_INFO;
+integer TOWN_INFO_LEN;
+integer TOWN_INFO_ID = 0;
+integer TOWN_INFO_LINK = 1;
+integer TOWN_INFO_FACE = 2;
+integer TOWN_INFO_COUNT = 3;
 
 integer BASE_LAND = 1;
 integer BASE_PORT = 2;
@@ -37,8 +53,7 @@ float YSTEP = 0.0833;
 float ZPOS = 0.01;
 
 list TILE_TEXTURE_OFFSET_LIST;
-list TILE_INFO;
-integer TILE_INFO_LEN;
+
 
 // ------------------------------------------------------
 // variables
@@ -52,12 +67,6 @@ key current_player;
 
 // ------------------------------------------------------
 // functions
-
-list make_road_list() {
-    list result;
-
-    return result;
-}
 
 integer tile_link(integer i) {
     return llList2Integer(TILE_INFO, TILE_INFO_COUNT * i + TILE_INFO_LINK);
@@ -98,140 +107,348 @@ list make_texture_offsets() {
     // v scale = 1
     // rotation = 270
 
-    result += [
-        "desert",    <-0.54,  0.000, 0.0>,
-        "port3for1", <-0.54, -0.100, 0.0>,
-        "portsheep", <-0.54, -0.200, 0.0>,
-        "portwood",  <-0.54, -0.300, 0.0>,
-        "portore",   <-0.54, -0.400, 0.0>,
-        "portbrick", <-0.54, -0.502, 0.0>,
-        "portwheat", <-0.54, -0.605, 0.0>
-    ];
+    // float w = 149.262;
+    // float h = 129.265;
+    // float dx = 160.0;
+    // float dy = 140.0;
+    // float w1 = w / 1024.0;
+    // float h1 = h / 1024.0;
+
+    // dx / 1024 * 2 = 0.3125
+
+    float dy = -0.1008;
+    float dx = 0.1153;
 
     result += [
-        "sheep2",  <-0.115,  0.0, 0.0>,
-        "sheep3",  <-0.115, -0.10, 0.0>,
-        "sheep4",  <-0.115, -0.20, 0.0>,
-        "sheep5",  <-0.115, -0.30, 0.0>,
-        "sheep6",  <-0.115, -0.40, 0.0>,
-        "sheep8",  <-0.115, -0.502, 0.0>,
-        "sheep9",  <-0.115, -0.605, 0.0>,
-        "sheep10", <-0.115, -0.706, 0.0>,
-        "sheep11", <-0.115, -0.808, 0.0>,
-        "sheep12", <-0.115, -0.910, 0.0>
-    ];
+        "sheep2",  <-1 * dx, 0 * dy, 0.0>,
+        "sheep3",  <-1 * dx, 1 * dy, 0.0>,
+        "sheep4",  <-1 * dx, 2 * dy, 0.0>,
+        "sheep5",  <-1 * dx, 3 * dy, 0.0>,
+        "sheep6",  <-1 * dx, 4 * dy, 0.0>,
+        "sheep8",  <-1 * dx, 5 * dy, 0.0>,
+        "sheep9",  <-1 * dx, 6 * dy, 0.0>,
+        "sheep10", <-1 * dx, 7 * dy, 0.0>,
+        "sheep11", <-1 * dx, 8 * dy, 0.0>,
+        "sheep12", <-1 * dx, 9 * dy, 0.0>,
 
-    result += [
-        "wood2",  <0.0,  0.000, 0.0>,
-        "wood3",  <0.0, -0.100, 0.0>,
-        "wood4",  <0.0, -0.200, 0.0>,
-        "wood5",  <0.0, -0.300, 0.0>,
-        "wood6",  <0.0, -0.400, 0.0>,
-        "wood8",  <0.0, -0.502, 0.0>,
-        "wood9",  <0.0, -0.605, 0.0>,
-        "wood10", <0.0, -0.706, 0.0>,
-        "wood11", <0.0, -0.808, 0.0>,
-        "wood12", <0.0, -0.910, 0.0>
-    ];
+        "wood2",  <0.0, 0 * dy, 0.0>,
+        "wood3",  <0.0, 1 * dy, 0.0>,
+        "wood4",  <0.0, 2 * dy, 0.0>,
+        "wood5",  <0.0, 3 * dy, 0.0>,
+        "wood6",  <0.0, 4 * dy, 0.0>,
+        "wood8",  <0.0, 5 * dy, 0.0>,
+        "wood9",  <0.0, 6 * dy, 0.0>,
+        "wood10", <0.0, 7 * dy, 0.0>,
+        "wood11", <0.0, 8 * dy, 0.0>,
+        "wood12", <0.0, 9 * dy, 0.0>,
 
-    result += [
-        "ore2",  <0.115,  0.000, 0.0>,
-        "ore3",  <0.115, -0.100, 0.0>,
-        "ore4",  <0.115, -0.200, 0.0>,
-        "ore5",  <0.115, -0.300, 0.0>,
-        "ore6",  <0.115, -0.400, 0.0>,
-        "ore8",  <0.115, -0.502, 0.0>,
-        "ore9",  <0.115, -0.605, 0.0>,
-        "ore10", <0.115, -0.706, 0.0>,
-        "ore11", <0.115, -0.808, 0.0>,
-        "ore12", <0.115, -0.910, 0.0>
-    ];
+        "ore2",  <1 * dx, 0 * dy, 0.0>,
+        "ore3",  <1 * dx, 1 * dy, 0.0>,
+        "ore4",  <1 * dx, 2 * dy, 0.0>,
+        "ore5",  <1 * dx, 3 * dy, 0.0>,
+        "ore6",  <1 * dx, 4 * dy, 0.0>,
+        "ore8",  <1 * dx, 5 * dy, 0.0>,
+        "ore9",  <1 * dx, 6 * dy, 0.0>,
+        "ore10", <1 * dx, 7 * dy, 0.0>,
+        "ore11", <1 * dx, 8 * dy, 0.0>,
+        "ore12", <1 * dx, 9 * dy, 0.0>,
 
-    result += [
-        "brick2",  <2 * 0.115,  0.000, 0.0>,
-        "brick3",  <2 * 0.115, -0.100, 0.0>,
-        "brick4",  <2 * 0.115, -0.200, 0.0>,
-        "brick5",  <2 * 0.115, -0.300, 0.0>,
-        "brick6",  <2 * 0.115, -0.400, 0.0>,
-        "brick8",  <2 * 0.115, -0.502, 0.0>,
-        "brick9",  <2 * 0.115, -0.605, 0.0>,
-        "brick10", <2 * 0.115, -0.706, 0.0>,
-        "brick11", <2 * 0.115, -0.808, 0.0>,
-        "brick12", <2 * 0.115, -0.910, 0.0>
-    ];
+        "brick2",  <2 * dx, 0 * dy, 0.0>,
+        "brick3",  <2 * dx, 1 * dy, 0.0>,
+        "brick4",  <2 * dx, 2 * dy, 0.0>,
+        "brick5",  <2 * dx, 3 * dy, 0.0>,
+        "brick6",  <2 * dx, 4 * dy, 0.0>,
+        "brick8",  <2 * dx, 5 * dy, 0.0>,
+        "brick9",  <2 * dx, 6 * dy, 0.0>,
+        "brick10", <2 * dx, 7 * dy, 0.0>,
+        "brick11", <2 * dx, 8 * dy, 0.0>,
+        "brick12", <2 * dx, 9 * dy, 0.0>,
 
-    result += [
-        "wheat2",  <-0.655,  0.000, 0.0>,
-        "wheat3",  <-0.655, -0.100, 0.0>,
-        "wheat4",  <-0.655, -0.200, 0.0>,
-        "wheat5",  <-0.655, -0.300, 0.0>,
-        "wheat6",  <-0.655, -0.400, 0.0>,
-        "wheat8",  <-0.655, -0.502, 0.0>,
-        "wheat9",  <-0.655, -0.605, 0.0>,
-        "wheat10", <-0.655, -0.706, 0.0>,
-        "wheat11", <-0.655, -0.808, 0.0>,
-        "wheat12", <-0.655, -0.910, 0.0>
+        "wheat2",  <3 * dx - 1.0, 0 * dy, 0.0>,
+        "wheat3",  <3 * dx - 1.0, 1 * dy, 0.0>,
+        "wheat4",  <3 * dx - 1.0, 2 * dy, 0.0>,
+        "wheat5",  <3 * dx - 1.0, 3 * dy, 0.0>,
+        "wheat6",  <3 * dx - 1.0, 4 * dy, 0.0>,
+        "wheat8",  <3 * dx - 1.0, 5 * dy, 0.0>,
+        "wheat9",  <3 * dx - 1.0, 6 * dy, 0.0>,
+        "wheat10", <3 * dx - 1.0, 7 * dy, 0.0>,
+        "wheat11", <3 * dx - 1.0, 8 * dy, 0.0>,
+        "wheat12", <3 * dx - 1.0, 9 * dy, 0.0>,
+
+        "desert",    <4 * dx - 1.0, 0 * dy, 0.0>,
+        "port3for1", <4 * dx - 1.0, 1 * dy, 0.0>,
+        "portsheep", <4 * dx - 1.0, 2 * dy, 0.0>,
+        "portwood",  <4 * dx - 1.0, 3 * dy, 0.0>,
+        "portore",   <4 * dx - 1.0, 4 * dy, 0.0>,
+        "portbrick", <4 * dx - 1.0, 5 * dy, 0.0>,
+        "portwheat", <4 * dx - 1.0, 6 * dy, 0.0>
+
     ];
 
     return result;
 }
 
-list make_tile_list() {
+integer town_link(integer i) {
+    return llList2Integer(TOWN_INFO, TOWN_INFO_COUNT * i + TOWN_INFO_LINK);
+}
+
+integer town_face(integer i) {
+    return llList2Integer(TOWN_INFO, TOWN_INFO_COUNT * i + TOWN_INFO_FACE);
+}
+
+integer road_link(integer i) {
+    return llList2Integer(ROAD_INFO, ROAD_INFO_COUNT * i + ROAD_INFO_LINK);
+}
+
+integer road_face(integer i) {
+    return llList2Integer(ROAD_INFO, ROAD_INFO_COUNT * i + ROAD_INFO_FACE);
+}
+
+list make_tile_info() {
     list result;
 
+    float dx = 0.6685;
+    float y0 = 0.1933;
+    float dy = 0.0866;
+    integer link;
+
     // column 1
-    result += [0,  13, 1, <X0 - 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -30.0, <0.52,  0.37, 0.0>, BASE_PORT];
-    result += [1,  13, 2, <X0 - 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
-    result += [2,  13, 3, <X0 - 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -30.0, <0.67,  0.45, 0.0>, BASE_PORT];
-    result += [3,  13, 4, <X0 - 3*XSTEP, Y0 + 1.5*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
+    link = 22;
+    result += [0,  link, 1, <X0 - 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -30.0, <0.519,  y0 + 2 * dy, 0.0>, BASE_PORT];
+    result += [1,  link, 2, <X0 - 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+    result += [2,  link, 3, <X0 - 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>,  30.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_PORT];
+    result += [3,  link, 4, <X0 - 3*XSTEP, Y0 + 1.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
 
     // column 2
-    result += [4,  12, 0, <X0 - 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
-    result += [5,  12, 1, <X0 - 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <0.67,  0.28, 0.0>, BASE_LAND];
-    result += [6,  12, 2, <X0 - 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <0.67,  0.365, 0.0>, BASE_LAND];
-    result += [7,  12, 3, <X0 - 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <0.67,  0.45, 0.0>, BASE_LAND];
-    result += [8,  12, 4, <X0 - 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>,  90.0, <0.67,  0.37, 0.0>, BASE_PORT];
+    link = 21;
+    result += [4,  link, 0, <X0 - 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+    result += [5,  link, 1, <X0 - 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
+    result += [6,  link, 2, <X0 - 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
+    result += [7,  link, 3, <X0 - 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
+    result += [8,  link, 4, <X0 - 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>,  30.0, <0.744,  y0 + 2.5 * dy, 0.0>, BASE_PORT];
 
     // column 3
-    result += [9,  14, 0, <X0 - 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <0.67,  0.19, 0.0>, BASE_PORT];
-    result += [10, 14, 1, <X0 - 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <0.67,  0.28, 0.0>, BASE_LAND];
-    result += [11, 14, 2, <X0 - 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <0.67,  0.365, 0.0>, BASE_LAND];
-    result += [12, 14, 3, <X0 - 1*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -90.0, <0.67,  0.45, 0.0>, BASE_LAND];
-    result += [13, 14, 4, <X0 - 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <0.67,  0.54, 0.0>, BASE_LAND];
-    result += [14, 14, 5, <X0 - 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
+    link = 23;
+    result += [9,  link, 0, <X0 - 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 0 * dy, 0.0>, BASE_PORT];
+    result += [10, link, 1, <X0 - 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
+    result += [11, link, 2, <X0 - 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
+    result += [12, link, 3, <X0 - 1*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
+    result += [13, link, 4, <X0 - 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 4 * dy, 0.0>, BASE_LAND];
+    result += [14, link, 5, <X0 - 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
 
     // column 4 (centre)
-    result += [15, 11, 0, <X0 - 0*XSTEP, Y0 - 3.0*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
-    result += [16, 11, 1, <X0 - 0*XSTEP, Y0 - 2.0*YSTEP, ZPOS>, -90.0, <0.67,  0.28, 0.0>, BASE_LAND];
-    result += [17, 11, 2, <X0 - 0*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <0.67,  0.365, 0.0>, BASE_LAND];
-    result += [18, 11, 3, <X0 - 0*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <0.67,  0.45, 0.0>, BASE_LAND];
-    result += [19, 11, 4, <X0 - 0*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <0.67,  0.54, 0.0>, BASE_LAND];
-    result += [20, 11, 5, <X0 - 0*XSTEP, Y0 + 2.0*YSTEP, ZPOS>, -90.0, <0.67,  0.625, 0.0>, BASE_LAND];
-    result += [21, 11, 6, <X0 - 0*XSTEP, Y0 + 3.0*YSTEP, ZPOS>,  90.0, <0.67,  0.19, 0.0>, BASE_PORT];
+    link = 20;
+    result += [15, link, 0, <X0 - 0*XSTEP, Y0 - 3.0*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+    result += [16, link, 1, <X0 - 0*XSTEP, Y0 - 2.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
+    result += [17, link, 2, <X0 - 0*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
+    result += [18, link, 3, <X0 - 0*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
+    result += [19, link, 4, <X0 - 0*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 4 * dy, 0.0>, BASE_LAND];
+    result += [20, link, 5, <X0 - 0*XSTEP, Y0 + 2.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 5 * dy, 0.0>, BASE_LAND];
+    result += [21, link, 6, <X0 - 0*XSTEP, Y0 + 3.0*YSTEP, ZPOS>,  90.0, <   dx,  y0 + 0 * dy, 0.0>, BASE_PORT];
 
     // column 5
-    result += [22, 10, 0, <X0 + 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <0.67,  0.19, 0.0>, BASE_PORT];
-    result += [23, 10, 1, <X0 + 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <0.67,  0.28, 0.0>, BASE_LAND];
-    result += [24, 10, 2, <X0 + 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <0.67,  0.365, 0.0>, BASE_LAND];
-    result += [25, 10, 3, <X0 + 1*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -90.0, <0.67,  0.45, 0.0>, BASE_LAND];
-    result += [26, 10, 4, <X0 + 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <0.67,  0.54, 0.0>, BASE_LAND];
-    result += [27, 10, 5, <X0 + 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
- 
+    link = 19;
+    result += [22, link, 0, <X0 + 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 0 * dy, 0.0>, BASE_PORT];
+    result += [23, link, 1, <X0 + 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
+    result += [24, link, 2, <X0 + 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
+    result += [25, link, 3, <X0 + 1*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
+    result += [26, link, 4, <X0 + 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 4 * dy, 0.0>, BASE_LAND];
+    result += [27, link, 5, <X0 + 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+
     // column 6
-    result += [28,  9, 0, <X0 + 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
-    result += [29,  9, 1, <X0 + 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <0.67,  0.28, 0.0>, BASE_LAND];
-    result += [30,  9, 2, <X0 + 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <0.67,  0.365, 0.0>, BASE_LAND];
-    result += [31,  9, 3, <X0 + 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <0.67,  0.45, 0.0>, BASE_LAND];
-    result += [32,  9, 4, <X0 + 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>,  90.0, <0.67,  0.37, 0.0>, BASE_PORT];
+    link = 18;
+    result += [28, link, 0, <X0 + 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+    result += [29, link, 1, <X0 + 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
+    result += [30, link, 2, <X0 + 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
+    result += [31, link, 3, <X0 + 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
+    result += [32, link, 4, <X0 + 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>, 150.0, <0.593,  y0 + 2.5 * dy, 0.0>, BASE_PORT];
 
     // column 7
-    result += [33,  8, 1, <X0 + 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, 210.0, <0.82,  0.365, 0.0>, BASE_PORT];
-    result += [34,  8, 2, <X0 + 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
-    result += [35,  8, 3, <X0 + 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, 210.0, <0.67,  0.45, 0.0>, BASE_PORT];
-    result += [36,  8, 4, <X0 + 3*XSTEP, Y0 + 1.5*YSTEP, ZPOS>,   0.0, <0.00,  0.00, 0.0>, BASE_WATER];
+    link = 17;
+    result += [33, link, 1, <X0 + 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, 210.0, <0.820,  y0 + 2 * dy, 0.0>, BASE_PORT];
+    result += [34, link, 2, <X0 + 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+    result += [35, link, 3, <X0 + 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, 150.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_PORT];
+    result += [36, link, 4, <X0 + 3*XSTEP, Y0 + 1.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
 
     return result;
 }
+
+list make_town_info() {
+    list result;
+
+    integer link;
+
+    link = 13;
+    result += [ 0, link, 1];
+    result += [ 1, link, 2];
+    result += [ 2, link, 3];
+    result += [ 3, link, 4];
+    result += [ 4, link, 5];
+    result += [ 5, link, 6];
+    result += [ 6, link, 7];
+    result += [ 7, link, 8];
+
+    link = 16;
+    result += [ 8, link, 1];
+    result += [ 9, link, 2];
+    result += [10, link, 3];
+    result += [11, link, 4];
+    result += [12, link, 5];
+    result += [13, link, 6];
+    result += [14, link, 7];
+    result += [15, link, 8];
+
+    link = 10;
+    result += [16, link, 1];
+    result += [17, link, 2];
+    result += [18, link, 3];
+    result += [19, link, 4];
+    result += [20, link, 5];
+    result += [21, link, 6];
+    result += [22, link, 7];
+    result += [23, link, 8];
+
+    link = 12;
+    result += [24, link, 1];
+    result += [25, link, 2];
+    result += [26, link, 3];
+    result += [27, link, 4];
+    result += [28, link, 5];
+    result += [29, link, 6];
+    result += [30, link, 7];
+    result += [31, link, 8];
+
+    link = 14;
+    result += [32, link, 1];
+    result += [33, link, 2];
+    result += [34, link, 3];
+    result += [35, link, 4];
+    result += [36, link, 5];
+    result += [37, link, 6];
+    result += [38, link, 7];
+    result += [39, link, 8];
+
+    link = 24;
+    result += [40, link, 1];
+    result += [41, link, 2];
+    result += [42, link, 3];
+    result += [43, link, 4];
+    result += [44, link, 5];
+    result += [45, link, 6];
+    result += [46, link, 7];
+    result += [47, link, 8];
+
+    link = 11;
+    result += [48, link, 1];
+    result += [49, link, 2];
+    result += [50, link, 3];
+    result += [51, link, 4];
+    result += [52, link, 5];
+    result += [53, link, 6];
+    result += [54, link, 7];
+    result += [55, link, 8];
+
+    return result;
+}
+
+list make_road_info() {
+    list result;
+
+    integer link;
+
+    link = 1;
+    result += [ 0, link, 1];
+    result += [ 1, link, 2];
+    result += [ 2, link, 3];
+    result += [ 3, link, 4];
+    result += [ 4, link, 5];
+    result += [ 5, link, 6];
+    result += [ 6, link, 7];
+    result += [ 7, link, 8];
+
+    link = 9;
+    result += [ 8, link, 1];
+    result += [ 9, link, 2];
+    result += [10, link, 3];
+    result += [11, link, 4];
+    result += [12, link, 5];
+    result += [13, link, 6];
+    result += [14, link, 7];
+    result += [15, link, 8];
+
+    link = 8;
+    result += [16, link, 1];
+    result += [17, link, 2];
+    result += [18, link, 3];
+    result += [19, link, 4];
+    result += [20, link, 5];
+    result += [21, link, 6];
+    result += [22, link, 7];
+    result += [23, link, 8];
+
+    link = 6;
+    result += [24, link, 1];
+    result += [25, link, 2];
+    result += [26, link, 3];
+    result += [27, link, 4];
+    result += [28, link, 5];
+    result += [29, link, 6];
+    result += [30, link, 7];
+    result += [31, link, 8];
+
+    link = 5;
+    result += [32, link, 1];
+    result += [33, link, 2];
+    result += [34, link, 3];
+    result += [35, link, 4];
+    result += [36, link, 5];
+    result += [37, link, 6];
+    result += [38, link, 7];
+    result += [39, link, 8];
+
+    link = 3;
+    result += [40, link, 1];
+    result += [41, link, 2];
+    result += [42, link, 3];
+    result += [43, link, 4];
+    result += [44, link, 5];
+    result += [45, link, 6];
+    result += [46, link, 7];
+    result += [47, link, 8];
+
+    link = 2;
+    result += [48, link, 1];
+    result += [49, link, 2];
+    result += [50, link, 3];
+    result += [51, link, 4];
+    result += [52, link, 5];
+    result += [53, link, 6];
+    result += [54, link, 7];
+    result += [55, link, 8];
+
+    link = 7;
+    result += [56, link, 1];
+    result += [57, link, 2];
+    result += [58, link, 3];
+    result += [59, link, 4];
+    result += [60, link, 5];
+    result += [61, link, 6];
+    result += [62, link, 7];
+    result += [63, link, 8];
+
+    link = 4;
+    result += [64, link, 1];
+    result += [65, link, 2];
+    result += [66, link, 3];
+    result += [67, link, 4];
+    result += [68, link, 5];
+    result += [69, link, 6];
+    result += [70, link, 7];
+    result += [71, link, 8];
+
+    return result;
+}
+
 
 list shuffled_list(list l) {
     return llListRandomize(l, 1);
@@ -389,9 +606,47 @@ init_tile_prims() {
     llSetLinkPrimitiveParamsFast(link, args);
 }
 
+init_road_prims() {
+    integer i;
+    integer link;
+    integer face;
+    list args;
+
+    for (i = 0; i < ROAD_INFO_LEN; ++i) {
+        link = road_link(i);
+        face = tile_face(i);
+        args = [
+            PRIM_COLOR, face, <0.0, 1.0, 0.0>, 1.0,
+            PRIM_TEXTURE, face, TEXTURE_BLANK, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
+        ];
+        llSetLinkPrimitiveParamsFast(link, args);
+    }
+}
+
+init_town_prims() {
+    integer i;
+    integer link;
+    integer last_link;
+    integer face;
+    list args;
+
+    for (i = 0; i < ROAD_INFO_LEN; ++i) {
+        link = road_link(i);
+        face = tile_face(i);
+        args = [
+            PRIM_COLOR, face, <1.0, 1.0, 0.0>, 1.0,
+            PRIM_TEXTURE, face, TEXTURE_BLANK, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
+        ];
+        llSetLinkPrimitiveParamsFast(link, args);
+    }
+}
+
+
 init_new_game() {
     init_tiles();
     init_tile_prims();
+    init_town_prims();
+    // init_road_prims();
 }
 
 // ------------------------------------------------------
@@ -410,8 +665,14 @@ state off {
         listen_handle = llListen(CHANNEL, "", "", "");
         llOwnerSay("Game: off");
 
-        TILE_INFO = make_tile_list();
+        TILE_INFO = make_tile_info();
         TILE_INFO_LEN = llGetListLength(TILE_INFO) / TILE_INFO_COUNT;
+
+        ROAD_INFO = make_road_info();
+        ROAD_INFO_LEN = llGetListLength(ROAD_INFO) / ROAD_INFO_COUNT;
+
+        TOWN_INFO = make_road_info();
+        TOWN_INFO_LEN = llGetListLength(TOWN_INFO) / TOWN_INFO_COUNT;
 
         TILE_TEXTURE_OFFSET_LIST = make_texture_offsets();
 
