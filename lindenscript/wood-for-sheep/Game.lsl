@@ -279,74 +279,72 @@ list make_town_info() {
     integer link;
 
     link = 13;
-    result += [ 0, link, 1];
-    result += [ 1, link, 2];
-    result += [ 2, link, 3];
-    result += [ 3, link, 4];
-    result += [ 4, link, 5];
-    result += [ 5, link, 6];
-    result += [ 6, link, 7];
-    result += [ 7, link, 8];
+    result += [ 0, link, 0];
+    result += [ 1, link, 1];
+    result += [ 2, link, 2];
+    result += [ 3, link, 3];
+    result += [ 4, link, 4];
+    result += [ 5, link, 5];
+    result += [ 6, link, 6];
+    result += [ 7, link, 7];
 
     link = 16;
-    result += [ 8, link, 1];
-    result += [ 9, link, 2];
-    result += [10, link, 3];
-    result += [11, link, 4];
-    result += [12, link, 5];
-    result += [13, link, 6];
-    result += [14, link, 7];
-    result += [15, link, 8];
+    result += [ 8, link, 0];
+    result += [ 9, link, 1];
+    result += [10, link, 2];
+    result += [11, link, 3];
+    result += [12, link, 4];
+    result += [13, link, 5];
+    result += [14, link, 6];
+    result += [15, link, 7];
 
     link = 10;
-    result += [16, link, 1];
-    result += [17, link, 2];
-    result += [18, link, 3];
-    result += [19, link, 4];
-    result += [20, link, 5];
-    result += [21, link, 6];
-    result += [22, link, 7];
-    result += [23, link, 8];
+    result += [16, link, 0];
+    result += [17, link, 1];
+    result += [18, link, 2];
+    result += [19, link, 3];
+    result += [20, link, 4];
+    result += [21, link, 5];
+    result += [22, link, 6];
+    result += [23, link, 7];
 
     link = 12;
-    result += [24, link, 1];
-    result += [25, link, 2];
-    result += [26, link, 3];
-    result += [27, link, 4];
-    result += [28, link, 5];
-    result += [29, link, 6];
-    result += [30, link, 7];
-    result += [31, link, 8];
+    result += [24, link, 0];
+    result += [25, link, 1];
+    result += [26, link, 2];
+    result += [27, link, 3];
+    result += [28, link, 4];
+    result += [29, link, 5];
+    result += [30, link, 6];
+    result += [31, link, 7];
 
     link = 14;
-    result += [32, link, 1];
-    result += [33, link, 2];
-    result += [34, link, 3];
-    result += [35, link, 4];
-    result += [36, link, 5];
-    result += [37, link, 6];
-    result += [38, link, 7];
-    result += [39, link, 8];
+    result += [32, link, 0];
+    result += [33, link, 1];
+    result += [34, link, 2];
+    result += [35, link, 3];
+    result += [36, link, 4];
+    result += [37, link, 5];
+    result += [38, link, 6];
+    result += [39, link, 7];
 
     link = 24;
-    result += [40, link, 1];
-    result += [41, link, 2];
-    result += [42, link, 3];
-    result += [43, link, 4];
-    result += [44, link, 5];
-    result += [45, link, 6];
-    result += [46, link, 7];
-    result += [47, link, 8];
+    result += [40, link, 0];
+    result += [41, link, 1];
+    result += [42, link, 2];
+    result += [43, link, 3];
+    result += [44, link, 4];
+    result += [45, link, 5];
+    result += [46, link, 6];
+    result += [47, link, 7];
 
     link = 11;
-    result += [48, link, 1];
-    result += [49, link, 2];
-    result += [50, link, 3];
-    result += [51, link, 4];
-    result += [52, link, 5];
-    result += [53, link, 6];
-    result += [54, link, 7];
-    result += [55, link, 8];
+    result += [48, link, 0];
+    result += [49, link, 1];
+    result += [50, link, 2];
+    result += [51, link, 3];
+    result += [52, link, 4];
+    result += [53, link, 5];
 
     return result;
 }
@@ -357,94 +355,94 @@ list make_road_info() {
     integer link;
 
     link = 1;
-    result += [ 0, link, 1];
-    result += [ 1, link, 2];
-    result += [ 2, link, 3];
-    result += [ 3, link, 4];
-    result += [ 4, link, 5];
-    result += [ 5, link, 6];
-    result += [ 6, link, 7];
-    result += [ 7, link, 8];
+    result += [ 0, link, 0];
+    result += [ 1, link, 1];
+    result += [ 2, link, 2];
+    result += [ 3, link, 3];
+    result += [ 4, link, 4];
+    result += [ 5, link, 5];
+    result += [ 6, link, 6];
+    result += [ 7, link, 7];
 
     link = 9;
-    result += [ 8, link, 1];
-    result += [ 9, link, 2];
-    result += [10, link, 3];
-    result += [11, link, 4];
-    result += [12, link, 5];
-    result += [13, link, 6];
-    result += [14, link, 7];
-    result += [15, link, 8];
+    result += [ 8, link, 0];
+    result += [ 9, link, 1];
+    result += [10, link, 2];
+    result += [11, link, 3];
+    result += [12, link, 4];
+    result += [13, link, 5];
+    result += [14, link, 6];
+    result += [15, link, 7];
 
     link = 8;
-    result += [16, link, 1];
-    result += [17, link, 2];
-    result += [18, link, 3];
-    result += [19, link, 4];
-    result += [20, link, 5];
-    result += [21, link, 6];
-    result += [22, link, 7];
-    result += [23, link, 8];
+    result += [16, link, 0];
+    result += [17, link, 1];
+    result += [18, link, 2];
+    result += [19, link, 3];
+    result += [20, link, 4];
+    result += [21, link, 5];
+    result += [22, link, 6];
+    result += [23, link, 7];
 
     link = 6;
-    result += [24, link, 1];
-    result += [25, link, 2];
-    result += [26, link, 3];
-    result += [27, link, 4];
-    result += [28, link, 5];
-    result += [29, link, 6];
-    result += [30, link, 7];
-    result += [31, link, 8];
+    result += [24, link, 0];
+    result += [25, link, 1];
+    result += [26, link, 2];
+    result += [27, link, 3];
+    result += [28, link, 4];
+    result += [29, link, 5];
+    result += [30, link, 6];
+    result += [31, link, 7];
 
     link = 5;
-    result += [32, link, 1];
-    result += [33, link, 2];
-    result += [34, link, 3];
-    result += [35, link, 4];
-    result += [36, link, 5];
-    result += [37, link, 6];
-    result += [38, link, 7];
-    result += [39, link, 8];
+    result += [32, link, 0];
+    result += [33, link, 1];
+    result += [34, link, 2];
+    result += [35, link, 3];
+    result += [36, link, 4];
+    result += [37, link, 5];
+    result += [38, link, 6];
+    result += [39, link, 7];
 
     link = 3;
-    result += [40, link, 1];
-    result += [41, link, 2];
-    result += [42, link, 3];
-    result += [43, link, 4];
-    result += [44, link, 5];
-    result += [45, link, 6];
-    result += [46, link, 7];
-    result += [47, link, 8];
+    result += [40, link, 0];
+    result += [41, link, 1];
+    result += [42, link, 2];
+    result += [43, link, 3];
+    result += [44, link, 4];
+    result += [45, link, 5];
+    result += [46, link, 6];
+    result += [47, link, 7];
 
     link = 2;
-    result += [48, link, 1];
-    result += [49, link, 2];
-    result += [50, link, 3];
-    result += [51, link, 4];
-    result += [52, link, 5];
-    result += [53, link, 6];
-    result += [54, link, 7];
-    result += [55, link, 8];
+    result += [48, link, 0];
+    result += [49, link, 1];
+    result += [50, link, 2];
+    result += [51, link, 3];
+    result += [52, link, 4];
+    result += [53, link, 5];
+    result += [54, link, 6];
+    result += [55, link, 7];
 
     link = 7;
-    result += [56, link, 1];
-    result += [57, link, 2];
-    result += [58, link, 3];
-    result += [59, link, 4];
-    result += [60, link, 5];
-    result += [61, link, 6];
-    result += [62, link, 7];
-    result += [63, link, 8];
+    result += [56, link, 0];
+    result += [57, link, 1];
+    result += [58, link, 2];
+    result += [59, link, 3];
+    result += [60, link, 4];
+    result += [61, link, 5];
+    result += [62, link, 6];
+    result += [63, link, 7];
 
     link = 4;
-    result += [64, link, 1];
-    result += [65, link, 2];
-    result += [66, link, 3];
-    result += [67, link, 4];
-    result += [68, link, 5];
-    result += [69, link, 6];
-    result += [70, link, 7];
-    result += [71, link, 8];
+    result += [64, link, 0];
+    result += [65, link, 1];
+    result += [66, link, 2];
+    result += [67, link, 3];
+    result += [68, link, 4];
+    result += [69, link, 5];
+    result += [70, link, 6];
+    result += [71, link, 7];
 
     return result;
 }
@@ -614,9 +612,9 @@ init_road_prims() {
 
     for (i = 0; i < ROAD_INFO_LEN; ++i) {
         link = road_link(i);
-        face = tile_face(i);
+        face = road_face(i);
         args = [
-            PRIM_COLOR, face, <0.0, 1.0, 0.0>, 1.0,
+            PRIM_COLOR, face, <1.0, 0.0, 1.0>, 1.0,
             PRIM_TEXTURE, face, TEXTURE_BLANK, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
         ];
         llSetLinkPrimitiveParamsFast(link, args);
@@ -630,13 +628,15 @@ init_town_prims() {
     integer face;
     list args;
 
-    for (i = 0; i < ROAD_INFO_LEN; ++i) {
-        link = road_link(i);
-        face = tile_face(i);
+    for (i = 0; i < TOWN_INFO_LEN; ++i) {
+        link = town_link(i);
+        face = town_face(i);
         args = [
-            PRIM_COLOR, face, <1.0, 1.0, 0.0>, 1.0,
+            PRIM_COLOR, face, <1.0, 0.0, 0.0>, 1.0,
             PRIM_TEXTURE, face, TEXTURE_BLANK, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
         ];
+
+        // llOwnerSay("Setting town " + (string)i + " link " + (string)link + " face " + (string)face);
         llSetLinkPrimitiveParamsFast(link, args);
     }
 }
@@ -646,7 +646,7 @@ init_new_game() {
     init_tiles();
     init_tile_prims();
     init_town_prims();
-    // init_road_prims();
+    init_road_prims();
 }
 
 // ------------------------------------------------------
@@ -671,7 +671,7 @@ state off {
         ROAD_INFO = make_road_info();
         ROAD_INFO_LEN = llGetListLength(ROAD_INFO) / ROAD_INFO_COUNT;
 
-        TOWN_INFO = make_road_info();
+        TOWN_INFO = make_town_info();
         TOWN_INFO_LEN = llGetListLength(TOWN_INFO) / TOWN_INFO_COUNT;
 
         TILE_TEXTURE_OFFSET_LIST = make_texture_offsets();
