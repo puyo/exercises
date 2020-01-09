@@ -90,6 +90,75 @@ list list_shuffle(list l) {
 // ------------------------------------------------------
 // functions for hexes
 
+list hex_info() {
+    list result;
+
+    float dx = 0.6685;
+    float y0 = 0.1933;
+    float dy = 0.0866;
+    integer link;
+
+    // column 1
+    link = 22;
+    result += [0,  link, 1, <X0 - 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -30.0, <0.519,  y0 + 2 * dy, 0.0>, BASE_PORT];
+    result += [1,  link, 2, <X0 - 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+    result += [2,  link, 3, <X0 - 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>,  30.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_PORT];
+    result += [3,  link, 4, <X0 - 3*XSTEP, Y0 + 1.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+
+    // column 2
+    link = 21;
+    result += [4,  link, 0, <X0 - 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+    result += [5,  link, 1, <X0 - 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
+    result += [6,  link, 2, <X0 - 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
+    result += [7,  link, 3, <X0 - 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
+    result += [8,  link, 4, <X0 - 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>,  30.0, <0.744,  y0 + 2.5 * dy, 0.0>, BASE_PORT];
+
+    // column 3
+    link = 23;
+    result += [9,  link, 0, <X0 - 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 0 * dy, 0.0>, BASE_PORT];
+    result += [10, link, 1, <X0 - 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
+    result += [11, link, 2, <X0 - 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
+    result += [12, link, 3, <X0 - 1*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
+    result += [13, link, 4, <X0 - 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 4 * dy, 0.0>, BASE_LAND];
+    result += [14, link, 5, <X0 - 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+
+    // column 4 (centre)
+    link = 20;
+    result += [15, link, 0, <X0 - 0*XSTEP, Y0 - 3.0*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+    result += [16, link, 1, <X0 - 0*XSTEP, Y0 - 2.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
+    result += [17, link, 2, <X0 - 0*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
+    result += [18, link, 3, <X0 - 0*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
+    result += [19, link, 4, <X0 - 0*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 4 * dy, 0.0>, BASE_LAND];
+    result += [20, link, 5, <X0 - 0*XSTEP, Y0 + 2.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 5 * dy, 0.0>, BASE_LAND];
+    result += [21, link, 6, <X0 - 0*XSTEP, Y0 + 3.0*YSTEP, ZPOS>,  90.0, <   dx,  y0 + 0 * dy, 0.0>, BASE_PORT];
+
+    // column 5
+    link = 19;
+    result += [22, link, 0, <X0 + 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 0 * dy, 0.0>, BASE_PORT];
+    result += [23, link, 1, <X0 + 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
+    result += [24, link, 2, <X0 + 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
+    result += [25, link, 3, <X0 + 1*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
+    result += [26, link, 4, <X0 + 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 4 * dy, 0.0>, BASE_LAND];
+    result += [27, link, 5, <X0 + 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+
+    // column 6
+    link = 18;
+    result += [28, link, 0, <X0 + 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+    result += [29, link, 1, <X0 + 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
+    result += [30, link, 2, <X0 + 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
+    result += [31, link, 3, <X0 + 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
+    result += [32, link, 4, <X0 + 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>, 150.0, <0.593,  y0 + 2.5 * dy, 0.0>, BASE_PORT];
+
+    // column 7
+    link = 17;
+    result += [33, link, 1, <X0 + 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, 210.0, <0.820,  y0 + 2 * dy, 0.0>, BASE_PORT];
+    result += [34, link, 2, <X0 + 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+    result += [35, link, 3, <X0 + 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, 150.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_PORT];
+    result += [36, link, 4, <X0 + 3*XSTEP, Y0 + 1.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
+
+    return result;
+}
+
 integer hex_link(integer i) {
     return llList2Integer(HEX_INFO, HEX_INFO_COUNT * i + HEX_INFO_LINK);
 }
@@ -245,102 +314,8 @@ list hex_texture_offsets() {
     return result;
 }
 
-integer town_link(integer i) {
-    return llList2Integer(TOWN_INFO, TOWN_INFO_COUNT * i + TOWN_INFO_LINK);
-}
-
-integer town_face(integer i) {
-    return llList2Integer(TOWN_INFO, TOWN_INFO_COUNT * i + TOWN_INFO_FACE);
-}
-
-integer detected_town_id() {
-    integer face = llDetectedTouchFace(0);
-    integer link = llDetectedLinkNumber(0);
-    integer i;
-    for (i = 0; i < TOWN_INFO_LEN; ++i) {
-        if (town_link(i) == link && town_face(i) == face) {
-            return i;
-        }
-    }
-    return -1;
-}
-
-integer road_link(integer i) {
-    return llList2Integer(ROAD_INFO, ROAD_INFO_COUNT * i + ROAD_INFO_LINK);
-}
-
-integer road_face(integer i) {
-    return llList2Integer(ROAD_INFO, ROAD_INFO_COUNT * i + ROAD_INFO_FACE);
-}
-
-list hex_info() {
-    list result;
-
-    float dx = 0.6685;
-    float y0 = 0.1933;
-    float dy = 0.0866;
-    integer link;
-
-    // column 1
-    link = 22;
-    result += [0,  link, 1, <X0 - 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -30.0, <0.519,  y0 + 2 * dy, 0.0>, BASE_PORT];
-    result += [1,  link, 2, <X0 - 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
-    result += [2,  link, 3, <X0 - 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>,  30.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_PORT];
-    result += [3,  link, 4, <X0 - 3*XSTEP, Y0 + 1.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
-
-    // column 2
-    link = 21;
-    result += [4,  link, 0, <X0 - 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
-    result += [5,  link, 1, <X0 - 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
-    result += [6,  link, 2, <X0 - 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
-    result += [7,  link, 3, <X0 - 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
-    result += [8,  link, 4, <X0 - 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>,  30.0, <0.744,  y0 + 2.5 * dy, 0.0>, BASE_PORT];
-
-    // column 3
-    link = 23;
-    result += [9,  link, 0, <X0 - 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 0 * dy, 0.0>, BASE_PORT];
-    result += [10, link, 1, <X0 - 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
-    result += [11, link, 2, <X0 - 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
-    result += [12, link, 3, <X0 - 1*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
-    result += [13, link, 4, <X0 - 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 4 * dy, 0.0>, BASE_LAND];
-    result += [14, link, 5, <X0 - 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
-
-    // column 4 (centre)
-    link = 20;
-    result += [15, link, 0, <X0 - 0*XSTEP, Y0 - 3.0*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
-    result += [16, link, 1, <X0 - 0*XSTEP, Y0 - 2.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
-    result += [17, link, 2, <X0 - 0*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
-    result += [18, link, 3, <X0 - 0*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
-    result += [19, link, 4, <X0 - 0*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 4 * dy, 0.0>, BASE_LAND];
-    result += [20, link, 5, <X0 - 0*XSTEP, Y0 + 2.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 5 * dy, 0.0>, BASE_LAND];
-    result += [21, link, 6, <X0 - 0*XSTEP, Y0 + 3.0*YSTEP, ZPOS>,  90.0, <   dx,  y0 + 0 * dy, 0.0>, BASE_PORT];
-
-    // column 5
-    link = 19;
-    result += [22, link, 0, <X0 + 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 0 * dy, 0.0>, BASE_PORT];
-    result += [23, link, 1, <X0 + 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
-    result += [24, link, 2, <X0 + 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
-    result += [25, link, 3, <X0 + 1*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
-    result += [26, link, 4, <X0 + 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 4 * dy, 0.0>, BASE_LAND];
-    result += [27, link, 5, <X0 + 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
-
-    // column 6
-    link = 18;
-    result += [28, link, 0, <X0 + 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
-    result += [29, link, 1, <X0 + 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
-    result += [30, link, 2, <X0 + 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
-    result += [31, link, 3, <X0 + 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
-    result += [32, link, 4, <X0 + 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>, 150.0, <0.593,  y0 + 2.5 * dy, 0.0>, BASE_PORT];
-
-    // column 7
-    link = 17;
-    result += [33, link, 1, <X0 + 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, 210.0, <0.820,  y0 + 2 * dy, 0.0>, BASE_PORT];
-    result += [34, link, 2, <X0 + 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
-    result += [35, link, 3, <X0 + 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, 150.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_PORT];
-    result += [36, link, 4, <X0 + 3*XSTEP, Y0 + 1.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
-
-    return result;
-}
+// ------------------------------------------------------
+// functions for towns
 
 list town_info() {
     list result;
@@ -420,6 +395,29 @@ list town_info() {
 
     return result;
 }
+
+integer town_link(integer i) {
+    return llList2Integer(TOWN_INFO, TOWN_INFO_COUNT * i + TOWN_INFO_LINK);
+}
+
+integer town_face(integer i) {
+    return llList2Integer(TOWN_INFO, TOWN_INFO_COUNT * i + TOWN_INFO_FACE);
+}
+
+integer town_clicked() {
+    integer face = llDetectedTouchFace(0);
+    integer link = llDetectedLinkNumber(0);
+    integer i;
+    for (i = 0; i < TOWN_INFO_LEN; ++i) {
+        if (town_link(i) == link && town_face(i) == face) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+// ------------------------------------------------------
+// functions for roads
 
 list road_info() {
     list result;
@@ -521,7 +519,25 @@ list road_info() {
     return result;
 }
 
-hexes_shuffle() {
+integer road_link(integer i) {
+    return llList2Integer(ROAD_INFO, ROAD_INFO_COUNT * i + ROAD_INFO_LINK);
+}
+
+integer road_face(integer i) {
+    return llList2Integer(ROAD_INFO, ROAD_INFO_COUNT * i + ROAD_INFO_FACE);
+}
+
+// ------------------------------------------------------
+// functions for game
+
+game_start_new() {
+    game_shuffle();
+    prim_hexes_set();
+    prim_towns_set(list_range(0, TOWN_INFO_LEN), <1.0, 1.0, 1.0>, TEXTURE_TRANSPARENT);
+    prim_roads_set(list_range(0, ROAD_INFO_LEN), <1.0, 1.0, 1.0>, TEXTURE_TRANSPARENT);
+}
+
+game_shuffle() {
     integer i;
     integer land_i;
     integer port_i;
@@ -578,7 +594,14 @@ hexes_shuffle() {
     llOwnerSay("Shuffled hexes");
 }
 
-init_hex_prims() {
+list game_get_valid_towns() {
+    return list_range(0, 30); // TODO
+}
+
+// ------------------------------------------------------
+// functions for prims
+
+prim_hexes_set() {
     integer i;
     integer n;
     integer t;
@@ -638,7 +661,7 @@ init_hex_prims() {
     llSetLinkPrimitiveParamsFast(link, args);
 }
 
-init_road_prims(list ids, vector colour, string texture) {
+prim_roads_set(list ids, vector colour, string texture) {
     integer i;
     integer last_link;
     integer link;
@@ -670,7 +693,7 @@ init_road_prims(list ids, vector colour, string texture) {
     llSetLinkPrimitiveParamsFast(link, args);
 }
 
-init_town_prims(list ids, vector colour, string texture) {
+prim_towns_set(list ids, vector colour, string texture) {
     integer i;
     integer link;
     integer last_link;
@@ -700,17 +723,6 @@ init_town_prims(list ids, vector colour, string texture) {
         ];
     }
     llSetLinkPrimitiveParamsFast(link, args);
-}
-
-game_start_new() {
-    hexes_shuffle();
-    init_hex_prims();
-    init_town_prims(list_range(0, TOWN_INFO_LEN), <1.0, 1.0, 1.0>, TEXTURE_TRANSPARENT);
-    init_road_prims(list_range(0, ROAD_INFO_LEN), <1.0, 1.0, 1.0>, TEXTURE_TRANSPARENT);
-}
-
-list calc_valid_towns() {
-    return list_range(0, 30);
 }
 
 // ------------------------------------------------------
@@ -768,14 +780,16 @@ state build_town {
     state_entry() {
         llOwnerSay("Game: build_town");
 
-        highlighted_towns = calc_valid_towns();
-        init_town_prims(highlighted_towns, <1.0, 1.0, 0.0>, TEXTURE_BLANK);
+        highlighted_towns = game_get_valid_towns();
+        prim_towns_set(highlighted_towns, <1.0, 1.0, 0.0>, TEXTURE_BLANK);
     }
 
     touch_start(integer num) {
-        integer id = detected_town_id();
+        integer face = llDetectedTouchFace(0);
+        integer link = llDetectedLinkNumber(0);
+        integer id = town_clicked();
         if (llListFindList(highlighted_towns, [id]) >= 0) {
-            init_town_prims([id], <1.0, 0.0, 0.0>, TEXTURE_BLANK);
+            prim_towns_set([id], <1.0, 0.0, 0.0>, TEXTURE_BLANK);
         }
     }
 }
