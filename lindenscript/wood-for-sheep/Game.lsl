@@ -63,10 +63,32 @@ list hex_numbers;
 
 integer listen_handle;
 integer num_links;
-key current_player;
+integer current_player;
+list highlighted_towns;
 
 // ------------------------------------------------------
-// functions
+// functions for lists
+
+list list_range(integer min, integer max) {
+    list result;
+    integer i;
+    for (i = min; i < max; ++i) { result += i; }
+    return result;
+}
+
+list list_range_inclusive(integer min, integer max) {
+    list result;
+    integer i;
+    for (i = min; i <= max; ++i) { result += i; }
+    return result;
+}
+
+list list_shuffle(list l) {
+    return llListRandomize(l, 1);
+}
+
+// ------------------------------------------------------
+// functions for hexes
 
 integer hex_link(integer i) {
     return llList2Integer(HEX_INFO, HEX_INFO_COUNT * i + HEX_INFO_LINK);
@@ -231,6 +253,18 @@ integer town_face(integer i) {
     return llList2Integer(TOWN_INFO, TOWN_INFO_COUNT * i + TOWN_INFO_FACE);
 }
 
+integer detected_town_id() {
+    integer face = llDetectedTouchFace(0);
+    integer link = llDetectedLinkNumber(0);
+    integer i;
+    for (i = 0; i < TOWN_INFO_LEN; ++i) {
+        if (town_link(i) == link && town_face(i) == face) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 integer road_link(integer i) {
     return llList2Integer(ROAD_INFO, ROAD_INFO_COUNT * i + ROAD_INFO_LINK);
 }
@@ -313,17 +347,18 @@ list town_info() {
 
     integer link;
 
-    // id, link, face, town1, town2, [town3]
+    // now: id, link, face
+    // next: id, link, face, town1_id, town2_id, [town3_id | -1]
 
     link = 13;
-    result += [ 0, link, 0, 1, 2, -1];
-    result += [ 1, link, 1, 1, 2, -1];
-    result += [ 2, link, 2, 1, 2, 3];
-    result += [ 3, link, 3, 1, 2, 3];
-    result += [ 4, link, 4, 1, 2, 3];
-    result += [ 5, link, 5, 1, 2, 3];
-    result += [ 6, link, 6, 1, 2, 3];
-    result += [ 7, link, 7, 1, 2, 3];
+    result += [ 0, link, 0];
+    result += [ 1, link, 1];
+    result += [ 2, link, 2];
+    result += [ 3, link, 3];
+    result += [ 4, link, 4];
+    result += [ 5, link, 5];
+    result += [ 6, link, 6];
+    result += [ 7, link, 7];
 
     link = 16;
     result += [ 8, link, 0];
@@ -486,10 +521,6 @@ list road_info() {
     return result;
 }
 
-list shuffled_list(list l) {
-    return llListRandomize(l, 1);
-}
-
 hexes_shuffle() {
     integer i;
     integer land_i;
@@ -498,7 +529,7 @@ hexes_shuffle() {
     integer base_type;
     integer land_type;
     integer number;
-    list land_numbers = shuffled_list([2,3,3,4,4,5,5,6,6,8,8,9,9,10,10,11,11,12]);
+    list land_numbers = list_shuffle([2,3,3,4,4,5,5,6,6,8,8,9,9,10,10,11,11,12]);
 
     list land_types = [];
     for (i = 0; i < 1; ++i) { land_types += [DESERT]; }
@@ -507,7 +538,7 @@ hexes_shuffle() {
     for (i = 0; i < 4; ++i) { land_types += [WOOD]; }
     for (i = 0; i < 4; ++i) { land_types += [WHEAT]; }
     for (i = 0; i < 3; ++i) { land_types += [ORE]; }
-    land_types = shuffled_list(land_types);
+    land_types = list_shuffle(land_types);
 
     list port_types = [];
     for (i = 0; i < 4; ++i) port_types += [PORT_3FOR1];
@@ -516,7 +547,7 @@ hexes_shuffle() {
     port_types += [PORT_WOOD];
     port_types += [PORT_WHEAT];
     port_types += [PORT_ORE];
-    port_types = shuffled_list(port_types);
+    port_types = list_shuffle(port_types);
 
     land_i = 0;
     num_i = 0;
@@ -607,18 +638,22 @@ init_hex_prims() {
     llSetLinkPrimitiveParamsFast(link, args);
 }
 
-init_road_prims() {
+init_road_prims(list ids, vector colour, string texture) {
     integer i;
     integer last_link;
     integer link;
     integer face;
     list args;
-
+    integer len;
+    integer id;
+    
     last_link = town_link(0);
     args = [];
+    len = llGetListLength(ids);
 
-    for (i = 0; i < ROAD_INFO_LEN; ++i) {
-        link = road_link(i);
+    for (i = 0; i < len; ++i) {
+        id = llList2Integer(ids, i);
+        link = road_link(id);
 
         if (last_link != link) {
             llSetLinkPrimitiveParamsFast(last_link, args);
@@ -626,27 +661,31 @@ init_road_prims() {
             args = [];
         }
 
-        face = road_face(i);
+        face = road_face(id);
         args += [
-            PRIM_COLOR, face, <1.0, 1.0, 1.0>, 1.0,
-            PRIM_TEXTURE, face, TEXTURE_TRANSPARENT, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
+            PRIM_COLOR, face, colour, 1.0,
+            PRIM_TEXTURE, face, texture, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
         ];
     }
     llSetLinkPrimitiveParamsFast(link, args);
 }
 
-init_town_prims() {
+init_town_prims(list ids, vector colour, string texture) {
     integer i;
     integer link;
     integer last_link;
     integer face;
     list args;
+    integer len;
+    integer id;
 
     last_link = town_link(0);
     args = [];
+    len = llGetListLength(ids);
 
-    for (i = 0; i < TOWN_INFO_LEN; ++i) {
-        link = town_link(i);
+    for (i = 0; i < len; ++i) {
+        id = llList2Integer(ids, i);
+        link = town_link(id);
 
         if (last_link != link) {
             llSetLinkPrimitiveParamsFast(last_link, args);
@@ -654,12 +693,11 @@ init_town_prims() {
             args = [];
         }
 
-        face = town_face(i);
+        face = town_face(id);
         args += [
-            PRIM_COLOR, face, <1.0, 1.0, 1.0>, 1.0,
-            PRIM_TEXTURE, face, TEXTURE_TRANSPARENT, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
+            PRIM_COLOR, face, colour, 1.0,
+            PRIM_TEXTURE, face, texture, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
         ];
-        // llOwnerSay("Setting town " + (string)i + " link " + (string)link + " face " + (string)face);
     }
     llSetLinkPrimitiveParamsFast(link, args);
 }
@@ -667,8 +705,12 @@ init_town_prims() {
 game_start_new() {
     hexes_shuffle();
     init_hex_prims();
-    init_town_prims();
-    init_road_prims();
+    init_town_prims(list_range(0, TOWN_INFO_LEN), <1.0, 1.0, 1.0>, TEXTURE_TRANSPARENT);
+    init_road_prims(list_range(0, ROAD_INFO_LEN), <1.0, 1.0, 1.0>, TEXTURE_TRANSPARENT);
+}
+
+list calc_valid_towns() {
+    return list_range(0, 30);
 }
 
 // ------------------------------------------------------
@@ -678,14 +720,6 @@ default {
     state_entry() {
         llOwnerSay("------------------------");
         llOwnerSay("Game: default");
-        state off;
-    }
-}
-
-state off {
-    state_entry() {
-        listen_handle = llListen(CHANNEL, "", "", "");
-        llOwnerSay("Game: off");
 
         HEX_INFO = hex_info();
         HEX_INFO_LEN = llGetListLength(HEX_INFO) / HEX_INFO_COUNT;
@@ -698,31 +732,51 @@ state off {
 
         HEX_TEXTURE_OFFSET_LIST = hex_texture_offsets();
 
-        game_start_new();
+        listen_handle = llListen(CHANNEL, "", "", "");
+
+        state off;
+    }
+}
+
+state off {
+    state_entry() {
+        llOwnerSay("Game: off");
+
+        // game_start_new();
+
+        state build_town;
     }
 
     touch_start(integer num) {
         key toucher = llDetectedKey(0);
-        list options = ["New game"];
-        if (toucher == llGetOwner()) {
-            options += ["Unpack pieces"];
-        }
+        list options = ["New game", "Build town", "Build road"];
         llDialog(toucher, "Welcome to Wood for Sheep", options, CHANNEL);
     }
 
     // llDialog callback
     listen(integer channel, string name, key id, string message) {
-        if (message == "Unpack pieces") {
-            llRequestPermissions(llGetOwner(), PERMISSION_CHANGE_LINKS);
-        } else if (message == "New game") {
+        if (message == "New game") {
             state starting;
+        } else if (message == "Build town") {
+            current_player = 0;
+            state build_town;
         }
     }
+}
 
-    // llRequestPermissions callback
-    run_time_permissions(integer perms) {
-        llWhisper(0, "To be implemented.");
-        state off;
+state build_town {
+    state_entry() {
+        llOwnerSay("Game: build_town");
+
+        highlighted_towns = calc_valid_towns();
+        init_town_prims(highlighted_towns, <1.0, 1.0, 0.0>, TEXTURE_BLANK);
+    }
+
+    touch_start(integer num) {
+        integer id = detected_town_id();
+        if (llListFindList(highlighted_towns, [id]) >= 0) {
+            init_town_prims([id], <1.0, 0.0, 0.0>, TEXTURE_BLANK);
+        }
     }
 }
 
