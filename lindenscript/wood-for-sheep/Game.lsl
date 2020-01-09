@@ -17,16 +17,16 @@ integer PORT_ORE = 105;
 integer PORT_BRICK = 106;
 integer PORT_WHEAT = 107;
 
-list TILE_INFO;
-integer TILE_INFO_LEN;
-integer TILE_INFO_ID = 0;
-integer TILE_INFO_LINK = 1;
-integer TILE_INFO_FACE = 2;
-integer TILE_INFO_POSITION = 3;
-integer TILE_INFO_ROTATION = 4;
-integer TILE_INFO_OFFSETS = 5;
-integer TILE_INFO_BASE_TYPE = 6;
-integer TILE_INFO_COUNT = 7;
+list HEX_INFO;
+integer HEX_INFO_LEN;
+integer HEX_INFO_ID = 0;
+integer HEX_INFO_LINK = 1;
+integer HEX_INFO_FACE = 2;
+integer HEX_INFO_POSITION = 3;
+integer HEX_INFO_ROTATION = 4;
+integer HEX_INFO_OFFSETS = 5;
+integer HEX_INFO_BASE_TYPE = 6;
+integer HEX_INFO_COUNT = 7;
 
 list ROAD_INFO;
 integer ROAD_INFO_LEN;
@@ -52,14 +52,14 @@ float XSTEP = 0.075;
 float YSTEP = 0.0833;
 float ZPOS = 0.01;
 
-list TILE_TEXTURE_OFFSET_LIST;
+list HEX_TEXTURE_OFFSET_LIST;
 
 
 // ------------------------------------------------------
 // variables
 
-list tile_types;
-list tile_numbers;
+list hex_types;
+list hex_numbers;
 
 integer listen_handle;
 integer num_links;
@@ -68,39 +68,74 @@ key current_player;
 // ------------------------------------------------------
 // functions
 
-integer tile_link(integer i) {
-    return llList2Integer(TILE_INFO, TILE_INFO_COUNT * i + TILE_INFO_LINK);
+integer hex_link(integer i) {
+    return llList2Integer(HEX_INFO, HEX_INFO_COUNT * i + HEX_INFO_LINK);
 }
 
-integer tile_face(integer i) {
-    return llList2Integer(TILE_INFO, TILE_INFO_COUNT * i + TILE_INFO_FACE);
+integer hex_face(integer i) {
+    return llList2Integer(HEX_INFO, HEX_INFO_COUNT * i + HEX_INFO_FACE);
 }
 
-vector tile_position(integer i) {
-    return llList2Vector(TILE_INFO, TILE_INFO_COUNT * i + TILE_INFO_POSITION);
+vector hex_position(integer i) {
+    return llList2Vector(HEX_INFO, HEX_INFO_COUNT * i + HEX_INFO_POSITION);
 }
 
-float tile_rotation(integer i) {
-    return llList2Float(TILE_INFO, TILE_INFO_COUNT * i + TILE_INFO_ROTATION);
+float hex_rotation(integer i) {
+    return llList2Float(HEX_INFO, HEX_INFO_COUNT * i + HEX_INFO_ROTATION);
 }
 
-vector tile_offsets(integer i) {
-    return llList2Vector(TILE_INFO, TILE_INFO_COUNT * i + TILE_INFO_OFFSETS);
+vector hex_offsets(integer i) {
+    return llList2Vector(HEX_INFO, HEX_INFO_COUNT * i + HEX_INFO_OFFSETS);
 }
 
-integer tile_base_type(integer i) {
-    return llList2Integer(TILE_INFO, TILE_INFO_COUNT * i + TILE_INFO_BASE_TYPE);
+integer hex_base_type(integer i) {
+    return llList2Integer(HEX_INFO, HEX_INFO_COUNT * i + HEX_INFO_BASE_TYPE);
 }
 
-integer tile_type(integer i) {
-    return llList2Integer(tile_types, i);
+integer hex_type(integer i) {
+    return llList2Integer(hex_types, i);
 }
 
-integer tile_number(integer i) {
-    return llList2Integer(tile_numbers, i);
+integer hex_number(integer i) {
+    return llList2Integer(hex_numbers, i);
 }
 
-list make_texture_offsets() {
+string hex_texture(integer type, integer number) {
+  string name;
+
+  if (type == WATER) {
+      name = "water";
+  } else if (type == DESERT) {
+      name = "desert";
+  } else if (type == WOOD) {
+      name = "wood" + (string)number;
+  } else if (type == SHEEP) {
+      name = "sheep" + (string)number;
+  } else if (type == ORE) {
+      name = "ore" + (string)number;
+  } else if (type == BRICK) {
+      name = "brick" + (string)number;
+  } else if (type == WHEAT) {
+      name = "wheat" + (string)number;
+  } else if (type == PORT_3FOR1) {
+      name = "port3for1";
+  } else if (type == PORT_WOOD) {
+      name = "portwood";
+  } else if (type == PORT_SHEEP) {
+      name = "portsheep";
+  } else if (type == PORT_ORE) {
+      name = "portore";
+  } else if (type == PORT_BRICK) {
+      name = "portbrick";
+  } else if (type == PORT_WHEAT) {
+      name = "portwheat";
+  } else {
+      name = "unknown";
+  }
+  return name;
+}
+
+list hex_texture_offsets() {
     list result;
 
     // h scale = 1
@@ -204,7 +239,7 @@ integer road_face(integer i) {
     return llList2Integer(ROAD_INFO, ROAD_INFO_COUNT * i + ROAD_INFO_FACE);
 }
 
-list make_tile_info() {
+list hex_info() {
     list result;
 
     float dx = 0.6685;
@@ -273,20 +308,22 @@ list make_tile_info() {
     return result;
 }
 
-list make_town_info() {
+list town_info() {
     list result;
 
     integer link;
 
+    // id, link, face, town1, town2, [town3]
+
     link = 13;
-    result += [ 0, link, 0];
-    result += [ 1, link, 1];
-    result += [ 2, link, 2];
-    result += [ 3, link, 3];
-    result += [ 4, link, 4];
-    result += [ 5, link, 5];
-    result += [ 6, link, 6];
-    result += [ 7, link, 7];
+    result += [ 0, link, 0, 1, 2, -1];
+    result += [ 1, link, 1, 1, 2, -1];
+    result += [ 2, link, 2, 1, 2, 3];
+    result += [ 3, link, 3, 1, 2, 3];
+    result += [ 4, link, 4, 1, 2, 3];
+    result += [ 5, link, 5, 1, 2, 3];
+    result += [ 6, link, 6, 1, 2, 3];
+    result += [ 7, link, 7, 1, 2, 3];
 
     link = 16;
     result += [ 8, link, 0];
@@ -349,10 +386,12 @@ list make_town_info() {
     return result;
 }
 
-list make_road_info() {
+list road_info() {
     list result;
 
     integer link;
+
+    // id, link, face, town1, town2, road1, road2, road3, road4
 
     link = 1;
     result += [ 0, link, 0];
@@ -447,47 +486,11 @@ list make_road_info() {
     return result;
 }
 
-
 list shuffled_list(list l) {
     return llListRandomize(l, 1);
 }
 
-string tile_texture(integer type, integer number) {
-  string name;
-
-  if (type == WATER) {
-      name = "water";
-  } else if (type == DESERT) {
-      name = "desert";
-  } else if (type == WOOD) {
-      name = "wood" + (string)number;
-  } else if (type == SHEEP) {
-      name = "sheep" + (string)number;
-  } else if (type == ORE) {
-      name = "ore" + (string)number;
-  } else if (type == BRICK) {
-      name = "brick" + (string)number;
-  } else if (type == WHEAT) {
-      name = "wheat" + (string)number;
-  } else if (type == PORT_3FOR1) {
-      name = "port3for1";
-  } else if (type == PORT_WOOD) {
-      name = "portwood";
-  } else if (type == PORT_SHEEP) {
-      name = "portsheep";
-  } else if (type == PORT_ORE) {
-      name = "portore";
-  } else if (type == PORT_BRICK) {
-      name = "portbrick";
-  } else if (type == PORT_WHEAT) {
-      name = "portwheat";
-  } else {
-      name = "unknown";
-  }
-  return name;
-}
-
-init_tiles() {
+hexes_shuffle() {
     integer i;
     integer land_i;
     integer port_i;
@@ -517,34 +520,34 @@ init_tiles() {
 
     land_i = 0;
     num_i = 0;
-    for (i = 0; i < TILE_INFO_LEN; ++i) {
-        base_type = tile_base_type(i);
+    for (i = 0; i < HEX_INFO_LEN; ++i) {
+        base_type = hex_base_type(i);
         if (base_type == BASE_LAND) {
             land_type = llList2Integer(land_types, land_i);
-            tile_types += land_type;
+            hex_types += land_type;
             ++land_i;
 
             if (land_type == DESERT) {
-                tile_numbers += 0;
+                hex_numbers += 0;
             } else {
                 number = llList2Integer(land_numbers, num_i);
-                tile_numbers += number;
+                hex_numbers += number;
                 ++num_i;
             }
         } else if (base_type == BASE_PORT) {
-            tile_types += llList2Integer(port_types, port_i);
-            tile_numbers += 0;
+            hex_types += llList2Integer(port_types, port_i);
+            hex_numbers += 0;
             ++port_i;
         } else {
-            tile_types += WATER;
-            tile_numbers += 0;
+            hex_types += WATER;
+            hex_numbers += 0;
         }
     }
 
-    llOwnerSay("Shuffled tiles");
+    llOwnerSay("Shuffled hexes");
 }
 
-init_tile_prims() {
+init_hex_prims() {
     integer i;
     integer n;
     integer t;
@@ -559,12 +562,12 @@ init_tile_prims() {
     list args;
 
     args = [];
-    last_link = tile_link(0);
+    last_link = hex_link(0);
 
     repeats = <0.5, 0.5, 0.0>;
 
-    for (i = 0; i < TILE_INFO_LEN; ++i) {
-        link = tile_link(i);
+    for (i = 0; i < HEX_INFO_LEN; ++i) {
+        link = hex_link(i);
 
         if (last_link != link) {
             llSetLinkPrimitiveParamsFast(last_link, args);
@@ -572,32 +575,32 @@ init_tile_prims() {
             args = [];
         }
 
-        face = tile_face(i);
+        face = hex_face(i);
 
-        if (tile_base_type(i) == BASE_WATER) {
+        if (hex_base_type(i) == BASE_WATER) {
             args += [
                 PRIM_COLOR, face, <0.651, 0.949, 0.941>, 1.0,
                 PRIM_TEXTURE, face, TEXTURE_BLANK, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
             ];
         } else {
-            t = tile_type(i);
-            n = tile_number(i);
-            texture = tile_texture(t, n);
+            t = hex_type(i);
+            n = hex_number(i);
+            texture = hex_texture(t, n);
 
-            //llOwnerSay("Setting tile " + (string)i + " to type " + (string)t + " num " + (string)n + "(" + texture + ")");
+            //llOwnerSay("Setting hex " + (string)i + " to type " + (string)t + " num " + (string)n + "(" + texture + ")");
 
-            integer offset_index = llListFindList(TILE_TEXTURE_OFFSET_LIST, [texture]);
+            integer offset_index = llListFindList(HEX_TEXTURE_OFFSET_LIST, [texture]);
             if (offset_index >= 0) {
-                offsets = llList2Vector(TILE_TEXTURE_OFFSET_LIST, offset_index + 1);
+                offsets = llList2Vector(HEX_TEXTURE_OFFSET_LIST, offset_index + 1);
             }
 
-            rot = tile_rotation(i) * DEG_TO_RAD;
-            offsets += tile_offsets(i);
+            rot = hex_rotation(i) * DEG_TO_RAD;
+            offsets += hex_offsets(i);
             
             args += [
                 PRIM_TEXGEN, face, PRIM_TEXGEN_PLANAR,
                 PRIM_COLOR, face, <1.0, 1.0, 1.0>, 1.0,
-                PRIM_TEXTURE, face, "tiles", repeats, offsets, rot
+                PRIM_TEXTURE, face, "hexes", repeats, offsets, rot
             ];
         }
     }
@@ -606,19 +609,30 @@ init_tile_prims() {
 
 init_road_prims() {
     integer i;
+    integer last_link;
     integer link;
     integer face;
     list args;
 
+    last_link = town_link(0);
+    args = [];
+
     for (i = 0; i < ROAD_INFO_LEN; ++i) {
         link = road_link(i);
+
+        if (last_link != link) {
+            llSetLinkPrimitiveParamsFast(last_link, args);
+            last_link = link;
+            args = [];
+        }
+
         face = road_face(i);
-        args = [
-            PRIM_COLOR, face, <1.0, 0.0, 1.0>, 1.0,
-            PRIM_TEXTURE, face, TEXTURE_BLANK, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
+        args += [
+            PRIM_COLOR, face, <1.0, 1.0, 1.0>, 1.0,
+            PRIM_TEXTURE, face, TEXTURE_TRANSPARENT, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
         ];
-        llSetLinkPrimitiveParamsFast(link, args);
     }
+    llSetLinkPrimitiveParamsFast(link, args);
 }
 
 init_town_prims() {
@@ -628,23 +642,31 @@ init_town_prims() {
     integer face;
     list args;
 
+    last_link = town_link(0);
+    args = [];
+
     for (i = 0; i < TOWN_INFO_LEN; ++i) {
         link = town_link(i);
-        face = town_face(i);
-        args = [
-            PRIM_COLOR, face, <1.0, 0.0, 0.0>, 1.0,
-            PRIM_TEXTURE, face, TEXTURE_BLANK, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
-        ];
 
+        if (last_link != link) {
+            llSetLinkPrimitiveParamsFast(last_link, args);
+            last_link = link;
+            args = [];
+        }
+
+        face = town_face(i);
+        args += [
+            PRIM_COLOR, face, <1.0, 1.0, 1.0>, 1.0,
+            PRIM_TEXTURE, face, TEXTURE_TRANSPARENT, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
+        ];
         // llOwnerSay("Setting town " + (string)i + " link " + (string)link + " face " + (string)face);
-        llSetLinkPrimitiveParamsFast(link, args);
     }
+    llSetLinkPrimitiveParamsFast(link, args);
 }
 
-
-init_new_game() {
-    init_tiles();
-    init_tile_prims();
+game_start_new() {
+    hexes_shuffle();
+    init_hex_prims();
     init_town_prims();
     init_road_prims();
 }
@@ -665,18 +687,18 @@ state off {
         listen_handle = llListen(CHANNEL, "", "", "");
         llOwnerSay("Game: off");
 
-        TILE_INFO = make_tile_info();
-        TILE_INFO_LEN = llGetListLength(TILE_INFO) / TILE_INFO_COUNT;
+        HEX_INFO = hex_info();
+        HEX_INFO_LEN = llGetListLength(HEX_INFO) / HEX_INFO_COUNT;
 
-        ROAD_INFO = make_road_info();
+        ROAD_INFO = road_info();
         ROAD_INFO_LEN = llGetListLength(ROAD_INFO) / ROAD_INFO_COUNT;
 
-        TOWN_INFO = make_town_info();
+        TOWN_INFO = town_info();
         TOWN_INFO_LEN = llGetListLength(TOWN_INFO) / TOWN_INFO_COUNT;
 
-        TILE_TEXTURE_OFFSET_LIST = make_texture_offsets();
+        HEX_TEXTURE_OFFSET_LIST = hex_texture_offsets();
 
-        init_new_game();
+        game_start_new();
     }
 
     touch_start(integer num) {
@@ -727,17 +749,17 @@ state ready {
 
 /*
 TODO:
-- [x] textures for tiles and ports
-- [x] list of tile + port positions (37)
-- [x] lay out tiles
-- [ ] tile meshes (37 positions) - 7 prims currently but could be 5 prims with work
-- [ ] town meshes (54 positions) - 7 prims
+- [x] textures for hexes and ports
+- [x] list of hex land and port positions (37)
+- [x] lay out hexes
+- [x] hex meshes (37 positions) - 7 prims currently but could be 5 prims with work
+- [x] town meshes (54 positions) - 7 prims
 - [ ] city meshes (54 positions) - 7 prims
-- [ ] road meshes (72 positions) - 9 prims
+- [x] road meshes (72 positions) - 9 prims
 - [ ] thief prim - 1 prim
 - minimum: 5 + 7 + 7 + 9 + 1 = 29
 - [ ] list of links between roads
-- [ ] list of links between town positions and tile positions
+- [ ] list of links between town positions and hex positions
 - [ ] list of links between town positions and ports
 - [ ] list of pieces on the board - what, where, who owns it
 - [ ] state off
@@ -747,8 +769,8 @@ TODO:
   - [ ] choose a player to start randomly
   - [ ] make list of setup states to move through
 - [x] state setup_land
-  - [x] shuffle tiles and lay them out
-  - [ ] shuffle tile numbers and lay them out
+  - [x] shuffle hexes and lay them out
+  - [ ] shuffle hex numbers and lay them out
 - [ ] state player_setup
   - [ ] let player place a town
   - [ ] let player place a road
