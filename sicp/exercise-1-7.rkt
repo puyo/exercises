@@ -24,7 +24,7 @@
 ; (square (my-sqrt 0.0009))
 ; 1764
 
-(require rackunit)
+; ----------------------------------------------------------------------
 
 (define (square x)
   (* x x)
@@ -33,6 +33,8 @@
 (define (average x y)
   (/ (+ x y) 2)
   )
+
+; ----------------------------------------------------------------------
 
 (define (my-sqrt1 x)
 
@@ -52,6 +54,8 @@
 
   (sqrt-iter 1 x)
   )
+
+; ----------------------------------------------------------------------
 
 (define (my-sqrt2 x)
   ; This version picks a tolerance dynamically as a fraction of the current
@@ -83,6 +87,10 @@
 
   (sqrt-iter 1 x)
   )
+
+; ----------------------------------------------------------------------
+
+(require rackunit)
 
 (println "sqrt")
 
