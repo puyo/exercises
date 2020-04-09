@@ -52,6 +52,9 @@
 
   (if (< n 3)
     n
+
+    ; start at n = 3 (so r1, r2, r3 = 2, 1, 0)
+    ; after n - 2 iterations, r1 will be the answer
     (f-loop 2 1 0 (- n 2))
     )
   )
