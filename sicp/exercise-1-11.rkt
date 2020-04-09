@@ -60,6 +60,9 @@
   )
 
 (require rackunit)
+(require racket/trace)
+
+(trace fr)
 
 (check-equal? (fr 1)  1 "n < 3")
 (check-equal? (fr 2)  2 "n < 3")
@@ -67,7 +70,6 @@
 (check-equal? (fr 4) 11 "f(4) = 1*4 + 2*2 + 3*1 = 4 + 2 + 3 = 11")
 (check-equal? (fr 5) 25 "f(5) = 1*11 + 2*4 + 3*2 = 11 + 8 + 6 = 25")
 
-(require racket/trace)
 (trace fi)
 
 (check-equal? (fi 1)  1 "n < 3")
