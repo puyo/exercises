@@ -39,20 +39,20 @@
 ; - stop when... iteration-count >= n ?
 
 (define (fi n)
-  (define (calc x y z)
+  (define (calculation x y z)
     (+ x (* 2 y) (* 3 z))
     )
 
-  (define (f-iter result c1 c2 c3 count)
+  (define (f-loop r1 r2 r3 count)
     (if (= count 0)
-      (calc c1 c2 c3)
-      (f-iter n (calc c1 c2 c3) c1 c2 (- count 1))
+      r1
+      (f-loop (calculation r1 r2 r3) r1 r2 (- count 1))
       )
     )
 
   (if (< n 3)
     n
-    (f-iter 3 2 1 0 (- n 3))
+    (f-loop 2 1 0 (- n 2))
     )
   )
 
