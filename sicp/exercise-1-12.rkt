@@ -21,7 +21,7 @@
 
 (define (pascal row col)
   (cond
-    ((or (< row 0) (< col 0)) 0)
+    ((< row 0) 0)
     ((and (= row 0) (= col 0)) 1)
     (else (+
             (pascal (- row 1) (- col 1))
@@ -36,12 +36,15 @@
 
 ; (trace pascal)
 
-(check-equal? (pascal -1  0)  0 "pascal(-1,  0)")
-(check-equal? (pascal  0 -1)  0 "pascal( 0, -1)")
-(check-equal? (pascal  0  0)  1 "pascal( 0,  0)")
-(check-equal? (pascal  1  0)  1 "pascal( 1,  0)")
-(check-equal? (pascal  1  1)  1 "pascal( 1,  1)")
-(check-equal? (pascal  2  1)  2 "pascal( 2,  1)")
-(check-equal? (pascal  5  3) 10 "pascal( 5,  3)")
+(check-equal? (pascal -1   0)  0 "pascal(-1,   0)")
+(check-equal? (pascal  0  -1)  0 "pascal( 0,  -1)")
+(check-equal? (pascal  0   1)  0 "pascal( 0,   1)")
+(check-equal? (pascal  0   0)  1 "pascal( 0,   0)")
+(check-equal? (pascal  1   0)  1 "pascal( 1,   0)")
+(check-equal? (pascal  1   1)  1 "pascal( 1,   1)")
+(check-equal? (pascal  2   1)  2 "pascal( 2,   1)")
+(check-equal? (pascal  5   3) 10 "pascal( 5 ,  3)")
+(check-equal? (pascal  5 -20)  0 "pascal( 5, -20)")
+(check-equal? (pascal  5  20)  0 "pascal( 5 , 20)")
 
 (displayln "Done")
