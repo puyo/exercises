@@ -17,20 +17,23 @@ Snail_feeding <-
   rename("Snail" = "Snail.ID")
 
 # Rename Snail.ID using built in R
-#names(Snail_feeding$Snail.ID) <- "Snail"
+# names(Snail_feeding$Snail.ID) <- "Snail"
 
 Snail_feeding$Snail <- as.factor(Snail_feeding$Snail)
 
 Snail_feeding$Size <- as.factor(Snail_feeding$Size)
 
+# which(is.na(as.numeric(Snail_feeding$Distance))) # 682 755
 Snail_feeding$Distance[682] <- 0.356452  # comma instead of dec point
 Snail_feeding$Distance[755] <- 0.58      # trailing single quote
 Snail_feeding$Distance <- as.numeric(Snail_feeding$Distance)
 
+# unique(Snail_feeding$Sex) # [1] "male"     "males"    "Male"     "female"   "female s"
 Snail_feeding$Sex[which(Snail_feeding$Sex == "males" | Snail_feeding$Sex == "Male")] <- "male"
 Snail_feeding$Sex[which(Snail_feeding$Sex == "female s")] <- "female"
 Snail_feeding$Sex <- factor(Snail_feeding$Sex)
 
+# Snail_feeding[which(Snail_feeding$Depth > 2), ] # row 8, depth 162
 Snail_feeding$Depth[8] <- 1.62 # missing decimal point
 
 summary(Snail_feeding)
