@@ -35,7 +35,7 @@ Snail_feeding$Snail <- as.factor(Snail_feeding$Snail)
 
 Snail_feeding$Size <- as.factor(Snail_feeding$Size)
 
-# which(is.na(as.numeric(Snail_feeding$Distance))) # 682 755
+# which(is.na(as.numeric(Snail_feeding$Distance))) # [1] 682 755
 Snail_feeding$Distance[682] <- 0.356452  # comma instead of dec point
 Snail_feeding$Distance[755] <- 0.58      # trailing single quote
 Snail_feeding$Distance <- as.numeric(Snail_feeding$Distance)
