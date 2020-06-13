@@ -14,6 +14,8 @@ Snail_feeding <- read.csv(
 # Only keep columns 1:7
 Snail_feeding <- Snail_feeding[,1:7]
 
+which(is.na(as.numeric(Snail_feeding$Distance))) 
+
 # Selects rows that are not entirely NA. Not necessary for this data set
 
 # Snail_feeding <- Snail_feeding[, colSums(is.na(Snail_feeding)) != nrow(Snail_feeding)]
