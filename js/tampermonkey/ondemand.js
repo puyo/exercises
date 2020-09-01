@@ -6,10 +6,11 @@
 // @version      0.2
 // @description  Skip the ads
 // @author       puyo
-// @include      https://www.sbs.com.au/ondemand/video/*
+// @include      https://www.sbs.com.au/ondemand/*
 // @require      https://jpillora.com/xhook/dist/xhook.js
 // @grant        none
 // @run-at       document-start
+// @updateURL    https://raw.githubusercontent.com/puyo/exercises/master/js/tampermonkey/ondemand.js
 // ==/UserScript==
 
 (function() {
@@ -46,4 +47,5 @@
         }
     });
 })();
+
 
