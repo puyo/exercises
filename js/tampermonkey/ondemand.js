@@ -13,6 +13,12 @@
 // @updateURL    https://raw.githubusercontent.com/puyo/exercises/master/js/tampermonkey/ondemand.js
 // ==/UserScript==
 
+// You may need these uBlock Origin "allow" rules, too:
+//
+// @@||imasdk.googleapis.com^$script,domain=www.sbs.com.au
+// @@||licensing.bitmovin.com^$xhr,domain=www.sbs.com.au
+// @@||pubads.g.doubleclick.net^$xhr,domain=www.sbs.com.au
+
 (function() {
     'use strict';
 
