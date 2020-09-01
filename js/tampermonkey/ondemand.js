@@ -3,7 +3,7 @@
 // @namespace    puyo/demand
 // @license      Creative Commons BY-NC-SA
 // @encoding     utf-8
-// @version      0.2
+// @version      0.3
 // @description  Skip the ads
 // @author       puyo
 // @include      https://www.sbs.com.au/ondemand/*
