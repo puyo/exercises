@@ -5,3 +5,4 @@ TAGS
 *.cmx
 *.o
 *.ibc
+.RProj.user
