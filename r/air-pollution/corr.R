@@ -5,11 +5,10 @@ corr <- function(directory, threshold = 0) {
     data <- read.csv(path)
     complete <- data[complete.cases(data),]
     ncomplete <- nrow(complete)
-    if (ncomplete < threshold) {
-      next
+    if (ncomplete >= threshold) {
+      value <- cor(complete$sulfate, complete$nitrate)
+      result <- c(result, value)
     }
-    value <- cor(complete$sulfate, complete$nitrate)
-    result <- c(result, value)
   }
   result
 }
