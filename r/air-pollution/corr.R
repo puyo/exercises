@@ -7,7 +7,7 @@ corr <- function(directory, threshold = 0) {
     ncomplete <- nrow(complete)
     if (ncomplete >= threshold) {
       value <- cor(complete$sulfate, complete$nitrate)
-      result <- c(result, value)
+      result <- append(result, value)
     }
   }
   result
