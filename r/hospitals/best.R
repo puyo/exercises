@@ -17,13 +17,13 @@ best <- function(state, outcome) {
   if (is.null(colname)) {
     stop("invalid outcome")
   }
+  
+  ## Return hospital name in that state with lowest 30-day death
+  ## rate
   by_hospital <- split(statedata, statedata$Hospital.Name)
   calc_mean <- function(x) {
     mean(as.numeric(x[,colname]), na.rm = TRUE)
   }
   means <- lapply(by_hospital, calc_mean)
-  
-  ## Return hospital name in that state with lowest 30-day death
-  ## rate
   names(which.min(means))
 }
