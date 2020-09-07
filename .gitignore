@@ -6,3 +6,6 @@ TAGS
 *.o
 *.ibc
 .RProj.user
+.Rproj.user
+.RData
+.Rhistory
