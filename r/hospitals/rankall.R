@@ -1,4 +1,4 @@
-rankhospital <- function(state, outcome, num = "best") {
+rankall <- function(outcome, num = "best") {
   ## Read outcome data
   
   data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
@@ -7,25 +7,20 @@ rankhospital <- function(state, outcome, num = "best") {
   names(data)[names(data) == "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Attack"] <- "heart attack"
   names(data)[names(data) == "Hospital.30.Day.Death..Mortality..Rates.from.Heart.Failure"] <- "heart failure"
   names(data)[names(data) == "Hospital.30.Day.Death..Mortality..Rates.from.Pneumonia"] <- "pneumonia"
-
   data <- subset(data, select = c("state", "hospital", "heart attack", "heart failure", "pneumonia"))
-  statedata <- data[data$state == state & data[,outcome] != "Not Available",]
+  data <- data[data[,outcome] != "Not Available",]
   
   ## Check the arguments are valid
   
-  if (nrow(statedata) == 0) {
-    stop("invalid state")
-  }
-  if (! outcome %in% c("heart attack", "heart failure", "pneumonia")) {
+  if (!(outcome %in% c("heart attack", "heart failure", "pneumonia"))) {
     stop("invalid outcome")
   }
   if (!(num %in% c("best", "worst") || is.numeric(num))) {
     stop("invalid num")
   }
-
-  ## Return hospital name in that state with the given rank (num argument)
-  ## 30-day death rate
-
+  
+  ## For each state, find the hospital of the given rank
+  
   pick_hospital <- function(statedata) {
     if (num == "best") {
       num = 1
@@ -34,9 +29,16 @@ rankhospital <- function(state, outcome, num = "best") {
     }
     statedata[num,]$hospital
   }
-  outcomes <- as.numeric(statedata[,outcome])
-  means <- aggregate(outcomes, list(hospital = statedata$hospital), mean)
+  
+  outcomes <- as.numeric(data[,outcome])
+  means <- aggregate(outcomes, list(hospital = data$hospital, state = data$state), mean)
   ordered_means <- means[order(means$x, means$hospital),]
-  statedata = ordered_means
-  pick_hospital(ordered_means)
+  
+  result <- data.frame()
+  for (state in sort(unique(data$state))) {
+    statedata <- ordered_means[ordered_means$state == state,]
+    record <- data.frame(hospital = pick_hospital(statedata), state = state)
+    result <- rbind(result, record)
+  }
+  result
 }
