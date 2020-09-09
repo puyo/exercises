@@ -6,13 +6,15 @@ endif()
 
 project(learning)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic -Wextra")
+set( CMAKE_VERBOSE_MAKEFILE on )
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic -Wextra -Wno-c99-extensions")
 
 file(GLOB APP_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} *.cpp)
 foreach( testsourcefile ${APP_SOURCES} )
     string(REPLACE ".cpp" "" testname ${testsourcefile})
     add_executable( ${testname} ${testsourcefile} )
-    set_property(TARGET ${testname} PROPERTY CXX_STANDARD 11)
+    set_property(TARGET ${testname} PROPERTY CXX_STANDARD 17)
     set_property(TARGET ${testname} PROPERTY CXX_STANDARD_REQUIRED ON)
     set_target_properties(${testname} PROPERTIES DEBUG_POSTFIX "_d")
     set_target_properties(${testname} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
