@@ -3,18 +3,14 @@
 
 using namespace std;
 
-class foo {
-  public:
-  foo() : _x(2) {}
+struct foo {
   int x() const { return _x; }
   foo& x(int v) { _x = v; return *this; }
   private:
   int _x;
 };
 
-class bar {
-  public:
-  bar() : _x(2) {}
+struct bar {
   int x() const { return _x; }
   bar& x(int v) { _x = v; return *this; }
   private:
@@ -38,8 +34,8 @@ int proc(const bar& b, const foo& f) {
 }
 
 int main() {
-  auto f = foo();
-  auto b = bar();
+  auto f = foo().x(2);
+  auto b = bar().x(2);
 
   cout << proc(f) << endl;
   cout << proc(b) << endl;
