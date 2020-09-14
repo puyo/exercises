@@ -1,0 +1,11 @@
+[package]
+name = "roguelike"
+version = "0.1.0"
+authors = ["Gregory McIntyre <greg@gregorymcintyre.com>"]
+
+[dependencies]
+tcod = "0.15"
+rand = "0.3"
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
