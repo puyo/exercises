@@ -10,7 +10,6 @@ struct Person {
     age: usize,
 }
 
-// I AM NOT DONE
 // Steps:
 // 1. If the length of the provided string is 0, then return an error
 // 2. Split the given string on the commas present in it
@@ -23,6 +22,21 @@ struct Person {
 impl FromStr for Person {
     type Err = String;
     fn from_str(s: &str) -> Result<Person, Self::Err> {
+        let parts: Vec<&str> = s.split(",").collect();
+        if parts.len() != 2 {
+            return Err(String::from("must be name,age"));
+        }
+        let name = String::from(parts[0]);
+        if name.len() == 0 {
+            return Err(String::from("invalid name"));
+        }
+        match parts[1].parse::<usize>() {
+            Ok(age) => Ok(Person {
+                name: name,
+                age: age,
+            }),
+            Err(x) => Err(String::from("invalid age")),
+        }
     }
 }
 
@@ -82,5 +96,4 @@ mod tests {
     fn missing_name_and_invalid_age() {
         ",one".parse::<Person>().unwrap();
     }
-
 }
