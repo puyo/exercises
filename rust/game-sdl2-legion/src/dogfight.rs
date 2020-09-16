@@ -1,16 +1,6 @@
 pub mod dogfight {
     use legion::*;
 
-    #[derive(Copy, Clone)]
-    pub enum State {
-        Paused,
-        Playing,
-    }
-
-    struct Time {
-        elapsed_seconds: f32,
-    }
-
     pub struct Game {
         width: u32,
         height: u32,
@@ -55,16 +45,26 @@ pub mod dogfight {
             }
         }
 
-        pub fn update(&mut self, delta: f64) {
+        pub fn update(&mut self, delta: f32) {
+            {
+                let mut time = self.resources.get_mut::<Time>().unwrap();
+                time.elapsed_seconds = delta;
+            }
             // run our schedule (you should do this each update)
             self.schedule.execute(&mut self.world, &mut self.resources);
         }
     }
 
-    #[system(for_each)]
-    fn update_positions(pos: &mut Position, vel: &Velocity, #[resource] time: &Time) {
-        pos.x += vel.dx * time.elapsed_seconds;
-        pos.y += vel.dy * time.elapsed_seconds;
+    // ----------------------------
+
+    #[derive(Copy, Clone)]
+    pub enum State {
+        Paused,
+        Playing,
+    }
+
+    struct Time {
+        elapsed_seconds: f32,
     }
 
     // a component is any type that is 'static, sized, send and sync
@@ -78,5 +78,12 @@ pub mod dogfight {
     struct Velocity {
         dx: f32,
         dy: f32,
+    }
+
+    #[system(for_each)]
+    fn update_positions(pos: &mut Position, vel: &Velocity, #[resource] time: &Time) {
+        println!("updating positions {}", time.elapsed_seconds);
+        pos.x += vel.dx * time.elapsed_seconds;
+        pos.y += vel.dy * time.elapsed_seconds;
     }
 }

@@ -74,7 +74,7 @@ pub fn main() -> Result<(), String> {
         // update
 
         let now = timer.performance_counter();
-        let delta = ((now - last_counter) * 1000) as f64 / freq as f64;
+        let delta = ((now - last_counter) * 1000) as f32 / freq as f32;
         game.update(delta);
         last_counter = now;
 
