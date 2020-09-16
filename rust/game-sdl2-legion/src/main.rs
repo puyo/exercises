@@ -47,7 +47,7 @@ pub fn main() -> Result<(), String> {
 
     // Create a "target" texture so that we can use our Renderer with it later
     // let (square_texture1, square_texture2) = dummy_texture(&mut canvas, &texture_creator)?;
-    let mut game = dogfight::dogfight::Game::new();
+    let mut game = dogfight::Game::new();
 
     let timer = sdl_context.timer()?;
 
