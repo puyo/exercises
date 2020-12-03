@@ -1,4 +1,4 @@
-def part1(map, dx: 3, dy: 1)
+def count_trees(map, dx:, dy:)
   x = 0
   y = 0
   w = map[0].size
@@ -12,13 +12,17 @@ def part1(map, dx: 3, dy: 1)
   count
 end
 
+def part1(map)
+  count_trees(map, dx: 3, dy: 1)
+end
+
 def part2(map)
   [
-    part1(map, dx: 1, dy: 1),
-    part1(map, dx: 3, dy: 1),
-    part1(map, dx: 5, dy: 1),
-    part1(map, dx: 7, dy: 1),
-    part1(map, dx: 1, dy: 2),
+    count_trees(map, dx: 1, dy: 1),
+    count_trees(map, dx: 3, dy: 1),
+    count_trees(map, dx: 5, dy: 1),
+    count_trees(map, dx: 7, dy: 1),
+    count_trees(map, dx: 1, dy: 2),
   ].inject(:*)
 end
 

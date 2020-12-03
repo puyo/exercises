@@ -1,5 +1,5 @@
 
-# A password is valid if the specified letter occurs the right number of times
+# A password is valid if the letter occurs the right number of times
 def part1(data)
   data.select do |n1, n2, letter, password|
     letter_count = password.chars.select{|char| char == letter }.size
@@ -7,6 +7,7 @@ def part1(data)
   end.size
 end
 
+# A password is valid if the letter is in exactly one of the two positions
 def part2(data)
   data.select do |n1, n2, letter, password|
     (password[n1 - 1] == letter) ^ (password[n2 - 1] == letter) # ^ is xor
@@ -1022,3 +1023,4 @@ __END__
 13-14 g: gggggggbgggmgmgm
 4-12 r: rrrzrgkrrrrkr
 14-17 n: nnhnnnnnnnnnnnnnhnn
+
