@@ -4,7 +4,7 @@ def count_trees(map, dx:, dy:)
   w = map[0].size
   h = map.size
   count = 0
-  while y < h do
+  while y < h
     count += map[y][x % w] == '#' ? 1 : 0
     x += dx
     y += dy

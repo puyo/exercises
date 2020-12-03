@@ -6,7 +6,7 @@
 #
 def find_complements1(numbers, target_sum: 2020)
   complements = numbers.map { |n| [n, target_sum - n] }.to_h
-  complements.find { |n, c| complements.key?(c) }
+  complements.find { |_n, c| complements.key?(c) }
 end
 
 # Part 2, find the 3 numbers that sum to 2020
@@ -14,7 +14,7 @@ end
 # O(n^3) - nested nested loop to build combinations
 #
 def find_complements2(numbers, target_sum: 2020)
-  numbers.combination(3).find{|x, y, z| x + y + z == target_sum }
+  numbers.combination(3).find { |x, y, z| x + y + z == target_sum }
 end
 
 numbers = DATA.each_line.map(&:to_i)
