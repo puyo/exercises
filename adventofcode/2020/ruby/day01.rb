@@ -11,18 +11,10 @@ end
 
 # Part 2, find the 3 numbers that sum to 2020
 #
-# O(n^3) - nested nested loop
+# O(n^3) - nested nested loop to build combinations
 #
 def find_complements2(numbers, target_sum: 2020)
-  numbers.each do |x|
-    numbers.each do |y|
-      numbers.each do |z|
-        if x + y + z == target_sum
-          return x, y, z
-        end
-      end
-    end
-  end
+  numbers.combination(3).find{|x, y, z| x + y + z == target_sum }
 end
 
 numbers = DATA.each_line.map(&:to_i)
@@ -230,3 +222,4 @@ __END__
 1284
 1569
 1970
+
