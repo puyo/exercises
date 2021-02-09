@@ -6,7 +6,7 @@
 // @version      0.1
 // @description  Make it easier to mark attendance with Track Karma
 // @author       puyo
-// @include      https://app.trackkarma.com/trainings
+// @include      https://app.trackkarma.com/trainings*
 // @grant        none
 // @require      https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js
 // @updateURL    https://raw.githubusercontent.com/puyo/exercises/master/js/tampermonkey/trackkarma.js
