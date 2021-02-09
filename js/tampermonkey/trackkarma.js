@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @license      Creative Commons BY-NC-SA
 // @encoding     utf-8
-// @version      0.1
+// @version      0.2
 // @description  Make it easier to mark attendance with Track Karma
 // @author       puyo
 // @include      https://app.trackkarma.com/trainings*
@@ -14,11 +14,6 @@
 
 (function() {
     'use strict';
-
-    const iframe = document.createElement('iframe')
-    iframe.setAttribute('name', 'postTarget')
-    iframe.style.display = 'none'
-    document.querySelector('body').appendChild(iframe)
 
     const csrfValue = () => document.querySelector('meta[name=csrf-token]').getAttribute('content')
     const csrfParam = () => document.querySelector('meta[name=csrf-param]').getAttribute('content')
@@ -40,7 +35,6 @@
         card.style.position = 'relative'
 
         form.setAttribute('action', action)
-        form.setAttribute('target', 'postTarget')
         form.setAttribute('accept-charset', 'UTF-8')
         form.setAttribute('method', 'post')
         form.style.position = 'absolute'
@@ -112,3 +106,4 @@
         card.appendChild(form)
     })
 })();
+
