@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @license      Creative Commons BY-NC-SA
 // @encoding     utf-8
-// @version      1.4
+// @version      1.5
 // @description  Make it easier to mark attendance with Track Karma
 // @author       puyo
 // @include      https://app.trackkarma.com/trainings*
@@ -18,8 +18,9 @@ GM_addStyle(`
 
 .set-availability-buttons {
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: -10px;
+  right: -10px;
+  white-space: nowrap;
 }
 
 .availability-absent .button.set-absent { display: none; }
@@ -51,15 +52,14 @@ GM_addStyle(`
     border: 3px solid #fff;
     border-right-color: #aaa;
     background-color: #5e5e5e;
-    width: 1.5em;
-    height: 1.5em;
-    margin-top: 0.5em;
-    margin-right: 0.5em;
+    width: 2em;
+    height: 2em;
     border-radius: 50%;
     animation: circle-loader 1s infinite ease-out;
 }
 
 .loading .loader { display: inline-block; }
+.loading .button { display: none; }
 
 `)
 ;(function () {
