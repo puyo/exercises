@@ -62,6 +62,7 @@ GM_addStyle(`
 .loading .button { display: none; }
 
 `)
+
 ;(function () {
     'use strict'
 
