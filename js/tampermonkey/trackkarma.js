@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @license      Creative Commons BY-NC-SA
 // @encoding     utf-8
-// @version      1.2
+// @version      1.3
 // @description  Make it easier to mark attendance with Track Karma
 // @author       puyo
 // @include      https://app.trackkarma.com/trainings*
@@ -68,7 +68,6 @@ GM_addStyle(`
         const oldPresent = avail.classList.contains('availability-present')
 
         if (oldPresent === present) {
-            console.log('already', oldPresent, present)
             return
         }
 
@@ -112,12 +111,13 @@ GM_addStyle(`
         const setAbsent = makeButton('<i class="fa fa-close"></i>', 'set-absent', () =>
             setValue(action, 'absent', () => success(false, -1, card))
         )
-        const avail = card.querySelector('.training-availability, .member-availability')
 
         const buttonContainer = document.createElement('div')
         buttonContainer.classList.add('set-availability-buttons')
         buttonContainer.appendChild(setPresent)
         buttonContainer.appendChild(setAbsent)
+
+        const avail = card.querySelector('.training-availability, .member-availability')
         avail.appendChild(buttonContainer)
     })
 })()
