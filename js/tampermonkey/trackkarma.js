@@ -28,11 +28,38 @@ GM_addStyle(`
 .availability-present .button.set-present { display: none; }
 .availability-present_major .button.set-present { display: none; }
 
+
 /* avoid hover effect on this element which isn't a link that affects our buttons */
 .training-availability:hover {
     -webkit-filter: initial !important;
     filter: initial !important;
 }
+
+@keyframes circle-loader {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader.simple-circle {
+    display: none;
+    vertical-align: top;
+    transform-origin: center center;
+    border: 3px solid #fff;
+    border-right-color: #aaa;
+    background-color: #5e5e5e;
+    width: 1.5em;
+    height: 1.5em;
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+    border-radius: 50%;
+    animation: circle-loader 1s infinite ease-out;
+}
+
+.loading .loader { display: inline-block; }
 
 `)
 ;(function () {
@@ -41,13 +68,15 @@ GM_addStyle(`
     const csrfValue = () => document.querySelector('meta[name=csrf-token]').getAttribute('content')
     const csrfParam = () => document.querySelector('meta[name=csrf-param]').getAttribute('content')
 
-    const setValue = (action, status, success) => {
+    const setValue = (action, status, startLoad, stopLoad, success) => {
         const body = new URLSearchParams([
             ['utf8', '✓'],
             ['_method', 'patch'],
             [csrfParam(), csrfValue()],
             ['availability[status]', status],
         ])
+
+        startLoad()
 
         fetch(action, {
             method: 'POST',
@@ -61,6 +90,7 @@ GM_addStyle(`
                 }
             })
             .catch((err) => console.error(err))
+            .finally(() => stopLoad())
     }
 
     const success = (present, attendeesDelta, card) => {
@@ -105,15 +135,33 @@ GM_addStyle(`
 
         const href = link.getAttribute('href')
         const action = href.replace('/edit', '')
+
         const setPresent = makeButton('<i class="fa fa-check"></i>', 'set-present', () =>
-            setValue(action, 'present', () => success(true, +1, card))
+            setValue(
+                action,
+                'present',
+                () => card.classList.add('loading'),
+                () => card.classList.remove('loading'),
+                () => success(true, +1, card)
+            )
         )
+
         const setAbsent = makeButton('<i class="fa fa-close"></i>', 'set-absent', () =>
-            setValue(action, 'absent', () => success(false, -1, card))
+            setValue(
+                action,
+                'absent',
+                () => card.classList.add('loading'),
+                () => card.classList.remove('loading'),
+                () => success(false, -1, card)
+            )
         )
+
+        const loading = document.createElement('div')
+        loading.classList.add('loader', 'simple-circle')
 
         const buttonContainer = document.createElement('div')
         buttonContainer.classList.add('set-availability-buttons')
+        buttonContainer.appendChild(loading)
         buttonContainer.appendChild(setPresent)
         buttonContainer.appendChild(setAbsent)
 
