@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @license      Creative Commons BY-NC-SA
 // @encoding     utf-8
-// @version      1.0
+// @version      1.1
 // @description  Make it easier to mark attendance with Track Karma
 // @author       puyo
 // @include      https://app.trackkarma.com/trainings*
@@ -13,7 +13,7 @@
 
 GM_addStyle(`
 .set-availability-buttons {
-  position: abolute;
+  position: absolute;
   top: 100%;
 }
 
