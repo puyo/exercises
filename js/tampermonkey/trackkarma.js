@@ -3,127 +3,114 @@
 // @namespace    http://tampermonkey.net/
 // @license      Creative Commons BY-NC-SA
 // @encoding     utf-8
-// @version      0.2
+// @version      1.0
 // @description  Make it easier to mark attendance with Track Karma
 // @author       puyo
 // @include      https://app.trackkarma.com/trainings*
-// @grant        none
+// @grant        GM_addStyle
 // @updateURL    https://raw.githubusercontent.com/puyo/exercises/master/js/tampermonkey/trackkarma.js
 // ==/UserScript==
 
+GM_addStyle(`
+.set-availability-buttons {
+  position: abolute;
+  top: 100%;
+}
+
+.availability-absent .button.set-absent { display: none; }
+.availability-absent_major .button.set-absent { display: none; }
+
+.availability-present .button.set-present { display: none; }
+.availability-present_major .button.set-present { display: none; }
+
+/* avoid hover effect on this element which isn't a link that affects our buttons */
+.training-availability:hover {
+    -webkit-filter: initial !important;
+    filter: initial !important;
+}
+`)
 ;(function () {
-  "use strict"
+    'use strict'
 
-  const csrfValue = () =>
-    document.querySelector("meta[name=csrf-token]").getAttribute("content")
-  const csrfParam = () =>
-    document.querySelector("meta[name=csrf-param]").getAttribute("content")
+    const csrfValue = () => document.querySelector('meta[name=csrf-token]').getAttribute('content')
+    const csrfParam = () => document.querySelector('meta[name=csrf-param]').getAttribute('content')
 
-  const cards = document.querySelectorAll(".training-card")
-  cards.forEach(function (card) {
-    let present = card.querySelector(".availability-present") != null
-    const link = card.querySelector("a[data-remote=true]")
-    if (!link) {
-      return
-    }
-    const form = document.createElement("form")
-    const href = link.getAttribute("href")
-    const action = href.replace("/edit", "")
-    const newValue = () => (present ? "absent" : "present")
-    const buttonLabel = () => (present ? "Set absent" : "Set present")
-    let field
+    document.querySelectorAll('.training-card, .availability-card').forEach(function (card) {
+        const link = card.querySelector('a[data-remote=true]')
 
-    card.style.position = "relative"
+        if (!link) {
+            return
+        }
 
-    form.setAttribute("action", action)
-    form.setAttribute("accept-charset", "UTF-8")
-    form.setAttribute("method", "post")
-    form.style.position = "absolute"
-    form.style.top = "5px"
-    form.style.right = "5px"
+        const href = link.getAttribute('href')
+        const action = href.replace('/edit', '')
+        const avail = card.querySelector('.training-availability, .member-availability')
 
-    field = document.createElement("input")
-    field.setAttribute("type", "hidden")
-    field.setAttribute("name", "utf8")
-    field.setAttribute("value", "✓")
-    form.appendChild(field)
+        avail.style.position = 'relative'
 
-    field = document.createElement("input")
-    field.setAttribute("type", "hidden")
-    field.setAttribute("name", "_method")
-    field.setAttribute("value", "patch")
-    form.appendChild(field)
+        const setValue = (value, present) => {
+            const body = new URLSearchParams([
+                ['utf8', '✓'],
+                ['_method', 'patch'],
+                [csrfParam(), csrfValue()],
+                ['availability[status]', value],
+            ])
 
-    field = document.createElement("input")
-    field.setAttribute("type", "hidden")
-    field.setAttribute("name", csrfParam())
-    field.setAttribute("value", csrfValue())
-    form.appendChild(field)
+            fetch(action, {
+                method: 'POST',
+                body: body,
+            })
+                .then((res) => {
+                    if (res.ok) {
+                        success(present)
+                    } else {
+                        console.error(res)
+                    }
+                })
+                .catch((err) => console.error(err))
+        }
 
-    field = document.createElement("input")
-    field.setAttribute("type", "hidden")
-    field.setAttribute("name", "availability[status]")
-    field.setAttribute("value", newValue())
-    const availField = field
-    form.appendChild(field)
+        const success = (present) => {
+            const oldPresent = card.querySelector('.availability-present') != null
 
-    field = document.createElement("input")
-    field.setAttribute("type", "hidden")
-    field.setAttribute("name", "availability[comment]")
-    field.setAttribute("value", "")
-    form.appendChild(field)
+            if (oldPresent === present) {
+                return
+            }
 
-    field = document.createElement("input")
-    field.setAttribute("type", "submit")
-    field.setAttribute("value", buttonLabel())
-    const submitField = field
-    form.appendChild(field)
+            avail.classList.toggle('availability-present', present)
+            avail.classList.toggle('availability-absent', !present)
 
-    const success = () => {
-      present = !present
+            const icon = avail.querySelector('.fa')
+            icon.classList.toggle('fa-check', present)
+            icon.classList.toggle('fa-close', !present)
 
-      const avail = card.querySelector(".training-availability")
-      avail.classList.toggle("availability-present", present)
-      avail.classList.toggle("availability-absent", !present)
+            const attendances = card.querySelector('.attendances')
+            if (attendances) {
+                attendances.textContent = parseInt(attendances.textContent) + (present ? 1 : -1)
+            }
+        }
 
-      const icon = avail.querySelector(".fa")
-      icon.classList.toggle("fa-check", present)
-      icon.classList.toggle("fa-close", !present)
+        const makeButton = (label, klass, value, present) => {
+            const button = document.createElement('button')
+            button.classList.add('button')
+            button.classList.add('small')
+            button.classList.add('secondary')
+            button.classList.add(klass)
+            button.innerHTML = label
+            button.addEventListener('click', (event) => {
+                event.preventDefault()
+                setValue(value, present)
+            })
+            return button
+        }
 
-      const attendances = card.querySelector(".attendances")
-      attendances.textContent =
-        parseInt(attendances.textContent) + (present ? 1 : -1)
+        const setPresent = makeButton('<i class="fa fa-check"></i>', 'set-present', 'present', true)
+        const setAbsent = makeButton('<i class="fa fa-close"></i>', 'set-absent', 'absent', false)
 
-      availField.setAttribute("value", newValue())
-      submitField.setAttribute("value", buttonLabel())
-      return true
-    }
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault()
-
-      const body = new URLSearchParams([
-        ['utf8', '✓'],
-        ['_method', 'patch'],
-        [csrfParam(), csrfValue()],
-        ['availability[status]', newValue()],
-      ])
-
-      fetch(action, {
-        method: "POST",
-        body: body,
-      })
-        .then(res => {
-          if (res.ok) {
-            success()
-          } else {
-            console.error(res)
-          }
-        })
-        .catch((err) => console.error(err))
+        const buttonContainer = document.createElement('div')
+        buttonContainer.classList.add('set-availability-buttons')
+        buttonContainer.appendChild(setPresent)
+        buttonContainer.appendChild(setAbsent)
+        avail.appendChild(buttonContainer)
     })
-
-    card.appendChild(form)
-  })
 })()
-
