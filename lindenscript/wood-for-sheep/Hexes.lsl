@@ -11,6 +11,7 @@ integer HEX_INFO_OFFSETS = 5;
 integer HEX_INFO_BASE_TYPE = 6;
 integer HEX_INFO_COUNT = 7;
 
+integer BASE_TRANSPARENT = 0;
 integer BASE_LAND = 1;
 integer BASE_PORT = 2;
 integer BASE_WATER = 3;
@@ -53,12 +54,24 @@ prim_hexes_set(list hex_types, list hex_numbers) {
     integer face;
     list args;
     integer b;
+    repeats = <0.5, 0.5, 0.0>;
+
+    // set all to transparent
+    args = [
+        PRIM_COLOR, ALL_SIDES, <1.0, 1.0, 1.0>, 0.0,
+        PRIM_TEXTURE, ALL_SIDES, TEXTURE_TRANSPARENT, <1.0, 1.0, 0.0>, <0.0, 0.0, 0.0>, 0.0
+    ];
+    last_link = hex_link(0);
+    for (i = 0; i < HEX_INFO_LEN; ++i) {
+        if (last_link != link) {
+            last_link = link;
+            llSetLinkPrimitiveParams(last_link, args);
+        }
+    }
+    llSetLinkPrimitiveParams(last_link, args);
 
     args = [];
     last_link = hex_link(0);
-
-    repeats = <0.5, 0.5, 0.0>;
-
     for (i = 0; i < HEX_INFO_LEN; ++i) {
         link = hex_link(i);
 
@@ -69,7 +82,6 @@ prim_hexes_set(list hex_types, list hex_numbers) {
         }
 
         face = hex_face(i);
-
         b = hex_base_type(i);
 
         if (b == BASE_WATER) {
@@ -82,7 +94,9 @@ prim_hexes_set(list hex_types, list hex_numbers) {
             n = llList2Integer(hex_numbers, i);
             texture = hex_texture(t, n);
 
-            // llOwnerSay("Setting hex " + (string)i + " to type " + (string)t + " num " + (string)n + " (" + texture + ")");
+            llOwnerSay("Setting hex " +
+                (string)i + " (link " + (string)link + ", " + (string)face + ") to type " +
+                (string)t + " num " + (string)n + " (" + texture + ")");
 
             integer offset_index = llListFindList(HEX_TEXTURE_OFFSET_LIST, [texture]);
             if (offset_index >= 0) {
@@ -91,7 +105,7 @@ prim_hexes_set(list hex_types, list hex_numbers) {
 
             rot = hex_rotation(i) * DEG_TO_RAD;
             offsets += hex_offsets(i);
-            
+
             args += [
                 PRIM_TEXGEN, face, PRIM_TEXGEN_PLANAR,
                 PRIM_COLOR, face, <1.0, 1.0, 1.0>, 1.0,
@@ -104,29 +118,25 @@ prim_hexes_set(list hex_types, list hex_numbers) {
 
 list hex_info() {
     list result;
-
     float dx = 0.6685;
     float y0 = 0.1933;
     float dy = 0.0866;
     integer link;
 
-    // column 1
-    link = 22;
+    link = get_link("hexcol0");
     result += [0,  link, 1, <X0 - 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -30.0, <0.519,  y0 + 2 * dy, 0.0>, BASE_PORT];
     result += [1,  link, 2, <X0 - 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
     result += [2,  link, 3, <X0 - 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>,  30.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_PORT];
     result += [3,  link, 4, <X0 - 3*XSTEP, Y0 + 1.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
 
-    // column 2
-    link = 21;
+    link = get_link("hexcol1");
     result += [4,  link, 0, <X0 - 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
     result += [5,  link, 1, <X0 - 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
     result += [6,  link, 2, <X0 - 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
     result += [7,  link, 3, <X0 - 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
     result += [8,  link, 4, <X0 - 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>,  30.0, <0.744,  y0 + 2.5 * dy, 0.0>, BASE_PORT];
 
-    // column 3
-    link = 23;
+    link = get_link("hexcol2");
     result += [9,  link, 0, <X0 - 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 0 * dy, 0.0>, BASE_PORT];
     result += [10, link, 1, <X0 - 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
     result += [11, link, 2, <X0 - 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
@@ -134,8 +144,8 @@ list hex_info() {
     result += [13, link, 4, <X0 - 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 4 * dy, 0.0>, BASE_LAND];
     result += [14, link, 5, <X0 - 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
 
-    // column 4 (centre)
-    link = 20;
+    // (centre)
+    link = get_link("hexcol3");
     result += [15, link, 0, <X0 - 0*XSTEP, Y0 - 3.0*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
     result += [16, link, 1, <X0 - 0*XSTEP, Y0 - 2.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
     result += [17, link, 2, <X0 - 0*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
@@ -144,8 +154,7 @@ list hex_info() {
     result += [20, link, 5, <X0 - 0*XSTEP, Y0 + 2.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 5 * dy, 0.0>, BASE_LAND];
     result += [21, link, 6, <X0 - 0*XSTEP, Y0 + 3.0*YSTEP, ZPOS>,  90.0, <   dx,  y0 + 0 * dy, 0.0>, BASE_PORT];
 
-    // column 5
-    link = 19;
+    link = get_link("hexcol4");
     result += [22, link, 0, <X0 + 1*XSTEP, Y0 - 2.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 0 * dy, 0.0>, BASE_PORT];
     result += [23, link, 1, <X0 + 1*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
     result += [24, link, 2, <X0 + 1*XSTEP, Y0 - 0.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
@@ -153,16 +162,14 @@ list hex_info() {
     result += [26, link, 4, <X0 + 1*XSTEP, Y0 + 1.5*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 4 * dy, 0.0>, BASE_LAND];
     result += [27, link, 5, <X0 + 1*XSTEP, Y0 + 2.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
 
-    // column 6
-    link = 18;
+    link = get_link("hexcol5");
     result += [28, link, 0, <X0 + 2*XSTEP, Y0 - 2.0*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
     result += [29, link, 1, <X0 + 2*XSTEP, Y0 - 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 1 * dy, 0.0>, BASE_LAND];
     result += [30, link, 2, <X0 + 2*XSTEP, Y0 + 0.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 2 * dy, 0.0>, BASE_LAND];
     result += [31, link, 3, <X0 + 2*XSTEP, Y0 + 1.0*YSTEP, ZPOS>, -90.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_LAND];
     result += [32, link, 4, <X0 + 2*XSTEP, Y0 + 2.0*YSTEP, ZPOS>, 150.0, <0.593,  y0 + 2.5 * dy, 0.0>, BASE_PORT];
 
-    // column 7
-    link = 17;
+    link = get_link("hexcol6");
     result += [33, link, 1, <X0 + 3*XSTEP, Y0 - 1.5*YSTEP, ZPOS>, 210.0, <0.820,  y0 + 2 * dy, 0.0>, BASE_PORT];
     result += [34, link, 2, <X0 + 3*XSTEP, Y0 - 0.5*YSTEP, ZPOS>,   0.0, ZERO_VECTOR,                BASE_WATER];
     result += [35, link, 3, <X0 + 3*XSTEP, Y0 + 0.5*YSTEP, ZPOS>, 150.0, <   dx,  y0 + 3 * dy, 0.0>, BASE_PORT];
@@ -318,7 +325,17 @@ list hex_texture_offsets() {
     return result;
 }
 
+integer get_link(string name) {
+    integer i = llGetLinkNumber() != 0;
+    integer x = llGetNumberOfPrims() + i;
+    for (; i < x; ++i)
+        if (llGetLinkName(i) == name)
+            return i;
+    return -1;
+}
+
 hexes_shuffle() {
+    llOwnerSay("Hex: Shuffle...");
     integer i;
     integer land_i;
     integer port_i;
@@ -386,10 +403,8 @@ default {
     state_entry() {
         HEX_INFO = hex_info();
         HEX_INFO_LEN = llGetListLength(HEX_INFO) / HEX_INFO_COUNT;
-
         HEX_TEXTURE_OFFSET_LIST = hex_texture_offsets();
     }
-
 
     link_message(integer sender, integer num, string msg, key id) {
         if (msg == "hexes_shuffle") {
@@ -397,3 +412,4 @@ default {
         }
     }
 }
+
