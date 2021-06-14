@@ -3,11 +3,12 @@
 // @namespace    http://tampermonkey.net/
 // @license      Creative Commons BY-NC-SA
 // @encoding     utf-8
-// @version      1.6
+// @version      1.7
 // @description  Make it easier to mark attendance with Track Karma
 // @author       puyo
 // @include      https://app.trackkarma.com/trainings*
 // @grant        GM_addStyle
+// @downloadURL  https://raw.githubusercontent.com/puyo/config/master/userscripts/trackkarma.js
 // @updateURL    https://raw.githubusercontent.com/puyo/config/master/userscripts/trackkarma.js
 // ==/UserScript==
 
