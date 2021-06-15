@@ -11,4 +11,6 @@ int main() {
         uppercase++;
     });
   cout << uppercase << " uppercase letters in: " << s << endl;
+
+  return 0;
 }

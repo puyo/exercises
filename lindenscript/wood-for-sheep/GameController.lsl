@@ -18,6 +18,12 @@ integer town_clicked() {
     return -1;
 }
 
+
+menu(key user) {
+    list options = ["New game", "Build town", "Build road"];
+    llDialog(user, "Welcome to Wood for Sheep", options, CHANNEL);
+}
+
 // ------------------------------------------------------
 // states
 
@@ -25,23 +31,22 @@ default {
     state_entry() {
         llOwnerSay("------------------------");
         llOwnerSay("Game: default");
-
         listen_handle = llListen(CHANNEL, "", "", "");
 
-        state off;
+        // start a game with 4 players
+        llMessageLinked(LINK_THIS, 4, "state_start_new", "");
     }
 }
 
 state off {
     state_entry() {
         llOwnerSay("Game: off");
-        llMessageLinked(LINK_THIS, 4, "state_start_new", "");
     }
 
+    // all click events
     touch_start(integer num) {
         key toucher = llDetectedKey(0);
-        list options = ["New game", "Build town", "Build road"];
-        llDialog(toucher, "Welcome to Wood for Sheep", options, CHANNEL);
+        llOwnerSay("clicked by " + (string)toucher);
     }
 
     // llDialog callback
