@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>Local Puyo Cam</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<meta http-equiv="Pragma" content="no-cache">
+		<style type="text/css">
+			body { font-family: helvetica; }
+			img { border: 5, solid; }
+		</style>
+		<script language="JavaScript">
+<!--
+var Count = 2
+function updateClock() {
+	document.clock.time.value = Count;
+	Count = Count + 1;
+	document.images[0].src = "/home/puyo/bin/webcam.jpg";
+	document.images[1].src = "/home/puyo/bin/webcam.jpg";
+	timrID = setTimeout("updateClock()", 1000);
+}
+//-->
+		</script>
+	</head>
+	<body onload="updateClock()">
+		<h1>Puyo Cam</h1>
+		<img src="/home/puyo/bin/webcam.jpg">
+		<br><br>
+		<form name="clock">
+			Image will update in <input type="text" name="time" size="3" value=""> seconds
+		</form>
+	</body>
+</html>

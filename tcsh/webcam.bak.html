@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title>Local Puyo Cam</title>
+		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="refresh" content="30">
+		<style type="text/css">
+			body { font-family: helvetica; }
+			img { border: 5, solid; }
+		</style>
+		<script language="JavaScript">
+<!--
+function remote() {
+	RemoteWin = window.open("webcamremote.html", "", "resizable=yes, toolbar=0, location=0, directories=0, status=0, menubar=0, scrollbars=auto, copyhistory=0, width=" + klugedWidth + ", height=" + klugedHeight + "");
+	RemoteWin.creator = self;
+}
+var Delay = 5
+var Interv = Delay
+function updateClock() {
+	Interv = Interv - 1;
+	var now = new Date();
+	var dummystr = parseInt(now.getTime() / 1000);
+	delete now;
+	if (Interv < 0) {
+		if (document.images) {
+			document.refrimage.src = "/home/puyo/bin/webcam.jpg";
+		} else {
+			window.location.reload();
+		}
+		Interv = Delay;
+	}
+	document.clock.time.value = Interv;
+	timrID = setTimeout("updateClock()", 1000);
+}
+//-->
+		</script>
+	</head>
+	<body onLoad="updateClock()">
+		<h1>Puyo Cam</h1>
+		<img src="/home/puyo/bin/webcam.jpg">
+		<br><br>
+		<form name="clock">
+			Image will update in <input type="text" name="time" size="3" value=""> seconds
+		</form>
+	</body>
+</html>

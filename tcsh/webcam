@@ -1,0 +1,55 @@
+#!/bin/tcsh
+
+# Webcam script.
+
+# Requires:
+# gqcam
+# pnmscale
+# cjpeg
+# ftp
+# web browser
+
+set delay = '30'
+set file = '/home/puyo/bin/webcam.jpg'
+set tmp1 = '/tmp/webcam-tmp1'
+set tmp2 = '/tmp/webcam-tmp2'
+set device = '/dev/video1'
+set width = '320'
+set height = '240'
+set server = 'members.optushome.com.au'
+set remotedir = '/cam/puyo.jpg'
+set uname = 'puyo'
+set pw = 'elb18bub'
+
+# make sure the kernel module is loaded
+/sbin/modprobe bttv
+
+wmgrabimage -c -delay 10 -u "file://$file" &
+set  pid = $!
+onintr cleanup
+
+rm -f "$tmp1" "$tmp2"
+while (1)
+	# Grab.
+	echo 'Say cheese!'
+	sleep 1
+	echo '*SNAP*'
+	gqcam -v $device -t PPM -d "$tmp1"
+	pnmscale -width $width -height $height "$tmp1" > "$tmp2"
+	cat "$tmp1" | cjpeg > "$file"
+	rm -f "$tmp1" "$tmp2"
+
+	# Wait.
+	echo "Waiting for $delay second(s)..."
+	sleep $delay
+
+	# Upload.
+	echo "Uploading..."
+	ftp -u "ftp://${uname}:${pw}@${server}${remotedir}" "$file" > /dev/null
+end
+
+cleanup:
+
+kill $pid
+
+exit 0
