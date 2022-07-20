@@ -22,8 +22,7 @@ def cofd_roll(pool:, again: 10, rote: false, chance: false, label: nil)
     die_successes = []
     die_successes_count = 0
     die_text_outcome = []
-    die_free_rerolls = rote ? 1 : 0
-    rerolled = false
+    die_rote = rote
 
     loop do
       die_result = rand(1..10)
@@ -41,10 +40,9 @@ def cofd_roll(pool:, again: 10, rote: false, chance: false, label: nil)
       end
 
       if die_result < again
-        if !rerolled && die_free_rerolls > 0
+        if die_rote
           die_text_outcome << '(rote)'
-          die_free_rerolls -= 1
-          rerolled = true
+          die_rote = false
           next
         else
           # this die has exhausted its potential
@@ -52,7 +50,8 @@ def cofd_roll(pool:, again: 10, rote: false, chance: false, label: nil)
         end
       else
         die_text_outcome << "(#{again}-again)"
-        rerolled = true
+        # once N-again rerolled, a die loses its rote quality
+        die_rote = false
         next
       end
     end
