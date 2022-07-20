@@ -1,0 +1,82 @@
+#!/usr/bin/env ruby
+
+def cofd_roll(pool:, again:, rote:, comment: nil)
+  explanation = "#{pool}"
+  explanation << " (#{again}-again)" if again != 10
+  explanation << " (rote)" if rote
+  puts "ROLLING #{explanation}"
+  total_successes = []
+  pool.times do
+    print 'd10> '
+    die_successes = []
+    die_text_outcome = []
+    die_free_rerolls = rote ? 1 : 0
+    loop do
+      die_result = rand(1..10)
+      if die_result >= 8
+        total_successes << die_result
+        die_successes << die_result
+        die_text_outcome << "#{GREEN}#{die_result}#{RESET}"
+      else
+        die_text_outcome << die_result
+      end
+      if die_result < again
+        if die_free_rerolls > 0
+          die_text_outcome << '(rote)'
+          die_free_rerolls -= 1
+          next
+        else
+          # this die has exhausted its potential
+          break
+        end
+      else
+        die_text_outcome << "(#{again}-again)"
+        next
+      end
+    end
+    print die_text_outcome.join(', ')
+    if die_successes.any?
+      puts " #{WHITE}=>#{RESET} #{GREEN}#{die_successes.join(', ')}#{RESET}"
+    else
+      puts
+    end
+  end
+  puts
+  print "#{CYAN}#{comment || 'TOTAL'}#{RESET}"
+  if total_successes.any?
+    print " #{WHITE}=>#{RESET} #{GREEN}#{total_successes.join(', ')}#{RESET}"
+    puts " = #{WHITE}#{total_successes.size}#{RESET} successes"
+  else
+    puts " = #{total_successes.size} successes"
+  end
+  puts
+end
+
+require 'readline'
+
+RESET="\033[0m"
+GREEN = "\033[1;32m"
+WHITE = "\033[1;37m"
+BLUE = "\033[1;34m"
+CYAN = "\033[1;36m"
+
+prompt = "#{BLUE}==>#{RESET} "
+history = true
+
+while line = Readline.readline(prompt, history)
+  m = line.match(/^(?<comment>[^\d]*)\s*(?<rest>.*)/)
+  next if m.nil?
+  comment = line.strip
+  rest = m[:rest]
+  words = rest.split
+  pool = words[0]&.to_i
+  options = words[1]
+  again = 10
+  rote = false
+
+  rote = true if options&.include?('r')
+  again = 9 if options&.include?('9')
+  again = 8 if options&.include?('8')
+  next if pool.nil?
+  cofd_roll(pool: pool, again: again, rote: rote, comment: comment)
+end
