@@ -1,21 +1,26 @@
 #!/usr/bin/env ruby
 
 RESET = "\033[0m"
+RED = "\033[1;31m"
 GREEN = "\033[1;32m"
 WHITE = "\033[1;37m"
 BLUE = "\033[1;34m"
 CYAN = "\033[1;36m"
 
-def cofd_roll(pool:, again:, rote:, label: nil)
+def cofd_roll(pool:, again: 10, rote: false, chance: false, label: nil)
   explanation = "#{pool}"
   explanation << " (#{again}-again)" if again != 10
   explanation << " (rote)" if rote
+  explanation << " (chance)" if chance
   puts "ROLLING #{explanation}"
 
   total_successes = []
+  total_successes_count = 0
+
   pool.times do
     print 'd10> '
     die_successes = []
+    die_successes_count = 0
     die_text_outcome = []
     die_free_rerolls = rote ? 1 : 0
 
@@ -23,9 +28,13 @@ def cofd_roll(pool:, again:, rote:, label: nil)
       die_result = rand(1..10)
 
       if die_result >= 8
-        total_successes << die_result
         die_successes << die_result
+        die_successes_count += 1
         die_text_outcome << "#{GREEN}#{die_result}#{RESET}"
+      elsif die_result == 1 && chance
+        die_successes << die_result
+        die_successes_count -= 1
+        die_text_outcome << "#{RED}#{die_result}#{RESET}"
       else
         die_text_outcome << die_result
       end
@@ -45,10 +54,15 @@ def cofd_roll(pool:, again:, rote:, label: nil)
       end
     end
 
+    total_successes += die_successes
+    total_successes_count += die_successes_count
+
     print die_text_outcome.join(' ')
 
-    if die_successes.any?
+    if die_successes_count > 0
       puts " #{WHITE}=>#{RESET} #{GREEN}#{die_successes.join(', ')}#{RESET}"
+    elsif die_successes_count < 0
+      puts " #{WHITE}=>#{RESET} #{RED}#{die_successes.join(', ')}#{RESET}"
     else
       puts
     end
@@ -57,9 +71,12 @@ def cofd_roll(pool:, again:, rote:, label: nil)
   puts
   print "#{CYAN}#{label || 'TOTAL'}#{RESET}"
 
-  if total_successes.any?
+  if total_successes_count > 0
     print " #{WHITE}=>#{RESET} #{GREEN}#{total_successes.join(', ')}#{RESET}"
-    puts " = #{WHITE}#{total_successes.size}#{RESET} successes"
+    puts " = #{WHITE}#{total_successes_count}#{RESET} successes"
+  elsif total_successes_count < 0
+    puts " #{WHITE}=>#{RESET} #{RED}#{total_successes.join(', ')}#{RESET}"
+    puts " = #{WHITE}#{total_successes_count}#{RESET} (dramatic failure)"
   else
     puts " = #{total_successes.size} successes"
   end
@@ -84,12 +101,17 @@ if $PROGRAM_NAME == __FILE__
       options = words[1]
       again = 10
       rote = false
+      chance = false
 
       rote = true if options&.include?('r')
       again = 9 if options&.include?('9')
       again = 8 if options&.include?('8')
       next if pool.nil?
-      cofd_roll(pool: pool, again: again, rote: rote, label: label)
+      if pool == 0
+        pool = 1
+        chance = true
+      end
+      cofd_roll(pool: pool, again: again, rote: rote, chance: chance, label: label)
     end
   rescue Interrupt
     # exit normally
