@@ -39,7 +39,7 @@ def cofd_roll(pool:, again:, rote:, label: nil)
       end
     end
 
-    print die_text_outcome.join(', ')
+    print die_text_outcome.join(' ')
 
     if die_successes.any?
       puts " #{WHITE}=>#{RESET} #{GREEN}#{die_successes.join(', ')}#{RESET}"
