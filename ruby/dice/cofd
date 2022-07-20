@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 
+RESET = "\033[0m"
+GREEN = "\033[1;32m"
+WHITE = "\033[1;37m"
+BLUE = "\033[1;34m"
+CYAN = "\033[1;36m"
+
 def cofd_roll(pool:, again:, rote:, label: nil)
   explanation = "#{pool}"
   explanation << " (#{again}-again)" if again != 10
@@ -63,12 +69,6 @@ end
 
 if $PROGRAM_NAME == __FILE__
   require 'readline'
-
-  RESET="\033[0m"
-  GREEN = "\033[1;32m"
-  WHITE = "\033[1;37m"
-  BLUE = "\033[1;34m"
-  CYAN = "\033[1;36m"
 
   prompt = "#{BLUE}==>#{RESET} "
   history = true
