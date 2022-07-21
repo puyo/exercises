@@ -94,11 +94,10 @@ module ChroniclesOfDarkness
       io.print "    d#{die[:sides]}> "
 
       printable_history = die[:history].map do |history_item|
-        case history_item
-        in [:success, n] then format('%s%2d%s', GREEN, n, RESET)
-        in [:failure, n] then format('%2d', n)
-        in [:again, :rote] then "(    rote)"
-        in [:again, n] then format('(%2d-again)', n)
+        if history_item.first == :success then format('%s%2d%s', GREEN, history_item.last, RESET)
+        elsif history_item.first == :failure then format('%2d', history_item.last)
+        elsif history_item == [:again, :rote] then "(    rote)"
+        elsif history_item.first == :again then format('(%2d-again)', history_item.last)
         end
       end
 
