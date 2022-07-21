@@ -109,17 +109,25 @@ module ChroniclesOfDarkness
       end
     end
 
-    if result[:score] > 0
-      io.puts "    ALL> #{GREEN}#{result[:successful_rolls].join(', ')}#{RESET}"
-      io.puts
-      io.puts "=> #{WHITE}#{result[:score]}#{RESET} successes"
-    elsif result[:score] < 0
-      io.puts "=> #{RED}dramatic failure#{RESET}"
-    else
-      io.puts "=> #{result[:score]} successes"
+    if result[:score] > 0 && result[:pool] > 1
+      io.puts "    ===> #{GREEN}#{result[:successful_rolls].join(', ')}#{RESET}"
     end
 
     io.puts
+
+    if result[:score] > 0
+      io.puts "=> #{WHITE}#{result[:score]}#{RESET} #{successes_word(result[:score])}"
+    elsif result[:score] < 0
+      io.puts "=> #{RED}dramatic failure#{RESET}"
+    else
+      io.puts "=> #{result[:score]} #{successes_word(result[:score])}"
+    end
+
+    io.puts
+  end
+
+  def self.successes_word(n)
+    n == 1 ? 'success' : 'successes'
   end
 
   CLI_USAGE = <<~USAGE
