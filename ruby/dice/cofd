@@ -91,7 +91,7 @@ module ChroniclesOfDarkness
   BLUE = "\033[1;34m"
   CYAN = "\033[1;36m"
 
-  def self.print_roll_result(result, io: STDOUT)
+  def self.print_roll_result(result, io: $stdout)
     io.puts
     io.puts "Details for #{result[:explanation]}"
     io.puts
