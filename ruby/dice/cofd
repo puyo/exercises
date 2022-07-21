@@ -1,7 +1,14 @@
 #!/usr/bin/env ruby
 
 module ChroniclesOfDarkness
-  def self.roll(pool:, again: 10, rote: false, chance: false, label: nil, command: nil, target: 8, sides: 10)
+  def self.roll(pool:, again: 10, rote: false, label: nil, command: nil, target: 8, sides: 10)
+    if pool == 0
+      pool = 1
+      chance = true
+    else
+      chance = false
+    end
+
     dice_results = []
     successful_rolls = []
     score = 0
@@ -201,19 +208,13 @@ module ChroniclesOfDarkness
         options = words[1]
         again = 10
         rote = false
-        chance = false
         rote = true if options&.include?('r')
         again = 9 if options&.include?('9')
         again = 8 if options&.include?('8')
 
-        if pool == 0
-          pool = 1
-          chance = true
-        end
-
         File.open(HISTORY_PATH, 'a') { |f| f.puts command }
 
-        roll_result = ChroniclesOfDarkness.roll(pool: pool, again: again, rote: rote, chance: chance, label: label, command: command)
+        roll_result = ChroniclesOfDarkness.roll(pool: pool, again: again, rote: rote, label: label, command: command)
         print_roll_result(roll_result)
       end
     rescue Interrupt
