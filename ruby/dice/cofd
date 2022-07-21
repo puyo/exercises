@@ -65,8 +65,8 @@ module ChroniclesOfDarkness
 
     explanation = "#{pool}d#{sides}"
     explanation << " (#{again}-again)" if again != 10
-    explanation << " (rote)" if rote
-    explanation << " (chance)" if chance
+    explanation << ' (rote)' if rote
+    explanation << ' (chance)' if chance
 
     {
       pool: pool,
@@ -102,7 +102,7 @@ module ChroniclesOfDarkness
       printable_history = die[:history].map do |history_item|
         if history_item.first == :success then format('%s%2d%s', GREEN, history_item.last, RESET)
         elsif history_item.first == :failure then format('%2d', history_item.last)
-        elsif history_item == [:again, :rote] then "(    rote)"
+        elsif history_item == [:again, :rote] then '(    rote)'
         elsif history_item.first == :again then format('(%2d-again)', history_item.last)
         end
       end
