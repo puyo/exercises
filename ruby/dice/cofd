@@ -1,121 +1,218 @@
 #!/usr/bin/env ruby
 
-RESET = "\033[0m"
-RED = "\033[1;31m"
-GREEN = "\033[1;32m"
-WHITE = "\033[1;37m"
-BLUE = "\033[1;34m"
-CYAN = "\033[1;36m"
+module ChroniclesOfDarkness
+  def self.roll(pool:, again: 10, rote: false, chance: false, label: nil, command: nil, target: 8, sides: 10)
+    dice_results = []
+    successful_rolls = []
+    score = 0
 
-def cofd_roll(pool:, again: 10, rote: false, chance: false, label: nil)
-  explanation = "#{pool}"
-  explanation << " (#{again}-again)" if again != 10
-  explanation << " (rote)" if rote
-  explanation << " (chance)" if chance
-  puts "ROLLING #{explanation}"
+    pool.times do
+      die_successful_rolls = []
+      die_score = 0
+      die_history = []
+      die_rote = rote
+      die_rote_used = false
+      die_done = false
 
-  total_successes = []
-  total_successes_count = 0
+      1000.times do # keep rerolling until we break from the loop, max 1000 times
+        die_result = rand(1..sides)
 
-  pool.times do
-    print 'd10> '
-    die_successes = []
-    die_successes_count = 0
-    die_text_outcome = []
-    die_rote = rote
-
-    loop do
-      die_result = rand(1..10)
-
-      if die_result >= 8
-        die_successes << die_result
-        die_successes_count += 1
-        die_text_outcome << "#{GREEN}#{die_result}#{RESET}"
-      elsif die_result == 1 && chance
-        die_successes << die_result
-        die_successes_count -= 1
-        die_text_outcome << "#{RED}#{die_result}#{RESET}"
-      else
-        die_text_outcome << die_result
-      end
-
-      if die_result < again
-        if die_rote
-          die_text_outcome << '(rote)'
-          die_rote = false
-          next
+        if die_result >= target
+          die_successful_rolls << die_result
+          die_score += 1
+          die_history << [:success, die_result]
+        elsif chance && die_result == 1
+          die_successful_rolls << die_result
+          die_score -= 1
+          die_history << [:failure, die_result]
         else
-          # this die has exhausted its potential
-          break
+          die_history << [:failure, die_result]
         end
+
+        if die_result >= again
+          die_history << [:again, again]
+          die_rote = false # once N-again rerolled, a die loses its rote quality
+        elsif die_rote
+          die_history << [:again, :rote]
+          die_rote = false
+          die_rote_used = true
+        else
+          die_done = true # this die has exhausted its potential
+        end
+
+        break if die_done
+      end
+
+      dice_results.push({
+        successful_rolls: die_successful_rolls,
+        score: die_score,
+        history: die_history,
+        rote_used: die_rote_used,
+        sides: sides,
+        target: target,
+      })
+
+      successful_rolls += die_successful_rolls
+      score += die_score
+    end
+
+    explanation = "#{pool}d#{sides}"
+    explanation << " (#{again}-again)" if again != 10
+    explanation << " (rote)" if rote
+    explanation << " (chance)" if chance
+
+    {
+      pool: pool,
+      again: again,
+      rote: rote,
+      chance: chance,
+      command: command,
+      label: label,
+      sides: sides,
+      target: target,
+      explanation: explanation,
+      successful_rolls: successful_rolls,
+      score: score,
+      dramatic_failure: score < 0,
+      details: dice_results
+    }
+  end
+
+  RESET = "\033[0m"
+  RED = "\033[1;31m"
+  GREEN = "\033[1;32m"
+  WHITE = "\033[1;37m"
+  BLUE = "\033[1;34m"
+  CYAN = "\033[1;36m"
+
+  def self.print_roll_result(result, io: STDOUT)
+    io.puts
+    io.puts "Details for #{result[:explanation]}"
+    io.puts
+
+    result[:details].each do |die|
+      io.print "    d#{die[:sides]}> "
+
+      printable_history = die[:history].map do |history_item|
+        case history_item
+        in [:success, n] then format('%s%2d%s', GREEN, n, RESET)
+        in [:failure, n] then format('%2d', n)
+        in [:again, :rote] then "(    rote)"
+        in [:again, n] then format('(%2d-again)', n)
+        end
+      end
+
+      if die[:score] > 0
+        io.puts "#{printable_history.join(' ')} #{WHITE}=>#{RESET} #{GREEN}#{die[:successful_rolls].join(', ')}#{RESET}"
       else
-        die_text_outcome << "(#{again}-again)"
-        # once N-again rerolled, a die loses its rote quality
-        die_rote = false
-        next
+        io.puts printable_history.join(' ')
       end
     end
 
-    total_successes += die_successes
-    total_successes_count += die_successes_count
-
-    print die_text_outcome.join(' ')
-
-    if die_successes_count > 0
-      puts " #{WHITE}=>#{RESET} #{GREEN}#{die_successes.join(', ')}#{RESET}"
-    elsif die_successes_count < 0
-      puts " #{WHITE}=>#{RESET} #{RED}#{die_successes.join(', ')}#{RESET}"
+    if result[:score] > 0
+      io.puts "    ALL> #{GREEN}#{result[:successful_rolls].join(', ')}#{RESET}"
+      io.puts
+      io.puts "=> #{WHITE}#{result[:score]}#{RESET} successes"
+    elsif result[:score] < 0
+      io.puts "=> #{RED}dramatic failure#{RESET}"
     else
-      puts
+      io.puts "=> #{result[:score]} successes"
     end
+
+    io.puts
   end
 
-  puts
-  print "#{CYAN}#{label || 'TOTAL'}#{RESET}"
+  CLI_USAGE = <<~USAGE
+  [LABEL] N [OPTIONS]
+    Roll dice
 
-  if total_successes_count > 0
-    print " #{WHITE}=>#{RESET} #{GREEN}#{total_successes.join(', ')}#{RESET}"
-    puts " = #{WHITE}#{total_successes_count}#{RESET} successes"
-  elsif total_successes_count < 0
-    puts " #{WHITE}=>#{RESET} #{RED}#{total_successes.join(', ')}#{RESET}"
-    puts " = #{WHITE}#{total_successes_count}#{RESET} (dramatic failure)"
-  else
-    puts " = #{total_successes.size} successes"
-  end
+    LABEL
+      The description of the roll that will be printed in the output
 
-  puts
-end
+    N
+      The number of d10s to roll
 
-if $PROGRAM_NAME == __FILE__
-  require 'readline'
+    OPTIONS
+      A string including any of the following characters:
+        r
+          Apply the "rote action quality" to the roll
+        8
+          Apply the "8-again" rule to the roll
+        9
+          Apply the "9-again" rule to the roll
 
-  prompt = "#{BLUE}==>#{RESET} "
-  history = true
+  ?, help
+    Print this help
 
-  begin
-    while line = Readline.readline(prompt, history)
-      m = line.match(/^(?<label>[^\d]*)\s*(?<rest>.*)/)
-      next if m.nil?
-      label = line.strip
-      rest = m[:rest]
-      words = rest.split
-      pool = words[0]&.to_i
-      options = words[1]
-      again = 10
-      rote = false
-      chance = false
+  quit, exit
+    Exit the program
 
-      rote = true if options&.include?('r')
-      again = 9 if options&.include?('9')
-      again = 8 if options&.include?('8')
-      next if pool.nil?
-      if pool == 0
-        pool = 1
-        chance = true
+  EXAMPLES
+
+    Dispel Magic (from grimoire) 5 r
+      This rolls 5 dice with the rote action quality and the label "Dispel Magic (from grimoire)"
+
+    5 8r
+      This rolls 5 dice with the rote action quality and the 8-again rule
+
+  USAGE
+
+  HISTORY_PATH = File.join(ENV['HOME'], '.cofd')
+
+  def self.cli
+    require 'readline'
+
+    if $stdin.isatty
+      prompt = "#{BLUE}==>#{RESET} "
+      history = true
+      File.read(HISTORY_PATH).each_line.each{|line| Readline::HISTORY.push(line.strip) } rescue nil
+    else
+      prompt = ''
+      history = false
+    end
+
+    begin
+      while line = Readline.readline(prompt, history)
+        m = line.match(/^(?<label>[^\d]*)\s*(?<rest>.*)/)
+        next if m.nil?
+        command = line.strip
+
+        case command.downcase
+        when '?', 'help'
+          puts CLI_USAGE
+          next
+        when 'exit', 'quit'
+          on_exit.call
+          exit
+        end
+
+        label = m[:label]
+        rest = m[:rest]
+        words = rest.split
+        pool = words[0]&.to_i
+        next if pool.nil?
+        options = words[1]
+        again = 10
+        rote = false
+        chance = false
+        rote = true if options&.include?('r')
+        again = 9 if options&.include?('9')
+        again = 8 if options&.include?('8')
+
+        if pool == 0
+          pool = 1
+          chance = true
+        end
+
+        File.open(HISTORY_PATH, 'a') { |f| f.puts command }
+
+        roll_result = ChroniclesOfDarkness.roll(pool: pool, again: again, rote: rote, chance: chance, label: label, command: command)
+        print_roll_result(roll_result)
       end
-      cofd_roll(pool: pool, again: again, rote: rote, chance: chance, label: label)
+    rescue Interrupt
+      on_exit.call
     end
-  rescue Interrupt
-    # exit normally
   end
 end
+
+ChroniclesOfDarkness.cli if $PROGRAM_NAME == __FILE__
