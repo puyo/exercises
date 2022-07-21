@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 module ChroniclesOfDarkness
-  def self.roll(pool:, again: 10, rote: false, label: nil, command: nil, target: 8, sides: 10)
+  def self.roll(pool:, again: 10, rote: false, label: nil, target: 8, sides: 10)
     if pool == 0
       pool = 1
       chance = true
@@ -73,7 +73,6 @@ module ChroniclesOfDarkness
       again: again,
       rote: rote,
       chance: chance,
-      command: command,
       label: label,
       sides: sides,
       target: target,
@@ -214,7 +213,7 @@ module ChroniclesOfDarkness
 
         File.open(HISTORY_PATH, 'a') { |f| f.puts command }
 
-        roll_result = ChroniclesOfDarkness.roll(pool: pool, again: again, rote: rote, label: label, command: command)
+        roll_result = ChroniclesOfDarkness.roll(pool: pool, again: again, rote: rote, label: label)
         print_roll_result(roll_result)
       end
     rescue Interrupt
