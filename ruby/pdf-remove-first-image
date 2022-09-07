@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'hexapdf'
+require 'fileutils'
+require 'pp'
+
+usage = "#{$0} INPUT.pdf"
+input = ARGV[0] || (raise 'Require pdf name')
+output_temp = "#{input}.temp.pdf"
+
+doc = HexaPDF::Document.open(input)
+
+# doc.images.each do |img|
+#   doc.delete(img) # if img.width > 2500
+# end
+
+# doc.task(:optimize, compact: true, object_streams: :generate, compress_pages: false)
+doc.write(output_temp)
+
+# FileUtils.mv(output_temp, input, verbose: true)
