@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+def snake_case(str)
+  return str.downcase if str =~ /^[A-Z_]+$/
+  str.gsub(/\B[A-Z]/, '_\&').squeeze("_") =~ /_*(.*)/
+  $+.downcase
+end
+
+ARGV.each do |path|
+  puts '>> ' + path
+
+  new_contents =
+    File.read(path)
+    .gsub(/([A-Z][a-zA-Z0-9]+)\.make\!\((.*?)\)/) do
+      "create(:#{snake_case($1)}, #{$2.strip})"
+    end
+    .gsub(/([A-Z][a-zA-Z0-9]+)\.make\((.*?)\)/) do
+      "build(:#{snake_case($1)}, #{$2.strip})"
+    end
+    .gsub(/([A-Z][a-zA-Z0-9]+)\.make\!/) do
+      "create(:#{snake_case($1)})"
+    end
+    .gsub(/([A-Z][a-zA-Z0-9]+)\.make/) do
+      "build(:#{snake_case($1)})"
+    end
+    .gsub(/([A-Z][a-zA-Z0-9]+)\.blueprint/) do
+      "FactoryBot.factory :#{snake_case($1)}"
+    end
+  File.open(path, 'w') do |f|
+    f.print new_contents
+  end
+end
