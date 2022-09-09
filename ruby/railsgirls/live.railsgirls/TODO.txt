@@ -1,0 +1,9 @@
+
+TODO
+
+x rails new ...
+x rails generate ...
+x play with our new rails app
+x try to break new rails app
+x make it prettier (CSS?)
+x file uploads (?? how??)

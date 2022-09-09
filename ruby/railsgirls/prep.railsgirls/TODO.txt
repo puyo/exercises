@@ -1,0 +1,15 @@
+build
+
+x start a new rails project
+x get rails to generate lots of code
+x play around and try to break it, try to understand it
+
+design
+
+x import Twitter CSS to make it look slick
+x write some CSS to improve the style
+
+picture uploads
+
+x go to rubygems.org and search for "file uploads"
+x follow instructions
