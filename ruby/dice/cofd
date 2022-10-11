@@ -120,19 +120,46 @@ module ChroniclesOfDarkness
 
     io.puts
 
-    if result[:score] > 0
-      io.puts "=> #{WHITE}#{result[:score]}#{RESET} #{successes_word(result[:score])}"
+    if result[:score] >= 5
+      io.print "\033[33m"
+    elsif result[:score] >= 1
+      io.print GREEN
+    elsif result[:score] == 0
+      io.print "\033[1;30m"
     elsif result[:score] < 0
-      io.puts "=> #{RED}dramatic failure#{RESET}"
-    else
-      io.puts "=> #{result[:score]} #{successes_word(result[:score])}"
+      io.print RED
     end
 
-    io.puts
-  end
+    if result[:label]
+      io.print result[:label].strip
+      io.print ' '
+    end
 
-  def self.successes_word(n)
-    n == 1 ? 'success' : 'successes'
+    io.print '=> '
+
+    if result[:score] > 0
+      io.print result[:score]
+      io.print ' '
+    end
+
+    io.print(
+      case result[:score]
+      when ...0
+        '(dramatic failure)'
+      when 0
+        'successes (failure)'
+      when 1
+        'success'
+      when 2...5
+        'successes'
+      else
+        'successes (exceptional)'
+      end
+    )
+
+    io.print RESET
+    io.puts
+    io.puts
   end
 
   CLI_USAGE = <<~USAGE
