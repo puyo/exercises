@@ -4,12 +4,12 @@
 defmodule Angram do
   def angrams(word, all_words) do
     sw = sorted(word)
-    all_words |> Enum.filter fn w -> sw == sorted(w) end
+    all_words |> Enum.filter(fn w -> sw == sorted(w) end)
   end
 
   defp sorted(word) do
-    word |> String.to_char_list |> Enum.sort
+    word |> String.to_char_list() |> Enum.sort()
   end
 end
 
-IO.inspect Angram.angrams("listen", ~w(enlists google inlets))
+IO.inspect(Angram.angrams("listen", ~w(enlists google inlets)))
