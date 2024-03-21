@@ -25,7 +25,6 @@ defmodule TimeZoneDiff do
   def all_time_zone_changes(time_zones) do
     time_zones
     |> Enum.flat_map(&time_zone_changes/1)
-    |> Enum.sort()
-    |> Enum.reverse()
+    |> Enum.sort_by(fn {dt, _, _} -> DateTime.to_unix(dt) end)
   end
 end
