@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 module ChroniclesOfDarkness
   def self.roll(pool:, again: 10, rote: false, label: nil, target: 8, sides: 10)
-    if pool == 0
+    if pool.zero?
       pool = 1
       chance = true
     else
@@ -40,7 +41,7 @@ module ChroniclesOfDarkness
           die_history << [:again, again]
           die_rote = false # once N-again rerolled, a die loses its rote quality
         elsif die_rote
-          die_history << [:again, :rote]
+          die_history << %i[again rote]
           die_rote = false
           die_rote_used = true
         else
@@ -50,14 +51,16 @@ module ChroniclesOfDarkness
         break if die_done
       end
 
-      dice_results.push({
-        successful_rolls: die_successful_rolls,
-        score: die_score,
-        history: die_history,
-        rote_used: die_rote_used,
-        sides: sides,
-        target: target,
-      })
+      dice_results.push(
+        {
+          successful_rolls: die_successful_rolls,
+          score: die_score,
+          history: die_history,
+          rote_used: die_rote_used,
+          sides:,
+          target:,
+        },
+      )
 
       successful_rolls += die_successful_rolls
       score += die_score
@@ -69,18 +72,18 @@ module ChroniclesOfDarkness
     explanation << ' (chance)' if chance
 
     {
-      pool: pool,
-      again: again,
-      rote: rote,
-      chance: chance,
-      label: label,
-      sides: sides,
-      target: target,
-      explanation: explanation,
-      successful_rolls: successful_rolls,
-      score: score,
-      dramatic_failure: score < 0,
-      details: dice_results
+      pool:,
+      again:,
+      rote:,
+      chance:,
+      label:,
+      sides:,
+      target:,
+      explanation:,
+      successful_rolls:,
+      score:,
+      dramatic_failure: score.negative?,
+      details: dice_results,
     }
   end
 
@@ -100,21 +103,25 @@ module ChroniclesOfDarkness
       io.print "    d#{die[:sides]}> "
 
       printable_history = die[:history].map do |history_item|
-        if history_item.first == :success then format('%s%2d%s', GREEN, history_item.last, RESET)
-        elsif history_item.first == :failure then format('%2d', history_item.last)
-        elsif history_item == [:again, :rote] then '(    rote)'
-        elsif history_item.first == :again then format('(%2d-again)', history_item.last)
+        if history_item.first == :success
+          format('%<col>s%<item>2d%<reset>s', col: GREEN, item: history_item.last, reset: RESET)
+        elsif history_item.first == :failure
+          format('%<item>2d', item: history_item.last)
+        elsif history_item == %i[again rote]
+          '(    rote)'
+        elsif history_item.first == :again
+          format('(%<item>2d-again)', item: history_item.last)
         end
       end
 
-      if die[:score] > 0
+      if die[:score].positive?
         io.puts "#{printable_history.join(' ')} #{WHITE}=>#{RESET} #{GREEN}#{die[:successful_rolls].join(', ')}#{RESET}"
       else
         io.puts printable_history.join(' ')
       end
     end
 
-    if result[:score] > 0 && result[:pool] > 1
+    if result[:score].positive? && result[:pool] > 1
       io.puts "    ===> #{GREEN}#{result[:successful_rolls].join(', ')}#{RESET}"
     end
 
@@ -124,9 +131,9 @@ module ChroniclesOfDarkness
       io.print "\033[33m"
     elsif result[:score] >= 1
       io.print GREEN
-    elsif result[:score] == 0
+    elsif result[:score].zero?
       io.print "\033[1;30m"
-    elsif result[:score] < 0
+    elsif result[:score].negative?
       io.print RED
     end
 
@@ -154,7 +161,7 @@ module ChroniclesOfDarkness
         'successes'
       else
         'successes (exceptional)'
-      end
+      end,
     )
 
     io.print RESET
@@ -163,41 +170,41 @@ module ChroniclesOfDarkness
   end
 
   CLI_USAGE = <<~USAGE
-  [LABEL] N [OPTIONS]
-    Roll dice
+    [LABEL] N [OPTIONS]
+      Roll dice
 
-    LABEL
-      The description of the roll that will be printed in the output
+      LABEL
+        The description of the roll that will be printed in the output
 
-    N
-      The number of d10s to roll
+      N
+        The number of d10s to roll
 
-    OPTIONS
-      A string including any of the following characters:
-        r
-          Apply the "rote action quality" to the roll
-        8
-          Apply the "8-again" rule to the roll
-        9
-          Apply the "9-again" rule to the roll
+      OPTIONS
+        A string including any of the following characters:
+          r
+            Apply the "rote action quality" to the roll
+          8
+            Apply the "8-again" rule to the roll
+          9
+            Apply the "9-again" rule to the roll
 
-  ?, help
-    Print this help
+    ?, help
+      Print this help
 
-  quit, exit
-    Exit the program
+    quit, exit
+      Exit the program
 
-  EXAMPLES
+    EXAMPLES
 
-    Dispel Magic (from grimoire) 5 r
-      This rolls 5 dice with the rote action quality and the label "Dispel Magic (from grimoire)"
+      Dispel Magic (from grimoire) 5 r
+        This rolls 5 dice with the rote action quality and the label "Dispel Magic (from grimoire)"
 
-    5 8r
-      This rolls 5 dice with the rote action quality and the 8-again rule
+      5 8r
+        This rolls 5 dice with the rote action quality and the 8-again rule
 
   USAGE
 
-  HISTORY_PATH = File.join(ENV['HOME'], '.cofd')
+  HISTORY_PATH = File.join(Dir.home, '.cofd')
 
   def self.cli
     require 'readline'
@@ -205,7 +212,11 @@ module ChroniclesOfDarkness
     if $stdin.isatty
       prompt = "#{BLUE}==>#{RESET} "
       history = true
-      File.read(HISTORY_PATH).each_line.each{|line| Readline::HISTORY.push(line.strip) } rescue nil
+      begin
+        File.read(HISTORY_PATH).each_line.each { |line| Readline::HISTORY.push(line.strip) }
+      rescue StandardError
+        nil
+      end
     else
       prompt = ''
       history = false
@@ -215,6 +226,7 @@ module ChroniclesOfDarkness
       while line = Readline.readline(prompt, history)
         m = line.match(/^(?<label>[^\d]*)\s*(?<rest>.*)/)
         next if m.nil?
+
         command = line.strip
 
         case command.downcase
@@ -230,6 +242,7 @@ module ChroniclesOfDarkness
         words = rest.split
         pool = words[0]&.to_i
         next if pool.nil?
+
         options = words[1]
         again = 10
         rote = false
@@ -239,7 +252,7 @@ module ChroniclesOfDarkness
 
         File.open(HISTORY_PATH, 'a') { |f| f.puts command }
 
-        roll_result = ChroniclesOfDarkness.roll(pool: pool, again: again, rote: rote, label: label)
+        roll_result = ChroniclesOfDarkness.roll(pool:, again:, rote:, label:)
         print_roll_result(roll_result)
       end
     rescue Interrupt
