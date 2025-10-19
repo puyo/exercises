@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+<script>
+
+ const world = {
+   w: 800,
+   h: 200,
+ }
+
+ const ball = {
+   x: 0,
+   y: 0,
+   vx: 0,
+   vy: 0,
+   r: 20,
+ }
+
+ const players = [
+   {
+     x: 20,
+     y: world.h / 2,
+     w: 20,
+     h: 80,
+   },
+   {
+     x: world.w - 20,
+     y: world.h / 2,
+     w: 20,
+     h: 80,
+   }
+ ]
+
+ const bounceEfficiency = 1;
+
+ const gravity = {x: 0, y: 0};
+
+ function myDrawBackground() {
+   background(220);
+ }
+
+ function mySetupBall() {
+   ball.x = world.w / 2;
+   ball.y = world.h / 2;
+   ball.vy = 2;
+   ball.vx = 5;
+ }
+
+ function myDrawBall() {
+   ellipse(ball.x, ball.y, ball.r*2, ball.r*2);
+ }
+
+ function myDrawPlayers() {
+   players.forEach(p => {
+     rect(p.x - p.w/2, p.y - p.h/2, p.w, p.h);
+   })
+ }
+
+ function myUpdateBall() {
+   ball.vx += gravity.x;
+   ball.vy += gravity.y;
+   ball.x += ball.vx;
+   ball.y += ball.vy;
+ }
+
+ function myCheckForBallEdgeCollisions() {
+   // bottom
+   if ((ball.y + ball.r) >= world.h) {
+     ball.y = world.h - ball.r;
+     ball.vy *= -1; // reverse direction
+     ball.vy *= bounceEfficiency; // multiply by % to reduce speed
+   }
+
+   // top
+   if ((ball.y - ball.r) < 0) {
+     ball.y = ball.r;
+     ball.vy *= -1; // reverse direction
+     ball.vy *= bounceEfficiency; // multiply by % to reduce speed
+   }
+
+   // left
+   if ((ball.x - ball.r) < 0) {
+     ball.x = ball.r;
+     ball.vx *= -1; // reverse direction
+     ball.vx *= bounceEfficiency; // multiply by % to reduce speed
+   }
+
+   // right
+   if ((ball.x + ball.r) >= world.w) {
+     ball.x = world.w - ball.r;
+     ball.vx *= -1; // reverse direction
+     ball.vx *= bounceEfficiency; // multiply by % to reduce speed
+   }
+ }
+
+ // Given a player, return whether the ball is touching them,
+ // and what to multiply the x and y values of the ball by,
+ // based on the collision.
+ //
+ // Arguments:
+ //   player: a player object
+ //
+ // Returns an object with the following fields:
+ //   touching: true if the player is touching the ball
+ //   mx: value to multiply ball x velocity by, based on collision
+ //   my: value to multiply ball y velocity by, based on collision
+ //
+ function myCheckForBallPlayerCollision(player) {
+   // Maths from:
+   //
+   // https://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection
+
+   const dist = {
+     x: Math.abs(ball.x - player.x),
+     y: Math.abs(ball.y - player.y),
+   };
+
+   if (dist.x > (player.w/2 + ball.r)) { return {touching: false, mx: 1, my: 1}; } // outside x range
+   if (dist.y > (player.h/2 + ball.r)) { return {touching: false, mx: 1, my: 1}; } // outside y range
+   if (dist.x <= (player.w/2)) { return {touching: true, mx: 1, my: -1}; } // inside x range
+   if (dist.y <= (player.h/2)) { return {touching: true, mx: -1, my: 1}; } // inside y range
+
+   // centre of ball is outside the rectangle but it may
+   // be touching the corner of the rectangle
+   //
+   // Note: (a ** 2) is a squared
+   //
+   // pythagoras: dist.x ** 2 + dist.y ** 2 = dist ** 2
+   //
+   const distSq =
+     (dist.x - player.w/2) ** 2 +
+     (dist.y - player.h/2) ** 2;
+
+   const touching = distSq <= (circle.r ** 2);
+   if (touching) {
+     return {touching: true, mx: -1, my: -1};
+   } else {
+     return {touching: false, mx: 1, my: 1};
+   }
+ }
+
+ // Check for collisions between ball and any player.
+ function myCheckForBallPlayerCollisions() {
+   players.forEach(p => {
+     const {mx, my} = myCheckForBallPlayerCollision(p);
+     ball.vx *= mx;
+     ball.vy *= my;
+   })
+ }
+
+ // p5.js functions that must be named this way
+
+ function setup() {
+   createCanvas(world.w, world.h);
+   mySetupBall();
+ }
+
+ function draw() {
+   myDrawBackground();
+   myDrawBall();
+   myDrawPlayers();
+   myUpdateBall();
+   myCheckForBallEdgeCollisions();
+   myCheckForBallPlayerCollisions();
+ }
+
+</script>
+</head>
+<body>
+<main></main>
+</body>
+</html>
