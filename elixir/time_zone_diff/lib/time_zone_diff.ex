@@ -12,14 +12,14 @@ defmodule TimeZoneDiff do
     {from_gregorian, _} = from_dt |> DateTime.to_gregorian_seconds()
     {until_gregorian, _} = until_dt |> DateTime.to_gregorian_seconds()
 
-    periods =
-      periods
-      |> Enum.filter(fn %{from: %{utc: utc_from}, until: %{utc: utc_until}} ->
-        utc_from != :min && from_gregorian <= utc_from && utc_from <= until_gregorian
-      end)
-      |> Enum.map(fn %{from: %{utc: utc_from}, zone_abbr: zone} ->
-        {utc_from |> DateTime.from_gregorian_seconds(), time_zone, zone}
-      end)
+    periods
+    |> Enum.filter(fn %{from: %{utc: utc_from}} ->
+      utc_from != :min &&
+        from_gregorian <= utc_from && utc_from <= until_gregorian
+    end)
+    |> Enum.map(fn %{from: %{utc: utc_from}, zone_abbr: zone} ->
+      {utc_from |> DateTime.from_gregorian_seconds(), time_zone, zone}
+    end)
   end
 
   def all_time_zone_changes(time_zones) do
